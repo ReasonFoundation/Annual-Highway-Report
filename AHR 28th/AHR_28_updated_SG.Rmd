@@ -1,0 +1,2124 @@
+---
+title: "AHR_28th_report_updated"
+output: html_document
+date: "2024-09-17"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(here)
+library(readxl)
+library(dplyr)
+library(reactable)
+library(htmltools)
+```
+
+
+
+
+```{r}
+
+# Specify the file path relative to the project root
+AHR_data <- read_excel(here("AHR_data 28th_summing_components_columns.xlsx"), sheet = "AHR Data")
+
+
+Scores_and_Rankings <- read_excel(here("AHR_data 28th_summing_components_columns.xlsx"), sheet = "Scores & Rankings")
+
+
+Disbursement_Data <- read_excel(here("AHR_data 28th_summing_components_columns.xlsx"), sheet = "Disbursement Data")
+
+
+```
+
+```{r}
+##TABLE 1: OVERALL HIGHWAY PERFORMANCE RANKINGS,
+# Load necessary libraries
+
+
+# Creating table with overall rank and state, with Overall column first
+score_table <- Scores_and_Rankings %>%
+  select(overall_score_rank, state) %>%  # Change the order of columns
+  arrange(overall_score_rank)            # Sort by overall_score_rank
+
+# Create the reactable table with a title
+htmltools::tagList(
+  # Add the title
+  tags$h3("TABLE 1: OVERALL HIGHWAY PERFORMANCE RANKINGS"),
+  
+  # Create the reactable table
+  reactable(
+    data = score_table,
+    filterable = FALSE, 
+    columns = list(
+      overall_score_rank = colDef(name = "Overall", format = colFormat(digits = 0), minWidth = 80, align = "left"),  # Left align
+      state = colDef(name = "State", minWidth = 150, align = "left")  # Left align
+    ),
+    defaultPageSize = nrow(score_table),  
+    pagination = FALSE,  
+    striped = TRUE,  
+    bordered = TRUE  
+  )
+)
+
+```
+```{r}
+
+# Prepare the data: select state and overall score rank, sorted alphabetically
+score_table_alphabetical <- Scores_and_Rankings %>%
+  select(state, overall_score_rank) %>%
+  arrange(state)  # Sort alphabetically by state
+
+# Calculate the maximum score for scaling the bar chart
+max_score_rank <- max(score_table_alphabetical$overall_score_rank, na.rm = TRUE)
+
+# Create the bar chart function for displaying the rank visually
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(100 * value / max_value, "%"),  # Scale the bar width
+    height = "15px",  # Bar height
+    backgroundColor = color
+  )
+  htmltools::div(style = bar_style, format(value, big.mark = ",", scientific = FALSE))  # Display the value inside the bar
+}
+
+# Generate the reactable table with a title and bar chart, displaying all data
+htmltools::tagList(
+  # Add the title
+  tags$h3("TABLE 2: OVERALL HIGHWAY PERFORMANCE RANKINGS IN ALPHABETICAL ORDER"),
+  
+  # Create the reactable table
+  reactable(
+    data = score_table_alphabetical,
+    filterable = FALSE,  
+    columns = list(
+      state = colDef(name = "State", minWidth = 150),  # State column
+      overall_score_rank = colDef(
+        name = "Overall Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_score_rank, "#66bb6a")  # Green bar for overall rank
+        },
+        minWidth = 180  # Width of the column
+      )
+    ),
+    defaultPageSize = nrow(score_table_alphabetical),  # Display all rows together
+    striped = TRUE,  
+    highlight = TRUE,  
+    bordered = TRUE, 
+    pagination = FALSE,  
+    defaultSorted = list(state = "asc")  # Sort alphabetically by state
+  )
+)
+
+
+
+```
+
+```{r}
+
+# Prepare the data: select the necessary columns
+table_data <- Scores_and_Rankings %>%
+  select(state, 
+         overall_score_rank, 
+         admin_disbursement_perlm_score_rank, 
+         capital_disbursement_perlm_score_rank, 
+         maintenance_disbursement_perlm_score_rank, 
+         other_disbursement_perlm_score_rank, 
+         rural_interstate_poor_percent_score_rank, 
+         urban_interstate_poor_percent_score_rank, 
+         rural_OPA_poor_percent_score_rank, 
+         urban_OPA_poor_percent_score_rank, 
+         poor_bridges_percent_score_rank, 
+         state_avg_congestion_hours_score_rank, 
+         rural_fatalities_per_100m_VMT_score_rank, 
+         urban_fatalities_per_100m_VMT_score_rank, 
+         other_fatalities_per_100m_VMT_score_rank) %>%
+  arrange(state)  # Sort alphabetically by state
+
+# Function to create bar chart with different colors for each rank
+create_bar_chart <- function(value, max_value, color = "#66bb6a") {
+  width_percent <- 100 * value / max_value  # Calculate bar width as percentage
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"),
+    height = "15px",
+    backgroundColor = color,
+    textAlign = "center",
+    verticalAlign = "middle",
+    whiteSpace = "nowrap"  # Prevent text wrapping
+  )
+  div(style = "display: flex; align-items: center;",
+      div(style = bar_style),  # Bar itself
+      div(style = "padding-left: 10px;", format(value, big.mark = ",", scientific = FALSE))  # Text next to the bar
+  )
+}
+
+# Maximum values for scaling bars
+max_overall <- max(table_data$overall_score_rank, na.rm = TRUE)
+max_admin <- max(table_data$admin_disbursement_perlm_score_rank, na.rm = TRUE)
+max_capital <- max(table_data$capital_disbursement_perlm_score_rank, na.rm = TRUE)
+max_maintenance <- max(table_data$maintenance_disbursement_perlm_score_rank, na.rm = TRUE)
+max_other <- max(table_data$other_disbursement_perlm_score_rank, na.rm = TRUE)
+max_rural_interstate <- max(table_data$rural_interstate_poor_percent_score_rank, na.rm = TRUE)
+max_urban_interstate <- max(table_data$urban_interstate_poor_percent_score_rank, na.rm = TRUE)
+max_rural_OPA <- max(table_data$rural_OPA_poor_percent_score_rank, na.rm = TRUE)
+max_urban_OPA <- max(table_data$urban_OPA_poor_percent_score_rank, na.rm = TRUE)
+max_bridges <- max(table_data$poor_bridges_percent_score_rank, na.rm = TRUE)
+max_congestion <- max(table_data$state_avg_congestion_hours_score_rank, na.rm = TRUE)
+max_rural_fatalities <- max(table_data$rural_fatalities_per_100m_VMT_score_rank, na.rm = TRUE)
+max_urban_fatalities <- max(table_data$urban_fatalities_per_100m_VMT_score_rank, na.rm = TRUE)
+max_other_fatalities <- max(table_data$other_fatalities_per_100m_VMT_score_rank, na.rm = TRUE)
+
+# Add title and table
+htmltools::tagList(
+  # Aligning the title using CSS similar to your example
+  htmltools::tags$div(
+    style = "text-align: left; background-color: orange; padding: 10px;",
+    htmltools::tags$h3("TABLE 3: HIGHWAY PERFORMANCE RANKINGS BY CATEGORY", 
+                       style = "margin: 0; padding-left: 15px;")
+  ),
+  
+  # Create the table with bar charts for each rank
+  reactable(
+    data = table_data,
+    columns = list(
+      state = colDef(name = "State", minWidth = 120, align = "left"),
+      
+      overall_score_rank = colDef(
+        name = "Overall Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_overall, "#66bb6a")  # Green bar
+        },
+        minWidth = 150
+      ),
+      
+      admin_disbursement_perlm_score_rank = colDef(
+        name = "Admin Disbursement Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_admin, "#ffcc00")  # Yellow bar
+        },
+        minWidth = 150
+      ),
+      
+      capital_disbursement_perlm_score_rank = colDef(
+        name = "Capital Disbursement Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_capital, "#ff7043")  # Orange bar
+        },
+        minWidth = 150
+      ),
+      
+      maintenance_disbursement_perlm_score_rank = colDef(
+        name = "Maintenance Disbursement Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_maintenance, "#8e44ad")  # Purple bar
+        },
+        minWidth = 150
+      ),
+      
+      other_disbursement_perlm_score_rank = colDef(
+        name = "Other Disbursement Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_other, "#3498db")  # Blue bar
+        },
+        minWidth = 150
+      ),
+      
+      rural_interstate_poor_percent_score_rank = colDef(
+        name = "Rural Interstate Poor Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_rural_interstate, "#c0392b")  # Red bar
+        },
+        minWidth = 150
+      ),
+      
+      urban_interstate_poor_percent_score_rank = colDef(
+        name = "Urban Interstate Poor Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_urban_interstate, "#27ae60")  # Green bar
+        },
+        minWidth = 150
+      ),
+      
+      rural_OPA_poor_percent_score_rank = colDef(
+        name = "Rural OPA Poor Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_rural_OPA, "#f39c12")  # Yellow bar
+        },
+        minWidth = 150
+      ),
+      
+      urban_OPA_poor_percent_score_rank = colDef(
+        name = "Urban OPA Poor Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_urban_OPA, "#e67e22")  # Orange bar
+        },
+        minWidth = 150
+      ),
+      
+      poor_bridges_percent_score_rank = colDef(
+        name = "Poor Bridges Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_bridges, "#34495e")  # Blue-grey bar
+        },
+        minWidth = 150
+      ),
+      
+      state_avg_congestion_hours_score_rank = colDef(
+        name = "Congestion Hours Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_congestion, "#f1c40f")  # Yellow bar
+        },
+        minWidth = 150
+      ),
+      
+      rural_fatalities_per_100m_VMT_score_rank = colDef(
+        name = "Rural Fatalities Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_rural_fatalities, "#1abc9c")  # Green-blue bar
+        },
+        minWidth = 150
+      ),
+      
+      urban_fatalities_per_100m_VMT_score_rank = colDef(
+        name = "Urban Fatalities Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_urban_fatalities, "#d35400")  # Orange-brown bar
+        },
+        minWidth = 150
+      ),
+      
+      other_fatalities_per_100m_VMT_score_rank = colDef(
+        name = "Other Fatalities Rank", 
+        cell = function(value) {
+          create_bar_chart(value, max_other_fatalities, "#bdc3c7")  # Grey bar
+        },
+        minWidth = 150
+      )
+    ),
+    bordered = TRUE,
+    highlight = TRUE,
+    compact = TRUE,
+    pagination = FALSE,  # Show all data at once
+    defaultSorted = list(state = "asc")  # Sort alphabetically by state
+  )
+)
+
+```
+
+```{r}
+# Load and process the data
+score_table <- Scores_and_Rankings %>%
+  select(state, overall_score_rank) %>%
+  mutate(
+    state_lower = tolower(state),  # Convert state names to lowercase
+    state_abb = state.abb[match(state, state.name)]  # Get state abbreviations
+  )
+
+# Get US state map data from the 'maps' package
+states_map <- map_data("state")
+
+# Merge map data with score_table using the lowercase state names
+map_data <- left_join(states_map, score_table, by = c("region" = "state_lower"))
+
+# Calculate the state centers for placing the text labels on the map
+state_centers_df <- map_data %>%
+  group_by(region) %>%
+  summarise(long = mean(long), lat = mean(lat)) %>%
+  left_join(score_table, by = c("region" = "state_lower"))
+
+# Define colors for rank categories
+rank_colors <- c(
+  "1 to 10" = "#66bb6a",  # Green
+  "11 to 20" = "#b2df8a",  # Light Green
+  "21 to 30" = "#ffeb3b",  # Yellow
+  "31 to 40" = "#ff7043",  # Orange
+  "41 to 50" = "#d32f2f",  # Red
+  "Not ranked" = "gray"  # Color for missing data
+)
+
+# Function to categorize ranks into color-coded groups
+categorize_rank <- function(rank) {
+  if (is.na(rank)) {
+    return("Not ranked")
+  } else if (rank <= 10) {
+    return("1 to 10")
+  } else if (rank <= 20) {
+    return("11 to 20")
+  } else if (rank <= 30) {
+    return("21 to 30")
+  } else if (rank <= 40) {
+    return("31 to 40")
+  } else {
+    return("41 to 50")
+  }
+}
+
+# Apply rank categorization
+map_data$rank_category <- sapply(map_data$overall_score_rank, categorize_rank)
+
+# Plot the map showing Overall Highway Performance Rank
+ggplot() +
+  geom_polygon(data = map_data, aes(x = long, y = lat, group = group, fill = rank_category), color = "white") +
+  scale_fill_manual(values = rank_colors, breaks = names(rank_colors), na.value = "gray") +
+  theme_minimal() +
+  
+  # Add state abbreviations and ranks at centroids
+  geom_text(data = state_centers_df, aes(x = long, y = lat, label = paste(state_abb, overall_score_rank, sep = "\n")), size = 3, color = "black") +
+  
+  # Add title and legend
+  labs(title = "FIGURE 1: OVERALL HIGHWAY PERFORMANCE RANK", fill = "Rank") +
+  theme(
+    plot.title = element_text(hjust = 0.5),  # Center the title
+    legend.position = "right"  # Move the legend to the right side
+  )
+
+```
+
+
+```{r}
+
+lane_miles_table <- AHR_data %>%
+  filter(state != "United States") %>%
+  select(state, state_tot_lane_miles) %>%
+  arrange(desc(state_tot_lane_miles)) %>%
+  mutate(Rank = row_number()) %>%
+  select(Rank, state, state_tot_lane_miles)
+
+# Add U.S. Total row
+us_total <- data.frame(
+  Rank = NA,
+  state = "U.S. Total",
+  state_tot_lane_miles = sum(lane_miles_table$state_tot_lane_miles, na.rm = TRUE)
+)
+
+# Bind U.S. Total to the lane_miles_table
+lane_miles_table <- bind_rows(lane_miles_table, us_total)
+
+# Get the maximum value for scaling the bars
+max_lane_miles <- max(lane_miles_table$state_tot_lane_miles, na.rm = TRUE)
+
+# Function to create the bar chart
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  if (is.na(value)) return("")  
+  width_percent <- 100 * value / max_value  
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"),  
+    height = "20px",  
+    backgroundColor = color,
+    borderRadius = "4px",  
+    whiteSpace = "nowrap",  
+    verticalAlign = "middle"
+  )
+  div_container <- div(
+    style = "display: flex; align-items: center;",  
+    div(style = bar_style),  
+    div(style = "padding-left: 10px;", format(round(value), big.mark = ",", scientific = FALSE))  
+  )
+  return(div_container)
+}
+
+# Create the table using reactable
+htmltools::tagList(
+  htmltools::tags$h3("STATE-CONTROLLED HIGHWAY MILEAGE"),
+  
+  reactable(
+    lane_miles_table,
+    columns = list(
+      Rank = colDef(name = "Rank", minWidth = 50, align = "center", cell = function(value) {
+        if (is.na(value)) {
+          ""  
+        } else {
+          value
+        }
+      }),
+      state = colDef(name = "State", minWidth = 120, align = "left"),
+      state_tot_lane_miles = colDef(
+        name = "State Total Lane Miles",
+        cell = function(value, index) {
+          if (lane_miles_table$state[index] == "U.S. Total") {
+            format(round(value), big.mark = ",", scientific = FALSE)  
+          } else {
+            create_bar_chart(value, max_lane_miles, "#FF8C00")  
+          }
+        },
+        minWidth = 200,  
+        align = "left"
+      )
+    ),
+    defaultSorted = list(Rank = "asc"),
+    bordered = TRUE,
+    highlight = TRUE,
+    compact = TRUE,  
+    pagination = FALSE  
+  )
+)
+
+```
+
+
+```{r}
+
+# Prepare the data: Rank based on SHA_ratio and filter out "United States"
+table_data <- AHR_data %>%
+  filter(state != "United States") %>%  # Remove "United States"
+  select(state, SHA_ratio, state_tot_lane_miles, SHA_miles) %>%
+  filter(!is.na(SHA_ratio)) %>%
+  arrange(desc(SHA_ratio)) %>%
+  mutate(Size = row_number())  # Rank based on SHA_ratio
+
+# Move the 'Size' column to be the first column
+table_data <- table_data %>%
+  select(Size, state, everything())  # Move 'Size' to the first column
+
+# Calculate the max values for scaling bars
+max_SHA_ratio <- max(table_data$SHA_ratio, na.rm = TRUE, finite = TRUE)  # Ignoring NA
+max_lane_miles <- max(table_data$state_tot_lane_miles, na.rm = TRUE)
+max_SHA_miles <- max(table_data$SHA_miles, na.rm = TRUE)
+
+# Create bar chart function
+create_bar <- function(value, max_value, color) {
+  if (is.na(value)) return("")  # No bar for NA values
+  width <- paste0((value / max_value) * 100, "%")
+  div(style = "display: flex; align-items: center; white-space: nowrap;",  
+      div(style = paste("width:", width, "; background-color:", color, "; height: 15px; margin-right: 5px;", sep = "")),  
+      div(sprintf("%.2f", value))  
+  )
+}
+
+# Reactable table
+htmltools::tagList(
+  htmltools::tags$h3("TABLE 6: STATE-CONTROLLED HIGHWAY MILEAGE BY SYSTEM WIDTH"),
+  
+  reactable(
+    table_data,
+    columns = list(
+      Size = colDef(name = "Size", minWidth = 50, align = "center", cell = function(value) {
+        if (is.na(value)) return("")  # Leave the size empty for NA values
+        value
+      }),
+      state = colDef(name = "State", minWidth = 120),  # State column
+      
+      SHA_ratio = colDef(
+        name = "SHA Ratio",
+        cell = function(value) {
+          if (is.na(value)) return("")  # No bar for NA values
+          create_bar(value, max_SHA_ratio, "#FFCC33")  # Yellow bar for SHA Ratio
+        },
+        minWidth = 150  
+      ),
+      
+      state_tot_lane_miles = colDef(
+        name = "State Total Lane Miles",
+        cell = function(value) {
+          create_bar(value, max_lane_miles, "#66bb6a")  # Green bar for State Total Lane Miles
+        },
+        minWidth = 150  
+      ),
+      
+      SHA_miles = colDef(
+        name = "SHA Miles",
+        cell = function(value) {
+          create_bar(value, max_SHA_miles, "#FF6633")  # Red bar for SHA Miles
+        },
+        minWidth = 150  
+      )
+    ),
+    defaultSorted = list(Size = "asc"),  # Default sort by size
+    striped = TRUE,
+    bordered = TRUE,
+    highlight = TRUE,
+    pagination = FALSE  # Show all data
+  )
+)
+
+```
+
+
+```{r}
+
+# Filter the data for capital disbursement per lane-mile
+capital_disbursement_data <- Disbursement_Data %>%
+  filter(key_metrics == "capital_disbursement_perlm") %>%
+  select(state, value, exp_value)  # Select relevant columns
+
+# Calculate the Adjusted Ratio
+capital_disbursement_data <- capital_disbursement_data %>%
+  mutate(adjusted_ratio = value / exp_value) %>%
+  arrange(adjusted_ratio) %>%
+  mutate(Rank = row_number())  
+
+# Rename the columns for display
+capital_disbursement_table <- capital_disbursement_data %>%
+  select(Rank, state, value, exp_value, adjusted_ratio) %>%
+  rename(
+    `Disbursement Per Lane-Mile` = value,
+    `Expected Disbursement Per Lane-Mile` = exp_value,
+    `Adjusted Ratio` = adjusted_ratio
+  )
+
+# Create a bar chart function (with inline-block styling for horizontal text)
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  width_percent <- 100 * value / max_value  
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"),
+    height = "15px",
+    backgroundColor = color
+  )
+  
+  # Create the bar and display the value next to it
+  div(
+    style = "display: flex; align-items: center;", 
+    div(style = bar_style),  # Bar itself
+    div(style = "padding-left: 10px;", format(value, big.mark = ",", scientific = FALSE, digits = 2))  # Horizontal value
+  )
+}
+
+# Get the max values for scaling the bars
+max_value <- max(capital_disbursement_table$`Disbursement Per Lane-Mile`, na.rm = TRUE)
+max_exp_value <- max(capital_disbursement_table$`Expected Disbursement Per Lane-Mile`, na.rm = TRUE)
+max_adjusted_ratio <- max(capital_disbursement_table$`Adjusted Ratio`, na.rm = TRUE)
+
+# Create the table using reactable
+htmltools::tagList(
+  htmltools::tags$h3("TABLE 7: CAPITAL DISBURSEMENTS"),
+  
+  reactable(
+    data = capital_disbursement_table,
+    columns = list(
+      Rank = colDef(name = "Rank", align = "center"),
+      state = colDef(name = "State", align = "left", minWidth = 150),
+      `Disbursement Per Lane-Mile` = colDef(
+        name = "Disbursement Per Lane-Mile",
+        cell = function(value) {
+          create_bar_chart(value, max_value, "#FFCC33")  # Yellow bar for disbursement
+        },
+        align = "center"
+      ),
+      `Expected Disbursement Per Lane-Mile` = colDef(
+        name = "Expected Disbursement Per Lane-Mile",
+        cell = function(value) {
+          create_bar_chart(value, max_exp_value, "#66bb6a")  # Green bar for expected disbursement
+        },
+        align = "center"
+      ),
+      `Adjusted Ratio` = colDef(
+        name = "Adjusted Ratio",
+        cell = function(value) {
+          create_bar_chart(value, max_adjusted_ratio, "#FF6633")  # Red bar for adjusted ratio
+        },
+        align = "center"
+      )
+    ),
+    bordered = TRUE,
+    highlight = TRUE,
+    pagination = FALSE,  # Show all data without pagination
+    defaultSorted = list(Rank = "asc")
+  )
+)
+
+```
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(maps)  
+
+# Load and process the data from the 'Scores & Rankings' sheet (assuming 'scores_rankings' is already loaded)
+score_table <- Scores_and_Rankings %>%
+  select(state, capital_disbursement_perlm_score_rank) %>%
+  mutate(
+    state_lower = tolower(state), 
+    state_abb = state.abb[match(state, state.name)] 
+  )
+
+# Get US state map data
+states_map <- map_data("state")
+
+# Join the map data with the score table
+map_data <- left_join(states_map, score_table, by = c("region" = "state_lower"))
+
+# Calculate state centers for adding text labels on the map
+state_centers_df <- map_data %>%
+  group_by(region) %>%
+  summarise(long = mean(long), lat = mean(lat)) %>%
+  left_join(score_table, by = c("region" = "state_lower"))
+
+# Define the rank color categories
+rank_colors <- c(
+  "1 to 10" = "#66bb6a",  # Green
+  "11 to 20" = "#b2df8a",  # Light Green
+  "21 to 30" = "#ffeb3b",  # Yellow
+  "31 to 40" = "#ff7043",  # Orange
+  "41 to 50" = "#d32f2f",  # Red
+  "Not ranked" = "gray"
+)
+
+# Function to categorize ranks for color mapping
+categorize_rank <- function(rank) {
+  if (is.na(rank)) {
+    return("Not ranked")
+  } else if (rank <= 10) {
+    return("1 to 10")
+  } else if (rank <= 20) {
+    return("11 to 20")
+  } else if (rank <= 30) {
+    return("21 to 30")
+  } else if (rank <= 40) {
+    return("31 to 40")
+  } else {
+    return("41 to 50")
+  }
+}
+
+# Apply the rank categorization function
+map_data$rank_category <- sapply(map_data$capital_disbursement_perlm_score_rank, categorize_rank)
+
+# Plot the Capital Disbursements Per Lane-Mile Rank map
+ggplot() +
+  geom_polygon(data = map_data, aes(x = long, y = lat, group = group, fill = rank_category), color = "white") +
+  scale_fill_manual(values = rank_colors, breaks = names(rank_colors), na.value = "gray") +
+  theme_minimal() +
+  
+  # Adding the state abbreviations and ranks as text on the map
+  geom_text(data = state_centers_df, aes(x = long, y = lat, label = paste(state_abb, capital_disbursement_perlm_score_rank, sep = "\n")), size = 3, color = "black") +
+  
+  # Title and labels
+  labs(title = "FIGURE 2: CAPITAL DISBURSEMENTS PER STATE-CONTROLLED LANE-MILE", fill = "Rank") +
+  
+  theme(
+    plot.title = element_text(hjust = 0.5),  # Center the title
+    legend.position = "right"  # Move the legend to the right
+  )
+
+
+```
+
+
+```{r}
+
+# Filter the data for maintenance disbursement per lane-mile
+maintenance_disbursement_data <- Disbursement_Data %>%
+  filter(key_metrics == "maintenance_disbursement_perlm") %>%
+  select(state, value, exp_value)  # Select relevant columns
+
+# Calculate the Adjusted Ratio
+maintenance_disbursement_data <- maintenance_disbursement_data %>%
+  mutate(adjusted_ratio = value / exp_value) %>%
+  arrange(adjusted_ratio) %>%
+  mutate(Rank = row_number())  
+
+# Rename the columns for display
+maintenance_disbursement_table <- maintenance_disbursement_data %>%
+  select(Rank, state, value, exp_value, adjusted_ratio) %>%
+  rename(
+    `Disbursement Per Lane-Mile` = value,
+    `Expected Disbursement Per Lane-Mile` = exp_value,
+    `Adjusted Ratio` = adjusted_ratio
+  )
+
+# Create a bar chart function (with inline-block styling for horizontal text)
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  width_percent <- 100 * value / max_value  
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"),
+    height = "15px",
+    backgroundColor = color
+  )
+  
+  # Create the bar and display the value next to it
+  div(
+    style = "display: flex; align-items: center;", 
+    div(style = bar_style),  # Bar itself
+    div(style = "padding-left: 10px;", format(value, big.mark = ",", scientific = FALSE, digits = 2))  # Horizontal value
+  )
+}
+
+# Get the max values for scaling the bars
+max_value <- max(maintenance_disbursement_table$`Disbursement Per Lane-Mile`, na.rm = TRUE)
+max_exp_value <- max(maintenance_disbursement_table$`Expected Disbursement Per Lane-Mile`, na.rm = TRUE)
+max_adjusted_ratio <- max(maintenance_disbursement_table$`Adjusted Ratio`, na.rm = TRUE)
+
+# Create the table using reactable
+htmltools::tagList(
+  htmltools::tags$h3("TABLE 8: MAINTENANCE DISBURSEMENTS"),
+  
+  reactable(
+    data = maintenance_disbursement_table,
+    columns = list(
+      Rank = colDef(name = "Rank", align = "center"),
+      state = colDef(name = "State", align = "left", minWidth = 150),
+      `Disbursement Per Lane-Mile` = colDef(
+        name = "Disbursement Per Lane-Mile",
+        cell = function(value) {
+          create_bar_chart(value, max_value, "#FFCC33")  # Yellow bar for disbursement
+        },
+        align = "center"
+      ),
+      `Expected Disbursement Per Lane-Mile` = colDef(
+        name = "Expected Disbursement Per Lane-Mile",
+        cell = function(value) {
+          create_bar_chart(value, max_exp_value, "#66bb6a")  # Green bar for expected disbursement
+        },
+        align = "center"
+      ),
+      `Adjusted Ratio` = colDef(
+        name = "Adjusted Ratio",
+        cell = function(value) {
+          create_bar_chart(value, max_adjusted_ratio, "#FF6633")  # Red bar for adjusted ratio
+        },
+        align = "center"
+      )
+    ),
+    bordered = TRUE,
+    highlight = TRUE,
+    pagination = FALSE,  # Show all data without pagination
+    defaultSorted = list(Rank = "asc")
+  )
+)
+
+
+```
+
+
+```{r}
+
+# Filter the data for administrative disbursement per lane-mile
+administrative_disbursement_data <- Disbursement_Data %>%
+  filter(key_metrics == "admin_disbursement_perlm") %>%
+  select(state, value, exp_value)  # Select relevant columns
+
+# Calculate the Adjusted Ratio
+administrative_disbursement_data <- administrative_disbursement_data %>%
+  mutate(adjusted_ratio = value / exp_value) %>%
+  arrange(adjusted_ratio) %>%
+  mutate(Rank = row_number())  
+
+# Rename the columns for display
+administrative_disbursement_table <- administrative_disbursement_data %>%
+  select(Rank, state, value, exp_value, adjusted_ratio) %>%
+  rename(
+    `Disbursement Per Lane-Mile` = value,
+    `Expected Disbursement Per Lane-Mile` = exp_value,
+    `Adjusted Ratio` = adjusted_ratio
+  )
+
+# Create a bar chart function (with inline-block styling for horizontal text)
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  width_percent <- 100 * value / max_value  
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"),
+    height = "15px",
+    backgroundColor = color
+  )
+  
+  # Create the bar and display the value next to it
+  div(
+    style = "display: flex; align-items: center;", 
+    div(style = bar_style),  # Bar itself
+    div(style = "padding-left: 10px;", format(value, big.mark = ",", scientific = FALSE, digits = 2))  # Horizontal value
+  )
+}
+
+# Get the max values for scaling the bars
+max_value <- max(administrative_disbursement_table$`Disbursement Per Lane-Mile`, na.rm = TRUE)
+max_exp_value <- max(administrative_disbursement_table$`Expected Disbursement Per Lane-Mile`, na.rm = TRUE)
+max_adjusted_ratio <- max(administrative_disbursement_table$`Adjusted Ratio`, na.rm = TRUE)
+
+# Create the table using reactable
+htmltools::tagList(
+  htmltools::tags$h3("TABLE 9: ADMINISTRATIVE DISBURSEMENTS"),
+  
+  reactable(
+    data = administrative_disbursement_table,
+    columns = list(
+      Rank = colDef(name = "Rank", align = "center"),
+      state = colDef(name = "State", align = "left", minWidth = 150),
+      `Disbursement Per Lane-Mile` = colDef(
+        name = "Disbursement Per Lane-Mile",
+        cell = function(value) {
+          create_bar_chart(value, max_value, "#FFCC33")  # Yellow bar for disbursement
+        },
+        align = "center"
+      ),
+      `Expected Disbursement Per Lane-Mile` = colDef(
+        name = "Expected Disbursement Per Lane-Mile",
+        cell = function(value) {
+          create_bar_chart(value, max_exp_value, "#66bb6a")  # Green bar for expected disbursement
+        },
+        align = "center"
+      ),
+      `Adjusted Ratio` = colDef(
+        name = "Adjusted Ratio",
+        cell = function(value) {
+          create_bar_chart(value, max_adjusted_ratio, "#FF6633")  # Red bar for adjusted ratio
+        },
+        align = "center"
+      )
+    ),
+    bordered = TRUE,
+    highlight = TRUE,
+    pagination = FALSE,  # Show all data without pagination
+    defaultSorted = list(Rank = "asc")
+  )
+)
+
+
+```
+
+
+```{r}
+
+# Filter the data for other disbursement per lane-mile
+other_disbursement_data <- Disbursement_Data %>%
+  filter(key_metrics == "other_disbursement_perlm") %>%
+  select(state, value, exp_value)  # Select relevant columns
+
+# Calculate the Adjusted Ratio
+other_disbursement_data <- other_disbursement_data %>%
+  mutate(adjusted_ratio = value / exp_value) %>%
+  arrange(adjusted_ratio) %>%
+  mutate(Rank = row_number())  
+
+# Rename the columns for display
+other_disbursement_table <- other_disbursement_data %>%
+  select(Rank, state, value, exp_value, adjusted_ratio) %>%
+  rename(
+    `Disbursement Per Lane-Mile` = value,
+    `Expected Disbursement Per Lane-Mile` = exp_value,
+    `Adjusted Ratio` = adjusted_ratio
+  )
+
+# Create a bar chart function
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  width_percent <- 100 * value / max_value  
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"),
+    height = "15px",
+    backgroundColor = color
+  )
+  
+  # Create the bar and display the value next to it
+  div(
+    style = "display: flex; align-items: center;", 
+    div(style = bar_style),  # Bar itself
+    div(style = "padding-left: 10px;", format(value, big.mark = ",", scientific = FALSE, digits = 2))  # Horizontal value
+  )
+}
+
+# Get the max values for scaling the bars
+max_value <- max(other_disbursement_table$`Disbursement Per Lane-Mile`, na.rm = TRUE)
+max_exp_value <- max(other_disbursement_table$`Expected Disbursement Per Lane-Mile`, na.rm = TRUE)
+max_adjusted_ratio <- max(other_disbursement_table$`Adjusted Ratio`, na.rm = TRUE)
+
+# Create the table using reactable
+htmltools::tagList(
+  htmltools::tags$h3("TABLE 10: OTHER DISBURSEMENTS"),
+  
+  reactable(
+    data = other_disbursement_table,
+    columns = list(
+      Rank = colDef(name = "Rank", align = "center"),
+      state = colDef(name = "State", align = "left", minWidth = 150),
+      `Disbursement Per Lane-Mile` = colDef(
+        name = "Disbursement Per Lane-Mile",
+        cell = function(value) {
+          create_bar_chart(value, max_value, "#FFCC33")  # Yellow bar for disbursement
+        },
+        align = "center"
+      ),
+      `Expected Disbursement Per Lane-Mile` = colDef(
+        name = "Expected Disbursement Per Lane-Mile",
+        cell = function(value) {
+          create_bar_chart(value, max_exp_value, "#66bb6a")  # Green bar for expected disbursement
+        },
+        align = "center"
+      ),
+      `Adjusted Ratio` = colDef(
+        name = "Adjusted Ratio",
+        cell = function(value) {
+          create_bar_chart(value, max_adjusted_ratio, "#FF6633")  # Red bar for adjusted ratio
+        },
+        align = "center"
+      )
+    ),
+    bordered = TRUE,
+    highlight = TRUE,
+    pagination = FALSE,  # Show all data without pagination
+    defaultSorted = list(Rank = "asc")
+  )
+)
+
+```
+
+
+
+```{r}
+
+# Bar chart creation function
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  if (is.na(value)) return("")  # Return empty for NA values
+  width_percent <- 100 * value / max_value  
+  bar_style <- list(
+    display = "inline-block",
+    verticalAlign = "middle",  
+    width = paste0(width_percent, "%"),  
+    height = "15px",  # Bar height
+    backgroundColor = color
+  )
+  
+  div(style = "display: flex; align-items: center;",  
+      div(style = bar_style),  
+      div(style = "margin-left: 8px;", format(round(value, 2), big.mark = ",", scientific = FALSE))  
+  )
+}
+
+# Filter and arrange data
+table_data <- Scores_and_Rankings %>%
+  select(state, rural_interstate_poor_percent_score) %>%
+  filter(!is.na(rural_interstate_poor_percent_score) & rural_interstate_poor_percent_score > 0) %>%
+  arrange(rural_interstate_poor_percent_score) %>%
+  mutate(rank = row_number())
+
+table_data <- table_data %>%
+  select(rank, state, rural_interstate_poor_percent_score)
+
+max_rural_poor_percent <- max(table_data$rural_interstate_poor_percent_score, na.rm = TRUE)
+
+# Render table with title and show all data at once
+htmltools::tagList(
+  htmltools::tags$h3("TABLE 11: PERCENT RURAL INTERSTATE MILEAGE IN POOR CONDITION"),
+  
+  reactable(
+    data = table_data,
+    columns = list(
+      rank = colDef(name = "Rank", align = "center"),  
+      state = colDef(name = "State"),  
+      rural_interstate_poor_percent_score = colDef(
+        name = "Rural Interstate Poor Percent Score",
+        cell = function(value) {
+          create_bar_chart(value, max_rural_poor_percent, "#FFCC33")  
+        },
+        minWidth = 180  
+      )
+    ),
+    defaultSorted = "rank",
+    bordered = TRUE,
+    highlight = TRUE,
+    striped = TRUE,
+    pagination = FALSE,  
+    defaultPageSize = nrow(table_data)  
+  )
+)
+
+```
+
+
+
+```{r}
+
+
+
+score_table <- Scores_and_Rankings %>%
+  select(state, rural_interstate_poor_percent_score_rank) %>%
+  mutate(
+    state_lower = tolower(state),  
+    state_abb = state.abb[match(state, state.name)]  
+  )
+
+
+states_map <- map_data("state")
+
+map_data <- left_join(states_map, score_table, by = c("region" = "state_lower"))
+
+
+state_centers_df <- map_data %>%
+  group_by(region) %>%
+  summarise(long = mean(long), lat = mean(lat)) %>%
+  left_join(score_table, by = c("region" = "state_lower"))
+
+
+rank_colors <- c(
+  "1 to 10" = "#66bb6a",  # Green
+  "11 to 20" = "#b2df8a",  # Light Green
+  "21 to 30" = "#ffeb3b",  # Yellow
+  "31 to 40" = "#ff7043",  # Orange
+  "41 to 50" = "#d32f2f",  # Red
+  "Not ranked" = "gray"
+)
+
+
+categorize_rank <- function(rank) {
+  if (is.na(rank)) {
+    return("Not ranked")
+  } else if (rank <= 10) {
+    return("1 to 10")
+  } else if (rank <= 20) {
+    return("11 to 20")
+  } else if (rank <= 30) {
+    return("21 to 30")
+  } else if (rank <= 40) {
+    return("31 to 40")
+  } else {
+    return("41 to 50")
+  }
+}
+
+
+map_data$rank_category <- sapply(map_data$rural_interstate_poor_percent_score_rank, categorize_rank)
+
+
+ggplot() +
+  geom_polygon(data = map_data, aes(x = long, y = lat, group = group, fill = rank_category), color = "white") +
+  scale_fill_manual(values = rank_colors, breaks = names(rank_colors), na.value = "gray") +
+  theme_minimal() +
+  geom_text(data = state_centers_df, aes(x = long, y = lat, label = paste(state_abb, rural_interstate_poor_percent_score_rank, sep = "\n")), size = 3, color = "black") +
+  labs(title = "FIGURE 6:Percent of Rural Interstates in Poor Condition", fill = "Rank") +
+  coord_fixed(1.3)
+```
+```{r}
+
+# Function to create a bar chart for the values
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  width_percent <- 100 * value / max_value  
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"), 
+    height = "15px",  
+    backgroundColor = color,
+    textAlign = "center",  
+    verticalAlign = "middle",  
+    whiteSpace = "nowrap"  
+  )
+  
+  div(style = "display: flex; align-items: center;", 
+      div(style = bar_style),  
+      div(style = "padding-left: 10px;", sprintf("%.2f", value))  
+  )
+}
+
+# Prepare the data for the table
+table_data <- Scores_and_Rankings %>%
+  select(state, urban_interstate_poor_percent_score) %>%
+  filter(!is.na(urban_interstate_poor_percent_score) & urban_interstate_poor_percent_score > 0) %>%
+  arrange(urban_interstate_poor_percent_score) %>%
+  mutate(rank = row_number())  
+
+table_data <- table_data %>%
+  select(rank, state, urban_interstate_poor_percent_score)
+
+max_value <- max(table_data$urban_interstate_poor_percent_score, na.rm = TRUE)
+
+htmltools::tagList(
+  htmltools::tags$h3("TABLE 12: PERCENT URBAN INTERSTATE MILEAGE IN POOR CONDITION"),
+  
+  reactable(
+    data = table_data,
+    columns = list(
+      rank = colDef(name = "Rank", align = "center"),  
+      state = colDef(name = "State"),  
+      urban_interstate_poor_percent_score = colDef(
+        name = "Urban Interstate Poor Percent Score",
+        cell = function(value) {
+          create_bar_chart(value, max_value)  
+        },
+        minWidth = 250  
+      )
+    ),
+    defaultSorted = "rank",
+    bordered = TRUE,
+    highlight = TRUE,
+    striped = TRUE,
+    pagination = FALSE,  
+    defaultPageSize = nrow(table_data)
+  )
+)
+
+```
+
+
+```{r}
+
+score_table <- Scores_and_Rankings %>%
+  select(state, urban_interstate_poor_percent_score_rank) %>%
+  mutate(
+    state_lower = tolower(state),  
+    state_abb = state.abb[match(state, state.name)]  
+  )
+
+
+states_map <- map_data("state")
+
+
+map_data <- left_join(states_map, score_table, by = c("region" = "state_lower"))
+
+
+state_centers_df <- map_data %>%
+  group_by(region) %>%
+  summarise(long = mean(long), lat = mean(lat)) %>%
+  left_join(score_table, by = c("region" = "state_lower"))
+
+
+rank_colors <- c(
+  "1 to 10" = "#66bb6a",  # Green
+  "11 to 20" = "#b2df8a",  # Light Green
+  "21 to 30" = "#ffeb3b",  # Yellow
+  "31 to 40" = "#ff7043",  # Orange
+  "41 to 50" = "#d32f2f",  # Red
+  "Not ranked" = "gray"
+)
+
+
+categorize_rank <- function(rank) {
+  if (is.na(rank)) {
+    return("Not ranked")
+  } else if (rank <= 10) {
+    return("1 to 10")
+  } else if (rank <= 20) {
+    return("11 to 20")
+  } else if (rank <= 30) {
+    return("21 to 30")
+  } else if (rank <= 40) {
+    return("31 to 40")
+  } else {
+    return("41 to 50")
+  }
+}
+
+
+map_data$rank_category <- sapply(map_data$urban_interstate_poor_percent_score_rank, categorize_rank)
+
+
+ggplot() +
+  geom_polygon(data = map_data, aes(x = long, y = lat, group = group, fill = rank_category), color = "white") +
+  scale_fill_manual(values = rank_colors, breaks = names(rank_colors), na.value = "gray") +
+  theme_minimal() +
+  coord_map() +  
+  geom_text(data = state_centers_df, aes(x = long, y = lat, label = paste(state_abb, urban_interstate_poor_percent_score_rank, sep = "\n")), size = 3, color = "black") +
+  labs(title = "Percent of Urban Interstates in Poor Condition", fill = "Rank")
+
+```
+
+
+```{r}
+
+# Bar chart creation function
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  width_percent <- 100 * value / max_value  
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"), 
+    height = "15px",  
+    backgroundColor = color,
+    textAlign = "center",  
+    verticalAlign = "middle",  
+    whiteSpace = "nowrap"  
+  )
+  
+  div(style = "display: flex; align-items: center;", 
+      div(style = bar_style),  # Bar itself
+      div(style = "padding-left: 10px;", format(round(value, 2), big.mark = ",", scientific = FALSE))  
+  )
+}
+
+# Prepare the data
+table_data <- Scores_and_Rankings %>%
+  select(state, rural_OPA_poor_percent_score) %>%
+  filter(!is.na(rural_OPA_poor_percent_score) & rural_OPA_poor_percent_score > 0) %>%
+  arrange(rural_OPA_poor_percent_score) %>%
+  mutate(rank = row_number())  
+
+table_data <- table_data %>%
+  select(rank, state, rural_OPA_poor_percent_score)
+
+max_value <- max(table_data$rural_OPA_poor_percent_score, na.rm = TRUE)
+
+htmltools::tagList(
+  htmltools::tags$h3("TABLE 13: PERCENT RURAL OTHER PRINCIPAL ARTERIAL MILEAGE IN POOR CONDITION"),
+  
+  reactable(
+    data = table_data,
+    columns = list(
+      rank = colDef(name = "Rank", align = "center"),  
+      state = colDef(name = "State"),  
+      rural_OPA_poor_percent_score = colDef(
+        name = "Rural OPA Poor Percent Score",
+        cell = function(value) {
+          create_bar_chart(value, max_value)  
+        },
+        minWidth = 250  
+      )
+    ),
+    defaultSorted = "rank",
+    bordered = TRUE,
+    highlight = TRUE,
+    striped = TRUE,
+    pagination = FALSE,  
+    defaultPageSize = nrow(table_data)
+  )
+)
+
+
+```
+
+```{r}
+
+
+states_map <- map_data("state")
+
+
+score_table <- Scores_and_Rankings %>%
+  select(state, rural_OPA_poor_percent_score_rank) %>%
+  mutate(
+    state_lower = tolower(state),  
+    state_abb = state.abb[match(state, state.name)]  
+  )
+
+
+map_data <- left_join(states_map, score_table, by = c("region" = "state_lower"))
+
+
+state_centers_df <- map_data %>%
+  group_by(region) %>%
+  summarise(long = mean(long), lat = mean(lat)) %>%
+  left_join(score_table, by = c("region" = "state_lower"))
+
+
+rank_colors <- c(
+  "1 to 10" = "#66bb6a",  # Green
+  "11 to 20" = "#b2df8a",  # Light Green
+  "21 to 30" = "#ffeb3b",  # Yellow
+  "31 to 40" = "#ff7043",  # Orange
+  "41 to 50" = "#d32f2f",  # Red
+  "Not ranked" = "gray"
+)
+
+
+categorize_rank <- function(rank) {
+  if (is.na(rank)) {
+    return("Not ranked")
+  } else if (rank <= 10) {
+    return("1 to 10")
+  } else if (rank <= 20) {
+    return("11 to 20")
+  } else if (rank <= 30) {
+    return("21 to 30")
+  } else if (rank <= 40) {
+    return("31 to 40")
+  } else {
+    return("41 to 50")
+  }
+}
+
+
+map_data$rank_category <- sapply(map_data$rural_OPA_poor_percent_score_rank, categorize_rank)
+
+
+ggplot() +
+  geom_polygon(data = map_data, aes(x = long, y = lat, group = group, fill = rank_category), color = "white") +
+  scale_fill_manual(values = rank_colors, breaks = names(rank_colors), na.value = "gray") +
+  theme_minimal() +
+  
+  geom_text(data = state_centers_df, aes(x = long, y = lat, label = paste(state_abb, rural_OPA_poor_percent_score_rank, sep = "\n")), size = 3, color = "black") +
+  labs(title = "Rural OPA Percent Mileage in Poor Condition Rank", fill = "Rank")
+```
+
+
+
+```{r}
+library(readxl)
+library(dplyr)
+library(reactable)
+library(htmltools)  
+
+# Function to create bar chart for each value
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  width_percent <- 100 * value / max_value  
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"),  
+    height = "15px",  
+    backgroundColor = color,
+    textAlign = "center",  
+    verticalAlign = "middle",  
+    whiteSpace = "nowrap"  
+  )
+  
+  div(style = "display: flex; align-items: center;", 
+      div(style = bar_style),  
+      div(style = "padding-left: 10px;", format(round(value, 2), big.mark = ",", scientific = FALSE))  
+  )
+}
+
+# Prepare data
+table_data <- Scores_and_Rankings %>%
+  select(state, urban_OPA_poor_percent_score) %>%
+  filter(!is.na(urban_OPA_poor_percent_score) & urban_OPA_poor_percent_score > 0) %>%
+  arrange(urban_OPA_poor_percent_score) %>%
+  mutate(rank = row_number())  
+
+table_data <- table_data %>%
+  select(rank, state, urban_OPA_poor_percent_score)
+
+max_value <- max(table_data$urban_OPA_poor_percent_score, na.rm = TRUE)
+
+# Render the table with the title
+htmltools::tagList(
+  htmltools::tags$h3("TABLE 14: PERCENT URBAN OTHER PRINCIPAL ARTERIAL MILEAGE IN POOR CONDITION"),
+  
+  reactable(
+    data = table_data,
+    columns = list(
+      rank = colDef(name = "Rank", align = "center"),  
+      state = colDef(name = "State"),  
+      urban_OPA_poor_percent_score = colDef(
+        name = "Urban OPA Poor Percent Score",
+        cell = function(value) {
+          create_bar_chart(value, max_value)  
+        },
+        minWidth = 250  
+      )
+    ),
+    defaultSorted = "rank",
+    bordered = TRUE,
+    highlight = TRUE,
+    striped = TRUE,
+    pagination = FALSE,  
+    defaultPageSize = nrow(table_data)  # Display all data at once
+  )
+)
+
+
+```
+
+```{r}
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(maps)  
+
+score_table <- Scores_and_Rankings %>%
+  select(state, urban_OPA_poor_percent_score_rank) %>%
+  mutate(
+    state_lower = tolower(state),  
+    state_abb = state.abb[match(state, state.name)]  
+  )
+
+
+states_map <- map_data("state")
+
+map_data <- left_join(states_map, score_table, by = c("region" = "state_lower"))
+
+
+state_centers_df <- map_data %>%
+  group_by(region) %>%
+  summarise(long = mean(long), lat = mean(lat)) %>%
+  left_join(score_table, by = c("region" = "state_lower"))
+# Define rank colors
+rank_colors <- c(
+  "1 to 10" = "#66bb6a",  # Green
+  "11 to 20" = "#b2df8a",  # Light Green
+  "21 to 30" = "#ffeb3b",  # Yellow
+  "31 to 40" = "#ff7043",  # Orange
+  "41 to 50" = "#d32f2f",  # Red
+  "Not ranked" = "gray"  # Color for states without data
+)
+
+categorize_rank <- function(rank) {
+  if (is.na(rank)) {
+    return("Not ranked")
+  } else if (rank <= 10) {
+    return("1 to 10")
+  } else if (rank <= 20) {
+    return("11 to 20")
+  } else if (rank <= 30) {
+    return("21 to 30")
+  } else if (rank <= 40) {
+    return("31 to 40")
+  } else {
+    return("41 to 50")
+  }
+}
+
+
+map_data$rank_category <- sapply(map_data$urban_OPA_poor_percent_score_rank, categorize_rank)
+
+ggplot() +
+  geom_polygon(data = map_data, aes(x = long, y = lat, group = group, fill = rank_category), color = "white") +
+  scale_fill_manual(values = rank_colors, breaks = names(rank_colors), na.value = "gray") +
+  theme_minimal() +
+  
+  geom_text(data = state_centers_df, aes(x = long, y = lat, label = paste(state_abb, urban_OPA_poor_percent_score_rank, sep = "\n")), size = 3, color = "black") +
+  labs(title = "Percent Urban OPA Mileage in Poor Condition Rank", fill = "Rank") +
+  theme(
+    plot.title = element_text(hjust = 0.5),  
+    legend.position = "right"  
+  )
+
+```
+```{r}
+
+library(readxl)
+library(dplyr)
+library(reactable)
+library(htmltools)
+
+# Function to create bar chart
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  width_percent <- 100 * value / max_value  
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"),  
+    height = "15px",  
+    backgroundColor = color,
+    textAlign = "center",  
+    verticalAlign = "middle",  
+    whiteSpace = "nowrap"  
+  )
+  
+  div(style = "display: flex; align-items: center;", 
+      div(style = bar_style),  
+      div(style = "padding-left: 10px;", format(round(value, 2), big.mark = ",", scientific = FALSE))  
+  )
+}
+
+# Prepare table data
+table_data <- Scores_and_Rankings %>%
+  select(state, state_avg_congestion_hours_score) %>%
+  filter(!is.na(state_avg_congestion_hours_score) & state_avg_congestion_hours_score > 0) %>%
+  arrange(state_avg_congestion_hours_score)  
+
+table_data <- table_data %>%
+  mutate(rank = row_number()) %>%
+  select(rank, state, state_avg_congestion_hours_score)
+
+max_value <- max(table_data$state_avg_congestion_hours_score, na.rm = TRUE)
+
+# Render table with title
+htmltools::tagList(
+  htmltools::tags$h3("TABLE 15: ANNUAL PEAK HOURS SPENT IN CONGESTION PER AUTO COMMUTER"),
+  
+  reactable(
+    data = table_data,
+    columns = list(
+      rank = colDef(name = "Rank", align = "center"),  
+      state = colDef(name = "State"),  
+      state_avg_congestion_hours_score = colDef(
+        name = "State Average Congestion Hours (State)", 
+        cell = function(value) {
+          create_bar_chart(value, max_value)  
+        },
+        format = colFormat(digits = 2),  
+        minWidth = 250  
+      )
+    ),
+    defaultSorted = "state_avg_congestion_hours_score",  
+    bordered = TRUE,
+    highlight = TRUE,
+    striped = TRUE,
+    pagination = FALSE,  # Show all data without pagination
+    defaultPageSize = nrow(table_data)  # Display all data at once
+  )
+)
+
+```
+
+
+```{r}
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(maps) 
+
+
+score_table <- Scores_and_Rankings %>%
+  select(state, state_avg_congestion_hours_score_rank) %>%
+  mutate(
+    state_lower = tolower(state),  
+    state_abb = state.abb[match(state, state.name)]  
+  )
+
+
+states_map <- map_data("state")
+
+
+map_data <- left_join(states_map, score_table, by = c("region" = "state_lower"))
+
+
+state_centers_df <- map_data %>%
+  group_by(region) %>%
+  summarise(long = mean(long), lat = mean(lat)) %>%
+  left_join(score_table, by = c("region" = "state_lower"))
+
+
+rank_colors <- c(
+  "1 to 10" = "#66bb6a",  # Green
+  "11 to 20" = "#b2df8a",  # Light Green
+  "21 to 30" = "#ffeb3b",  # Yellow
+  "31 to 40" = "#ff7043",  # Orange
+  "41 to 50" = "#d32f2f",  # Red
+  "Not ranked" = "gray"  # Color for states without data
+)
+
+
+categorize_rank <- function(rank) {
+  if (is.na(rank)) {
+    return("Not ranked")
+  } else if (rank <= 10) {
+    return("1 to 10")
+  } else if (rank <= 20) {
+    return("11 to 20")
+  } else if (rank <= 30) {
+    return("21 to 30")
+  } else if (rank <= 40) {
+    return("31 to 40")
+  } else {
+    return("41 to 50")
+  }
+}
+
+
+map_data$rank_category <- sapply(map_data$state_avg_congestion_hours_score_rank, categorize_rank)
+
+
+ggplot() +
+  geom_polygon(data = map_data, aes(x = long, y = lat, group = group, fill = rank_category), color = "white") +
+  scale_fill_manual(values = rank_colors, breaks = names(rank_colors), na.value = "gray") +
+  theme_minimal() +
+  
+  geom_text(data = state_centers_df, aes(x = long, y = lat, label = paste(state_abb, state_avg_congestion_hours_score_rank, sep = "\n")), size = 3, color = "black") +
+  labs(title = "State Average Congestion Hours Score Rank", fill = "Rank") +
+  theme(
+    plot.title = element_text(hjust = 0.5),  
+    legend.position = "right"  
+  ) +
+  coord_map()
+
+
+
+```
+
+
+```{r}
+library(readxl)
+library(dplyr)
+library(reactable)
+library(htmltools)  
+
+# Bar chart creation function
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  width_percent <- 100 * value / max_value  
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"),  
+    height = "15px",  
+    backgroundColor = color,
+    textAlign = "center",  
+    verticalAlign = "middle",  
+    whiteSpace = "nowrap"  
+  )
+  
+  div(style = "display: flex; align-items: center;", 
+      div(style = bar_style),  
+      div(style = "padding-left: 10px;", sprintf("%.2f", value))  
+  )
+}
+
+# Filtering and arranging data
+table_data <- Scores_and_Rankings %>%
+  select(state, poor_bridges_percent_score) %>%
+  filter(!is.na(poor_bridges_percent_score) & poor_bridges_percent_score > 0) %>%
+  arrange(poor_bridges_percent_score) %>%
+  mutate(rank = row_number())  
+
+table_data <- table_data %>%
+  select(rank, state, poor_bridges_percent_score)
+
+max_value <- max(table_data$poor_bridges_percent_score, na.rm = TRUE)
+
+# Render the table with title
+htmltools::tagList(
+  htmltools::tags$h3("TABLE 16: PERCENT STRUCTURALLY DEFICIENT BRIDGES"),
+  
+  reactable(
+    data = table_data,
+    columns = list(
+      rank = colDef(name = "Rank", align = "center"),  
+      state = colDef(name = "State"),  
+      poor_bridges_percent_score = colDef(
+        name = "Poor Bridges Percent Score",
+        cell = function(value) {
+          create_bar_chart(value, max_value)  
+        },
+        minWidth = 250  
+      )
+    ),
+    defaultSorted = "rank",
+    bordered = TRUE,
+    highlight = TRUE,
+    striped = TRUE,
+    pagination = FALSE,  # Show all data without pagination
+    defaultPageSize = nrow(table_data)  # Display all data at once
+  )
+)
+
+
+
+```
+
+
+```{r}
+
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(maps)
+
+score_table <- Scores_and_Rankings %>%
+  select(state, poor_bridges_percent_score_rank) %>%
+  mutate(
+    state_lower = tolower(state),
+    state_abb = state.abb[match(state, state.name)]
+  )
+
+states_map <- map_data("state")
+map_data <- left_join(states_map, score_table, by = c("region" = "state_lower"))
+
+state_centers_df <- map_data %>%
+  group_by(region) %>%
+  summarise(long = mean(long), lat = mean(lat)) %>%
+  left_join(score_table, by = c("region" = "state_lower"))
+
+rank_colors <- c(
+  "1 to 10" = "#66bb6a",
+  "11 to 20" = "#b2df8a",
+  "21 to 30" = "#ffeb3b",
+  "31 to 40" = "#ff7043",
+  "41 to 50" = "#d32f2f",
+  "Not ranked" = "gray"
+)
+
+categorize_rank <- function(rank) {
+  if (is.na(rank)) {
+    return("Not ranked")
+  } else if (rank <= 10) {
+    return("1 to 10")
+  } else if (rank <= 20) {
+    return("11 to 20")
+  } else if (rank <= 30) {
+    return("21 to 30")
+  } else if (rank <= 40) {
+    return("31 to 40")
+  } else {
+    return("41 to 50")
+  }
+}
+
+map_data$rank_category <- sapply(map_data$poor_bridges_percent_score_rank, categorize_rank)
+
+ggplot() +
+  geom_polygon(data = map_data, aes(x = long, y = lat, group = group, fill = rank_category), color = "white") +
+  scale_fill_manual(values = rank_colors, breaks = names(rank_colors), na.value = "gray") +
+  theme_minimal() +
+  geom_text(data = state_centers_df, aes(x = long, y = lat, label = paste(state_abb, poor_bridges_percent_score_rank, sep = "\n")), size = 3, color = "black") +
+  labs(title = "Percent Structurally Deficient Bridges Rank", fill = "Rank") +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.position = "right"
+  )
+```
+
+
+```{r}
+library(readxl)
+library(dplyr)
+library(reactable)
+library(htmltools) 
+
+# Bar chart creation function
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  width_percent <- 100 * value / max_value  
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"),  
+    height = "15px",  
+    backgroundColor = color,
+    textAlign = "center",  
+    verticalAlign = "middle",  
+    whiteSpace = "nowrap"  
+  )
+  
+  div(style = "display: flex; align-items: center;", 
+      div(style = bar_style),  
+      div(style = "padding-left: 10px;", format(round(value, 2), big.mark = ",", scientific = FALSE))  
+  )
+}
+
+# Filter and arrange data
+table_data <- Scores_and_Rankings %>%
+  select(state, rural_fatalities_per_100m_VMT_score) %>%
+  filter(!is.na(rural_fatalities_per_100m_VMT_score) & rural_fatalities_per_100m_VMT_score > 0) %>%
+  arrange(rural_fatalities_per_100m_VMT_score) %>%
+  mutate(rank = row_number()) 
+
+table_data <- table_data %>%
+  select(rank, state, rural_fatalities_per_100m_VMT_score)
+
+max_value <- max(table_data$rural_fatalities_per_100m_VMT_score, na.rm = TRUE)
+
+# Render the table with title
+htmltools::tagList(
+  htmltools::tags$h3("TABLE 17: FATALITY RATE PER 100 MILLION RURAL VEHICLE-MILES"),
+  
+  reactable(
+    data = table_data,
+    columns = list(
+      rank = colDef(name = "Rank", align = "center"),
+      state = colDef(name = "State"),
+      rural_fatalities_per_100m_VMT_score = colDef(
+        name = "Rural_fatalities_per_100m_VMT_score",
+        cell = function(value) {
+          create_bar_chart(value, max_value)
+        },
+        minWidth = 250  
+      )
+    ),
+    defaultSorted = "rank",
+    bordered = TRUE,
+    highlight = TRUE,
+    striped = TRUE,
+    pagination = FALSE,  # Show all data without pagination
+    defaultPageSize = nrow(table_data)  # Display all data at once
+  )
+)
+
+
+```
+
+```{r}
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(maps)
+
+score_table <- Scores_and_Rankings %>%
+  select(state, rural_fatalities_per_100m_VMT_score_rank) %>%
+  mutate(
+    state_lower = tolower(state),  
+    state_abb = state.abb[match(state, state.name)]  
+  )
+
+states_map <- map_data("state")
+
+map_data <- left_join(states_map, score_table, by = c("region" = "state_lower"))
+
+state_centers_df <- map_data %>%
+  group_by(region) %>%
+  summarise(long = mean(long), lat = mean(lat)) %>%
+  left_join(score_table, by = c("region" = "state_lower"))
+
+rank_colors <- c(
+  "1 to 10" = "#66bb6a",  
+  "11 to 20" = "#b2df8a",  
+  "21 to 30" = "#ffeb3b",  
+  "31 to 40" = "#ff7043",  
+  "41 to 50" = "#d32f2f",  
+  "Not ranked" = "gray"  
+)
+
+categorize_rank <- function(rank) {
+  if (is.na(rank)) {
+    return("Not ranked")
+  } else if (rank <= 10) {
+    return("1 to 10")
+  } else if (rank <= 20) {
+    return("11 to 20")
+  } else if (rank <= 30) {
+    return("21 to 30")
+  } else if (rank <= 40) {
+    return("31 to 40")
+  } else {
+    return("41 to 50")
+  }
+}
+
+map_data$rank_category <- sapply(map_data$rural_fatalities_per_100m_VMT_score_rank, categorize_rank)
+
+ggplot() +
+  geom_polygon(data = map_data, aes(x = long, y = lat, group = group, fill = rank_category), color = "white") +
+  scale_fill_manual(values = rank_colors, breaks = names(rank_colors), na.value = "gray") +
+  theme_minimal() +
+  
+  geom_text(data = state_centers_df, aes(x = long, y = lat, label = paste(state_abb, rural_fatalities_per_100m_VMT_score_rank, sep = "\n")), size = 3, color = "black") +
+  labs(title = "Fatality Rate Per 100M Rural VMT Rank", fill = "Rank") +
+  theme(
+    plot.title = element_text(hjust = 0.5),  
+    legend.position = "right"  
+  )
+```
+
+```{r}
+library(readxl)
+library(dplyr)
+library(reactable)
+library(htmltools)
+
+# Bar chart creation function
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  width_percent <- 100 * value / max_value
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"),
+    height = "15px",
+    backgroundColor = color,
+    textAlign = "center",
+    verticalAlign = "middle",
+    whiteSpace = "nowrap"
+  )
+  
+  div(style = "display: flex; align-items: center;", 
+      div(style = bar_style),  
+      div(style = "padding-left: 10px;", sprintf("%.2f", value))  # Ensures 2 digits after decimal
+  )
+}
+
+# Filter and arrange the data
+table_data <- Scores_and_Rankings %>%
+  select(state, urban_fatalities_per_100m_VMT_score) %>%
+  filter(!is.na(urban_fatalities_per_100m_VMT_score) & urban_fatalities_per_100m_VMT_score > 0) %>%
+  arrange(urban_fatalities_per_100m_VMT_score) %>%
+  mutate(rank = row_number())
+
+table_data <- table_data %>%
+  select(rank, state, urban_fatalities_per_100m_VMT_score)
+
+# Calculate the max value for scaling the bar chart
+max_value <- max(table_data$urban_fatalities_per_100m_VMT_score, na.rm = TRUE)
+
+# Create the reactable table with bar charts
+reactable(
+  data = table_data,
+  columns = list(
+    rank = colDef(name = "Rank", align = "center"),
+    state = colDef(name = "State"),
+    urban_fatalities_per_100m_VMT_score = colDef(
+      name = "urban_fatalities_per_100m_VMT_score",
+      cell = function(value) {
+        create_bar_chart(value, max_value)
+      },
+      format = colFormat(digits = 2),  
+      minWidth = 250
+    )
+  ),
+  defaultSorted = "rank",
+  bordered = TRUE,
+  highlight = TRUE,
+  striped = TRUE,
+  pagination = FALSE,  
+  defaultPageSize = nrow(table_data)  
+)
+
+
+```
+
+
+```{r}
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(maps)
+
+score_table <- Scores_and_Rankings %>%
+  select(state, urban_fatalities_per_100m_VMT_score_rank) %>%
+  mutate(
+    state_lower = tolower(state), 
+    state_abb = state.abb[match(state, state.name)]
+  )
+
+states_map <- map_data("state")
+map_data <- left_join(states_map, score_table, by = c("region" = "state_lower"))
+
+state_centers_df <- map_data %>%
+  group_by(region) %>%
+  summarise(long = mean(long), lat = mean(lat)) %>%
+  left_join(score_table, by = c("region" = "state_lower"))
+
+rank_colors <- c(
+  "1 to 10" = "#66bb6a",  
+  "11 to 20" = "#b2df8a",  
+  "21 to 30" = "#ffeb3b",  
+  "31 to 40" = "#ff7043",  
+  "41 to 50" = "#d32f2f",  
+  "Not ranked" = "gray"
+)
+
+categorize_rank <- function(rank) {
+  if (is.na(rank)) {
+    return("Not ranked")
+  } else if (rank <= 10) {
+    return("1 to 10")
+  } else if (rank <= 20) {
+    return("11 to 20")
+  } else if (rank <= 30) {
+    return("21 to 30")
+  } else if (rank <= 40) {
+    return("31 to 40")
+  } else {
+    return("41 to 50")
+  }
+}
+
+map_data$rank_category <- sapply(map_data$urban_fatalities_per_100m_VMT_score_rank, categorize_rank)
+
+ggplot() +
+  geom_polygon(data = map_data, aes(x = long, y = lat, group = group, fill = rank_category), color = "white") +
+  scale_fill_manual(values = rank_colors, breaks = names(rank_colors), na.value = "gray") +
+  theme_minimal() +
+  
+  geom_text(data = state_centers_df, aes(x = long, y = lat, label = paste(state_abb, urban_fatalities_per_100m_VMT_score_rank, sep = "\n")), size = 3, color = "black") +
+  labs(title = "Urban Fatalities Per 100M Vehicle-Miles Rank", fill = "Rank") +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.position = "right"
+  )
+
+
+```
+
+```{r}
+library(readxl)
+library(dplyr)
+library(reactable)
+library(htmltools)
+
+# Bar chart creation function
+create_bar_chart <- function(value, max_value, color = "#FFCC33") {
+  width_percent <- 100 * value / max_value
+  bar_style <- list(
+    display = "inline-block",
+    width = paste0(width_percent, "%"),
+    height = "15px",
+    backgroundColor = color,
+    textAlign = "center",
+    verticalAlign = "middle",
+    whiteSpace = "nowrap"
+  )
+  
+  div(style = "display: flex; align-items: center;", 
+      div(style = bar_style),
+      div(style = "padding-left: 10px;", format(round(value, 2), big.mark = ",", scientific = FALSE))
+  )
+}
+
+# Filter and arrange the data
+table_data <- Scores_and_Rankings %>%
+  select(state, other_fatalities_per_100m_VMT_score) %>%
+  filter(!is.na(other_fatalities_per_100m_VMT_score) & other_fatalities_per_100m_VMT_score > 0) %>%
+  arrange(other_fatalities_per_100m_VMT_score) %>%
+  mutate(rank = row_number())
+
+table_data <- table_data %>%
+  select(rank, state, other_fatalities_per_100m_VMT_score)
+
+# Calculate the max value for scaling the bar chart
+max_value <- max(table_data$other_fatalities_per_100m_VMT_score, na.rm = TRUE)
+
+# Create the reactable table with bar charts and the title
+htmltools::tagList(
+  htmltools::tags$h3("TABLE 19: FATALITY RATE PER 100 MILLION OTHER VEHICLE-MILES"),
+  
+  reactable(
+    data = table_data,
+    columns = list(
+      rank = colDef(name = "Rank", align = "center"),
+      state = colDef(name = "State"),
+      other_fatalities_per_100m_VMT_score = colDef(
+        name = "Other Fatalities Per 100M VMT",
+        cell = function(value) {
+          create_bar_chart(value, max_value)
+        },
+        minWidth = 250
+      )
+    ),
+    defaultSorted = "rank",
+    bordered = TRUE,
+    highlight = TRUE,
+    striped = TRUE,
+    pagination = FALSE,  # Display all data without pagination
+    defaultPageSize = nrow(table_data)  # Display all data at once
+  )
+)
+
+```
+
+
+```{r}
+
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(maps)
+
+score_table <- Scores_and_Rankings %>%
+  select(state, other_fatalities_per_100m_VMT_score_rank) %>%
+  mutate(
+    state_lower = tolower(state),  
+    state_abb = state.abb[match(state, state.name)] 
+  )
+
+states_map <- map_data("state")
+
+map_data <- left_join(states_map, score_table, by = c("region" = "state_lower"))
+
+state_centers_df <- map_data %>%
+  group_by(region) %>%
+  summarise(long = mean(long), lat = mean(lat)) %>%
+  left_join(score_table, by = c("region" = "state_lower"))
+
+rank_colors <- c(
+  "1 to 10" = "#66bb6a",  
+  "11 to 20" = "#b2df8a",  
+  "21 to 30" = "#ffeb3b",  
+  "31 to 40" = "#ff7043",  
+  "41 to 50" = "#d32f2f",  
+  "Not ranked" = "gray"  
+)
+
+categorize_rank <- function(rank) {
+  if (is.na(rank)) {
+    return("Not ranked")
+  } else if (rank <= 10) {
+    return("1 to 10")
+  } else if (rank <= 20) {
+    return("11 to 20")
+  } else if (rank <= 30) {
+    return("21 to 30")
+  } else if (rank <= 40) {
+    return("31 to 40")
+  } else {
+    return("41 to 50")
+  }
+}
+
+map_data$rank_category <- sapply(map_data$other_fatalities_per_100m_VMT_score_rank, categorize_rank)
+
+ggplot() +
+  geom_polygon(data = map_data, aes(x = long, y = lat, group = group, fill = rank_category), color = "white") +
+  scale_fill_manual(values = rank_colors, breaks = names(rank_colors), na.value = "gray") +
+  theme_minimal() +
+  
+  geom_text(data = state_centers_df, aes(x = long, y = lat, label = paste(state_abb, other_fatalities_per_100m_VMT_score_rank, sep = "\n")), size = 3, color = "black") +
+  labs(title = "Other Fatalities Per 100M VMT Rank Score", fill = "Rank") +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.position = "right"
+  )
+```
+
+
+
