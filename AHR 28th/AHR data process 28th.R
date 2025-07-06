@@ -344,9 +344,44 @@ data_list <- list("AHR Data" = AHR_data,
 rio::export(data_list, "AHR_data 28th.xlsx")
 
 
+####compare to the result using reported total in HM74####
+#Compare AHR data
+reported_total_AHR_data <- readxl::read_excel("data/AHR_data 28th_using reported total Hm74.xlsx", sheet = 1)
+all.equal(reported_total_AHR_data, AHR_data)
+
+#Compare over all rank
+
+# ranking when using reported total column
+reported_total_rank <- readxl::read_excel("data/AHR_data 28th_using reported total Hm74.xlsx", sheet = 2) %>% 
+  select(1, state_avg_congestion_hours_score_rank,
+         overall_score_rank) %>% 
+  rename(state_avg_congestion_hours_score_rank_reportedTotal = state_avg_congestion_hours_score_rank,
+         overall_score_rank_reportedTotal = overall_score_rank)
+
+# ranking when summing up the columns
+summing_components_rank <- scores %>% select(1, 
+                                                  state_avg_congestion_hours_score_rank,
+                                                  overall_score_rank) %>% 
+  rename(overall_score_rank_summingColulmns = overall_score_rank,
+         state_avg_congestion_hours_score_rank_summingColulmns = state_avg_congestion_hours_score_rank)
+
+all.equal(reported_total_rank, summing_components_rank)
+
+#change in the ranking 
+reported_total_rank %>% left_join(summing_components_rank) %>% 
+  mutate(overall_score_rank_change = overall_score_rank_reportedTotal - overall_score_rank_summingColulmns) %>% 
+  select(state, overall_score_rank_reportedTotal, overall_score_rank_summingColulmns, overall_score_rank_change) -> total_rank_change
+
+reported_total_rank %>% left_join(summing_components_rank) %>% 
+  mutate(congestion_hours_change = state_avg_congestion_hours_score_rank_reportedTotal - state_avg_congestion_hours_score_rank_summingColulmns
+  ) %>% 
+  select(state, state_avg_congestion_hours_score_rank_reportedTotal,
+         state_avg_congestion_hours_score_rank_summingColulmns, 
+         congestion_hours_change) -> congestion_rank_change 
+ 
+
+change_list <- list("total_rank_change" = total_rank_change,
+                  "congestion_rank_change" = congestion_rank_change)
 
 
-
-
-
-
+rio::export(change_list, "change_list_HM74_reportedColumns_vs_summing up components.xlsx")

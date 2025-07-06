@@ -1,15 +1,14 @@
-# library(tidyverse)
-# library(readxl)
-# library(janitor)
-# library(stringr)
-# library(modelr)
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(stringr)
+library(modelr)
+library(dplyr)
 
 inrix <- read_csv("data/delay_hour_2022_US_urban_area.csv") 
 commuter_data <- read_csv("data/ACSST1Y2022.S0802-Data_metro area.csv")
 # vehicle_miles_data <- import("data/hm74.xls")
-
-
-
+state_name_df <- data.frame(state.abb, state.name)
 
 #Clean data
 inrix_clean <- inrix %>% 
@@ -19,7 +18,6 @@ inrix_clean <- inrix %>%
          city = str_trim(city)) %>% select(-urban_area) %>% 
   rename(hours_lost_in_congestion = delay_2022) %>%
   select(-1)
-
 
 
 commuter_data_clean <- commuter_data %>% 
@@ -51,18 +49,21 @@ commuter_data_clean <- commuter_data %>%
 process_hm74 <- function(sheet_name) {
   read_excel("data/hm74.xls", sheet = sheet_name) %>%
     slice(-(1:8)) %>% 
-    select(1:3, 9, 15, 21, 27) %>% 
-    remove_empty() %>% 
+    select(1:27) %>% 
     rename(area = 1,
            state = 2, 
-           unreported = 3,
-           interstate_total = 4,
-           ofe_total = 5,
-           opa_total = 6,
-           ma_total = 7) %>%
+           unreported = 3) %>% 
+    mutate(across(3:27, as.numeric)) %>% 
+    mutate(interstate_total = rowSums(.[,4:8]),
+           ofe_total = rowSums(.[,10:14]),
+           opa_total =rowSums(.[,16:20]),
+           ma_total =rowSums(.[,22:26])) %>% 
+    select(-c(4:27)) %>% 
     mutate(across(unreported:ma_total, as.numeric)) %>% 
     filter(!str_detect(area, "footnote|Total|NULL"))
 }
+
+
 
 ## List of sheets to process
 sheets <- c("A", "B", "C", "D", "E", "F", "G", "H")
@@ -94,11 +95,7 @@ congestion_data <- commuter_data_clean %>%
   mutate(congestion_hours = mean(c(hours_lost_in_congestion.x, hours_lost_in_congestion.y, hours_lost_in_congestion), na.rm = T)) %>% 
   ungroup()
 
-  
-# ggplot(congestion_data, aes(x = auto_commuters_combined, y = congestion_hours)) +
-#   geom_point() +
-#   geom_smooth(method = "lm") +
-#   geom_smooth(method = "loess")
+
 
 #Run a linear regression model to find the relationship between congestion hours (inrix data) and the number of auto commuters
 congestion_data_inrix <- congestion_data %>% 
