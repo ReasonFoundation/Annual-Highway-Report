@@ -7,15 +7,14 @@ library(rio)
 library(broom)
 library(plotly)
 
-#Cost of living index for later adjustment to spending numbers
-# coli <- read.csv("coli_meric.csv") %>% 
-#   clean_names() %>% 
-#   select(state, coli_index) %>% 
-#   mutate(coli_index = coli_index/100)
+#Congestion data 
+source("Congestion data process.R")
+#Source: https://www.fhwa.dot.gov/policyinformation/statistics/2023/
+
 state_name_df = data.frame(state.name, state.abb)
 
 #HM-10: Public road length, miles by ownership
-HM_10 <- read_excel("data/hm10.xls", sheet = "A") %>% 
+HM_10 <- read_excel("data/hm10.xlsx", sheet = "A") %>% 
   remove_empty() %>% 
   select(1, 2, 5, 8, 11) %>% 
   slice(-(1:6)) %>% 
@@ -30,12 +29,13 @@ HM_10 <- read_excel("data/hm10.xls", sheet = "A") %>%
   select(state, SHA_miles)
 
 
-#HM-81: State highway agency-owned public roads; rural and urban miles, estimated lane-miles and daily travel
+#HM-81: State highway agency-owned public roads; 
+#rural and urban miles, estimated lane-miles and daily travel
 
 #Note: In California Policy Center report, the table shows "total lane miles" BUT it probably refers to dvmt infact. 
 #https://californiapolicycenter.org/californias-transportation-future-part-four-the-common-road/
 
-HM_81 <- read_excel("data/hm81.xls", sheet  = "A") %>% 
+HM_81 <- read_excel("data/hm81.xlsx", sheet  = "A") %>% 
   remove_empty() %>% 
   rename(state = 1,
          state_urban_lane_miles = 10,
@@ -57,7 +57,7 @@ HM_81 <- read_excel("data/hm81.xls", sheet  = "A") %>%
          urban_lm_index = (pct_urban_lane_miles/US_pct_urban_lane_miles)) %>% 
   select(state, state_tot_lane_miles, pct_urban_lane_miles, urban_lm_index)
 
-  
+
 
 #SF-4: Disbursements for state-administered highways (thousands of dollars)
 #Note: the 2020 numbers for some reason exactly match the 2019 numbers? 
@@ -90,10 +90,10 @@ SF_4 <- read_excel("data/sf4.xlsx", sheet = "A") %>%
 #   select(state, capital_disbursement_adjusted:other_disbursement_adjusted) 
 
 # write_csv(SF_4_adjusted, "SF_4_adjusted_coliIndex_urbanDvmtIndex.csv")
-  
+
 
 #HM-64: Miles by measured pavement roughness
-HM64_rural_interstate <- read_excel("data/hm64.xls", sheet = "A") %>% 
+HM64_rural_interstate <- read_excel("data/hm64.xlsx", sheet = "A") %>% 
   remove_empty() %>% 
   select(1, 8:11) %>% 
   rename(state = 1,
@@ -105,9 +105,9 @@ HM64_rural_interstate <- read_excel("data/hm64.xls", sheet = "A") %>%
   filter(state %in% state.name) %>% 
   mutate(across(rural_interstate_171_194:rural_interstate_total, as.numeric),
          rural_interstate_above_170 = rural_interstate_171_194 + rural_interstate_195_220 + rural_interstate_above_220)
-  
 
-HM64_rural_OPA <- read_excel("data/hm64.xls", sheet = "B") %>% 
+
+HM64_rural_OPA <- read_excel("data/hm64.xlsx", sheet = "B") %>% 
   remove_empty() %>% 
   select(1, 20:21) %>% 
   rename(state = 1,
@@ -116,9 +116,9 @@ HM64_rural_OPA <- read_excel("data/hm64.xls", sheet = "B") %>%
   slice(-(1:7)) %>% 
   filter(state %in% state.name) %>% 
   mutate(across(rural_OPA_above_220:rural_OPA_total, as.numeric))
-  
-  
-HM64_urban_interstate <- read_excel("data/hm64.xls", sheet = "C") %>% 
+
+
+HM64_urban_interstate <- read_excel("data/hm64.xlsx", sheet = "C") %>% 
   remove_empty() %>% 
   select(1, 8:11) %>% 
   rename(state = 1,
@@ -132,7 +132,7 @@ HM64_urban_interstate <- read_excel("data/hm64.xls", sheet = "C") %>%
          urban_interstate_above_170 = urban_interstate_171_194 + urban_interstate_195_220 + urban_interstate_above_220)
 
 
-HM64_urban_OPA <- read_excel("data/hm64.xls", sheet = "D") %>% 
+HM64_urban_OPA <- read_excel("data/hm64.xlsx", sheet = "D") %>% 
   remove_empty() %>% 
   select(1, 20:21) %>% 
   rename(state = 1,
@@ -170,7 +170,7 @@ FI_20 <- read_excel("data/fi20.xls", sheet = "A", skip = 13) %>%
   filter(state %in% state.name)
 
 #VM-2: Annual vehicle miles
-VM_2 <- read_excel("data/vm2.xls", sheet = "A", skip = 13) %>% 
+VM_2 <- read_excel("data/vm2m.xls", sheet = "A", skip = 13) %>% 
   rename(state = 1) %>% 
   mutate(rural_VMT_interstate_OFE_OPA = (`...2` + EXPRESSWAYS...3 + ARTERIAL...4),
          urban_VMT_interstate_OFE_OPA = (...10 + EXPRESSWAYS...11 + ARTERIAL...12),
@@ -179,7 +179,7 @@ VM_2 <- read_excel("data/vm2.xls", sheet = "A", skip = 13) %>%
   mutate(across(2:4)) %>%   
   filter(state %in% state.name)
 
-#Bridge data
+####Bridge data####
 bridge_raw <- read_excel("data/fccount23.xlsx", sheet = "Sheet1", skip = 10)  
 
 bridge_total <- bridge_raw[1:58,] %>% 
@@ -202,11 +202,8 @@ bridge_data <- bridge_total %>%
   left_join(bridge_poor)
 
 
-#Congestion data 
-source("Congestion data process.R")
 
-
-#Bring everything together 
+####Bring everything together#### 
 AHR_states <- list(HM_10, 
                    HM_81, 
                    SF_4, 
@@ -223,11 +220,11 @@ AHR_national <- AHR_states %>%
   mutate(state = "United States")
 
 AHR_data <- bind_rows(AHR_states, AHR_national) %>% 
-
+  
   #Add SHA ratio
   mutate(SHA_ratio = state_tot_lane_miles / SHA_miles, .after = state_tot_lane_miles) %>% 
-
-
+  
+  
   #Calculate key metrics
   mutate(
     
@@ -242,7 +239,7 @@ AHR_data <- bind_rows(AHR_states, AHR_national) %>%
     urban_interstate_poor_percent = urban_interstate_above_170 / urban_interstate_total * 100,
     rural_OPA_poor_percent = rural_OPA_above_220 / rural_OPA_total * 100,
     urban_OPA_poor_percent = urban_OPA_above_220 / urban_OPA_total * 100,
-   
+    
     #Congestion Hours
     state_avg_congestion_hours = state_tot_congestion_hours / state_tot_commuters,
     
@@ -264,49 +261,24 @@ disbursement_data <- AHR_data %>%
   pivot_longer(cols = 3:6, names_to = "key_metrics", values_to = "value") %>% 
   arrange(key_metrics)
 
- #Check linear model
+#Check linear model
 disbursement_model_lm <- disbursement_data %>% 
   nest(data = -key_metrics) %>% 
   mutate(fit = map(data, ~ lm(value ~ pct_urban_lane_miles, data = .x)),
          tidied = map(fit, tidy)) %>% 
   unnest(tidied)
 
-# test_data <- disbursement_data %>%
-#   filter(key_metrics == "other_disbursement_perlm")
-# 
-# model_lm <- lm(value ~ pct_urban_lane_miles, data = test_data)
-# summary(model_lm)
-# model_lm$residuals
-# sigma(model_lm)
-# 
-# ggplot(test_data, aes(x = pct_urban_lane_miles, y = value)) +
-#   geom_point() +
-#   geom_smooth(method = "lm") +
-#   geom_point(data = test_data %>% filter(state == "Maine"), col = "red")
-
- #Comment: there's a problem with the linear model for the "other_disbursement" data: some predicted values are negative
-
- #Check local regression model
-# model_loess <- loess(value ~ pct_urban_lane_miles, data = test_data)
-# summary(model_loess)
-# residuals(model_loess)
-# model_loess$s
-# 
-# 
-# ggplot(test_data, aes(x = pct_urban_lane_miles, y = value)) +
-#   geom_point() +
-#   geom_smooth(method = "loess") +
-#   geom_point(data = test_data %>% filter(state == "Maine"), col = "red")
 
 
- #Get fitted values (expected spending per lane mile given some level of urban roads)
+
+#Get fitted values (expected spending per lane mile given some level of urban roads)
 disbursement_data <- disbursement_data %>% 
   group_by(key_metrics) %>% 
   do(data.frame(., fitted_linear = fitted(lm(value ~ pct_urban_lane_miles, data = .)))) %>% 
   do(data.frame(., fitted_loess = fitted(loess(value ~ pct_urban_lane_miles, data = .)))) %>%    #note that we use the default span of 0.75
   ungroup()
 
- #The loess model seems better for our purposes as it doesn't produce negative predicted values
+#The loess model seems better for our purposes as it doesn't produce negative predicted values
 disbursement_data <- disbursement_data %>% 
   select(state, key_metrics, value, fitted_loess) %>% 
   rename(exp_value = fitted_loess)
@@ -333,7 +305,7 @@ scores <- AHR_data %>%
   ungroup() %>% 
   filter(state != "United States") %>% 
   mutate(across(c(2:15), min_rank, .names = "{.col}_rank")) 
-  
+
 
 #List of data frames to be exported
 data_list <- list("AHR Data" = AHR_data,
@@ -341,47 +313,7 @@ data_list <- list("AHR Data" = AHR_data,
                   "Disbursement Data" = disbursement_data)
 
 
-rio::export(data_list, "AHR_data 28th.xlsx")
+rio::export(data_list, "AHR_data 29th.xlsx")
 
 
-####compare to the result using reported total in HM74####
-#Compare AHR data
-reported_total_AHR_data <- readxl::read_excel("data/AHR_data 28th_using reported total Hm74.xlsx", sheet = 1)
-all.equal(reported_total_AHR_data, AHR_data)
 
-#Compare over all rank
-
-# ranking when using reported total column
-reported_total_rank <- readxl::read_excel("data/AHR_data 28th_using reported total Hm74.xlsx", sheet = 2) %>% 
-  select(1, state_avg_congestion_hours_score_rank,
-         overall_score_rank) %>% 
-  rename(state_avg_congestion_hours_score_rank_reportedTotal = state_avg_congestion_hours_score_rank,
-         overall_score_rank_reportedTotal = overall_score_rank)
-
-# ranking when summing up the columns
-summing_components_rank <- scores %>% select(1, 
-                                                  state_avg_congestion_hours_score_rank,
-                                                  overall_score_rank) %>% 
-  rename(overall_score_rank_summingColulmns = overall_score_rank,
-         state_avg_congestion_hours_score_rank_summingColulmns = state_avg_congestion_hours_score_rank)
-
-all.equal(reported_total_rank, summing_components_rank)
-
-#change in the ranking 
-reported_total_rank %>% left_join(summing_components_rank) %>% 
-  mutate(overall_score_rank_change = overall_score_rank_reportedTotal - overall_score_rank_summingColulmns) %>% 
-  select(state, overall_score_rank_reportedTotal, overall_score_rank_summingColulmns, overall_score_rank_change) -> total_rank_change
-
-reported_total_rank %>% left_join(summing_components_rank) %>% 
-  mutate(congestion_hours_change = state_avg_congestion_hours_score_rank_reportedTotal - state_avg_congestion_hours_score_rank_summingColulmns
-  ) %>% 
-  select(state, state_avg_congestion_hours_score_rank_reportedTotal,
-         state_avg_congestion_hours_score_rank_summingColulmns, 
-         congestion_hours_change) -> congestion_rank_change 
- 
-
-change_list <- list("total_rank_change" = total_rank_change,
-                  "congestion_rank_change" = congestion_rank_change)
-
-
-rio::export(change_list, "change_list_HM74_reportedColumns_vs_summing up components.xlsx")
