@@ -180,7 +180,7 @@ VM_2 <- read_excel("data/vm2.xls", sheet = "A", skip = 13) %>%
   filter(state %in% state.name)
 
 #Bridge data
-bridge_raw <- read_excel("data/fccount23.xlsx", sheet = "Sheet1", skip = 10)  
+bridge_raw <- read_excel("data/fccount22.xlsx", sheet = "Sheet1", skip = 10)  
 
 bridge_total <- bridge_raw[1:58,] %>% 
   rename(state = 1) %>% 
