@@ -1,6 +1,6 @@
 library(readxl)
 
-ahr_29 <- readxl::read_excel("AHR_data 29th.xlsx", sheet = 2)
+ahr_29 <- readxl::read_excel("output/AHR_data 29th.xlsx", sheet = 2)
 
 ahr_28 <- read_excel("data/AHR_data 28th_summing_components_columns.xlsx", sheet = 2)
 
@@ -28,6 +28,7 @@ compare_ahr <- function(ahr_28, ahr_29) {
 
 compare_ahr(ahr_28, ahr_29) %>% 
   select(state, contains("overall_score_rank")) %>% 
+  #View()
   write.csv("output/change_in_overall_rank.csv")
 
  
