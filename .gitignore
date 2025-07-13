@@ -47,3 +47,6 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+.DS_Store
+AHR 27th/.DS_Store
+AHR 28th/.DS_Store

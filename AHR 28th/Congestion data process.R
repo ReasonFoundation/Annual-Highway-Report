@@ -1,14 +1,14 @@
-library(tidyverse)
-library(readxl)
-library(janitor)
-library(stringr)
-library(modelr)
-library(dplyr)
+# library(tidyverse)
+# library(readxl)
+# library(janitor)
+# library(stringr)
+# library(modelr)
+# library(dplyr)
 
 inrix <- read_csv("data/delay_hour_2022_US_urban_area.csv") 
 commuter_data <- read_csv("data/ACSST1Y2022.S0802-Data_metro area.csv")
 # vehicle_miles_data <- import("data/hm74.xls")
-state_name_df <- data.frame(state.abb, state.name)
+
 
 #Clean data
 inrix_clean <- inrix %>% 
