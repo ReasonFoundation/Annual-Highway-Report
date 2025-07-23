@@ -1,15 +1,14 @@
-library(tidyverse)
-library(readxl)
-library(janitor)
-library(stringr)
-library(modelr)
-library(dplyr)
+# library(tidyverse)
+# library(readxl)
+# library(janitor)
+# library(stringr)
+# library(modelr)
+# library(dplyr)
 
 inrix <- read_csv("data/inrix_delay_hour_2024.csv") %>% 
   clean_names() %>% 
   rename(delay_2024 = 2) %>% 
   filter(delay_2024 != "Hours Lost") %>% 
-  filter(urban_area != "San Juan PR") %>% 
   filter(str_detect(urban_area, " [A-Z]{2}$")) %>% 
 
   mutate(change_from_2023 = str_remove(change_from_2023, "%"),
@@ -111,9 +110,7 @@ congestion_data <- commuter_data_clean %>%
   left_join(inrix_clean, by = c("first_state" = "state", "second_city" = "city")) %>% 
   left_join(inrix_clean, by = c("first_state" = "state", "third_city" = "city")) %>% 
   rowwise() %>% 
-  mutate(across(hours_lost_in_congestion.x:hours_lost_in_congestion, .fns = as.numeric)) %>% 
-  
-mutate(congestion_hours = mean(c(hours_lost_in_congestion.x, hours_lost_in_congestion.y, 
+  mutate(congestion_hours = mean(c(hours_lost_in_congestion.x, hours_lost_in_congestion.y, 
                                    hours_lost_in_congestion), na.rm = T)) %>% 
   ungroup()
 

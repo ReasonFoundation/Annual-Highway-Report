@@ -312,7 +312,7 @@ disbursement_data <- disbursement_data %>%
   rename(exp_value = fitted_loess)
 
 
-#Calculate scores and rankings
+#Calculate scores and rankings (original)
 scores <- AHR_data %>% 
   pivot_longer(cols = rural_interstate_poor_percent:other_fatalities_per_100m_VMT, 
                names_to = "key_metrics", 
@@ -335,14 +335,65 @@ scores <- AHR_data %>%
   mutate(across(c(2:15), min_rank, .names = "{.col}_rank")) 
   
 
+# Calculate scores and rankings for new dashboard
+scores2 <- AHR_data %>% 
+  pivot_longer(cols = rural_interstate_poor_percent:other_fatalities_per_100m_VMT, 
+               names_to = "key_metrics", 
+               values_to = "value") %>% 
+  arrange(key_metrics) %>% 
+  select(state, key_metrics, value) %>% 
+  group_by(key_metrics) %>% 
+  mutate(exp_value = value[state == "United States"]) %>% 
+  ungroup() %>% 
+  bind_rows(disbursement_data) %>% 
+  mutate(relative_score = value / exp_value,
+         key_metrics = paste0(key_metrics, "_score")) %>% 
+  filter(state != "United States") %>% 
+  group_by(key_metrics) %>% 
+  mutate(rank = min_rank(relative_score)) %>% 
+  ungroup() %>% 
+  mutate(year = 2022, .before = everything())
+
+
+# Get State Controlled Highway Miles table
+state_controlled_mileage_table <- AHR_data %>% 
+  select(state, SHA_miles, state_tot_lane_miles, SHA_ratio) %>% 
+  mutate(year = 2022, .before = everything())
+
+
+# Get only rankings in all categories
+all_rankings <- scores %>% 
+  select(state,
+         overall_score_rank,
+         capital_disbursement_perlm_score_rank,
+         maintenance_disbursement_perlm_score_rank,
+         admin_disbursement_perlm_score_rank,
+         other_disbursement_perlm_score_rank,
+         rural_interstate_poor_percent_score_rank,
+         urban_interstate_poor_percent_score_rank,
+         rural_OPA_poor_percent_score_rank,
+         urban_OPA_poor_percent_score_rank,
+         state_avg_congestion_hours_score_rank,
+         poor_bridges_percent_score_rank,
+         rural_fatalities_per_100m_VMT_score_rank,
+         urban_fatalities_per_100m_VMT_score_rank,
+         other_fatalities_per_100m_VMT_score_rank) %>% 
+  rename_with(~ str_remove(., "_score")) %>% 
+  mutate(year = 2022, .before = everything())
+
+
 #List of data frames to be exported
 data_list <- list("AHR Data" = AHR_data,
                   "Scores & Rankings" = scores,
                   "Disbursement Data" = disbursement_data)
 
+data_list_new <- list("Individual Scores & Rankings" = scores2,
+                      "State Mileage" = state_controlled_mileage_table,
+                      "All Rankings" = all_rankings)
 
 rio::export(data_list, "AHR_data 28th.xlsx")
 
+rio::export(data_list_new, "AHR_data 28th dashboard.xlsx")
 
 ####compare to the result using reported total in HM74####
 #Compare AHR data
