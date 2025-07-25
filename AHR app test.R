@@ -10,6 +10,7 @@ library(sf)
 library(tigris)
 library(plotly)
 library(janitor)
+library(bslib)
 
 # Load disbursement illustration data (2023)
 HM_81 <- read_excel("hm81_2023.xlsx", sheet = "A") %>%
@@ -162,14 +163,25 @@ disp_category_choices <- c(
 )
 
 # UI
-ui <- fluidPage(
-  tags$head(
-    tags$link(rel = "stylesheet", type = "text/css", href = "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"),
-    tags$style(HTML("
-      body { font-family: 'Open Sans', sans-serif; }
-      h2 { font-weight: 700; }
-      .leaflet-container { background: #FFFFFF; }
-      .small-legend { 
+ui <- page_fluid(
+  theme = bs_theme(
+    version = 5,  # Upgrade to Bootstrap 5
+    bootswatch = "flatly",  # Modern theme; alternatives: "cosmo", "litera", "minty"
+    base_font = font_google("Open Sans"),  # Keeps your existing font; bslib handles Google Fonts import
+    heading_font = font_google("Open Sans"),
+    font_scale = 0.85
+  ),
+  tags$style(HTML("
+    body { font-family: 'Open Sans', sans-serif; }
+    h2 { 
+      font-size: 1.5rem; /* Reduced from ~2rem (Bootstrap default) */
+      font-weight: 700; 
+    }
+    h3 { 
+      font-size: 1.2rem; /* Reduced from ~1.75rem (Bootstrap default) */
+    }
+    .leaflet-container { background: #FFFFFF; }
+    .small-legend { 
       font-size: 10px;              /* text smaller   */
       line-height: 12px;
       padding: 2px 4px;
@@ -182,8 +194,10 @@ ui <- fluidPage(
       width: 10px !important;
       height: 10px !important;
     }
-    "))
-  ),
+    .reactable { font-size: 12px; } /* Adjust reactable table font size */
+    .plotly .main-svg { font-size: 12px !important; } /* Adjust plotly text */
+    .leaflet-tooltip { font-size: 10px !important; } /* Adjust map tooltip text */
+  ")),  # Your custom CSS can stay; no need for separate Google Fonts link
   fluidRow(
     column(10, h2("Annual Highway Report Dashboard")),
     column(2)
