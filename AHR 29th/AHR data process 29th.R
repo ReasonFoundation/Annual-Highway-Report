@@ -92,6 +92,37 @@ SF_4 <- read_excel("data/sf4.xlsx", sheet = "A") %>%
 # write_csv(SF_4_adjusted, "SF_4_adjusted_coliIndex_urbanDvmtIndex.csv")
 
 
+###Get rural Interstate pavement condition and urban Interstate pavement condition (sheets A and C) for South Carolina from year 2022
+sc_HM64_rural_interstate <- read_excel("data/hm64_year2022.xls", sheet = "A") %>% 
+  remove_empty() %>% 
+  select(1, 8:11) %>% 
+  rename(state = 1,
+         rural_interstate_171_194 = 2,
+         rural_interstate_195_220 = 3,
+         rural_interstate_above_220 = 4,
+         rural_interstate_total = 5) %>% 
+  slice(-(1:7)) %>% 
+  filter(state %in% state.name) %>% 
+  mutate(across(rural_interstate_171_194:rural_interstate_total, as.numeric),
+         rural_interstate_above_170 = rural_interstate_171_194 + rural_interstate_195_220 + rural_interstate_above_220) %>% 
+  filter(state == "South Carolina")
+
+
+sc_HM64_urban_interstate <- read_excel("data/hm64_year2022.xls", sheet = "C") %>% 
+  remove_empty() %>% 
+  select(1, 8:11) %>% 
+  rename(state = 1,
+         urban_interstate_171_194 = 2,
+         urban_interstate_195_220 = 3, 
+         urban_interstate_above_220 = 4,
+         urban_interstate_total = 5) %>% 
+  slice(-(1:7)) %>% 
+  filter(state %in% state.name) %>% 
+  mutate(across(urban_interstate_171_194:urban_interstate_total, as.numeric),
+         urban_interstate_above_170 = urban_interstate_171_194 + urban_interstate_195_220 + urban_interstate_above_220) %>% 
+  filter(state == "South Carolina")
+
+
 #HM-64: Miles by measured pavement roughness
 HM64_rural_interstate <- read_excel("data/hm64.xlsx", sheet = "A") %>% 
   remove_empty() %>% 
@@ -104,7 +135,9 @@ HM64_rural_interstate <- read_excel("data/hm64.xlsx", sheet = "A") %>%
   slice(-(1:7)) %>% 
   filter(state %in% state.name) %>% 
   mutate(across(rural_interstate_171_194:rural_interstate_total, as.numeric),
-         rural_interstate_above_170 = rural_interstate_171_194 + rural_interstate_195_220 + rural_interstate_above_220)
+         rural_interstate_above_170 = rural_interstate_171_194 + rural_interstate_195_220 + rural_interstate_above_220) %>% 
+  filter(state != "South Carolina") %>% 
+  rbind(sc_HM64_rural_interstate) 
 
 
 HM64_rural_OPA <- read_excel("data/hm64.xlsx", sheet = "B") %>% 
@@ -129,7 +162,9 @@ HM64_urban_interstate <- read_excel("data/hm64.xlsx", sheet = "C") %>%
   slice(-(1:7)) %>% 
   filter(state %in% state.name) %>% 
   mutate(across(urban_interstate_171_194:urban_interstate_total, as.numeric),
-         urban_interstate_above_170 = urban_interstate_171_194 + urban_interstate_195_220 + urban_interstate_above_220)
+         urban_interstate_above_170 = urban_interstate_171_194 + urban_interstate_195_220 + urban_interstate_above_220) %>% 
+  filter(state != "South Carolina") %>% 
+  rbind(sc_HM64_urban_interstate)
 
 
 HM64_urban_OPA <- read_excel("data/hm64.xlsx", sheet = "D") %>% 
