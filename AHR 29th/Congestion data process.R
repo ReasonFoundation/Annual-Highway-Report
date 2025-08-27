@@ -5,7 +5,7 @@
 # library(modelr)
 # library(dplyr)
 
-inrix <- read_csv("data/inrix_delay_hour_2024.csv") %>% 
+inrix <- read_csv("AHR 29th/data/inrix_delay_hour_2024.csv") %>% 
   clean_names() %>% 
   rename(delay_2024 = 2) %>% 
   filter(delay_2024 != "Hours Lost") %>% 
@@ -25,7 +25,7 @@ mutate(
 #https://data.census.gov/table?g=010XX00US$31000M1
 #All metropolitan Statistical Areas within United States and PR,
 #S0802 Means of transportation to Work by selected characteristics
-commuter_data <- read_csv("data/ACSST1Y2023.S0802-Data.csv")
+commuter_data <- read_csv("AHR 29th/data/ACSST1Y2023.S0802-Data.csv")
 
 # vehicle_miles_data <- import("data/hm74.xls")
 state_name_df <- data.frame(state.abb, state.name)
@@ -66,7 +66,7 @@ commuter_data_clean <- commuter_data %>%
 #Import and process HM74 data (vehicle miles data)
 ## Function to process each sheet in the HM74 data
 process_hm74 <- function(sheet_name) {
-  read_excel("data/hm74.xlsx", sheet = sheet_name) %>%
+  read_excel("AHR 29th/data/hm74.xlsx", sheet = sheet_name) %>%
     slice(-(1:8)) %>% 
     select(1:27) %>% 
     rename(area = 1,
@@ -83,7 +83,7 @@ process_hm74 <- function(sheet_name) {
 }
 
 ## List of sheets to process
-excel_sheets("data/hm74.xlsx")
+excel_sheets("AHR 29th/data/hm74.xlsx")
 sheets <- 2:9
 
 ## Process each sheet and combine them into one data frame

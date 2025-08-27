@@ -5,8 +5,8 @@
 # library(modelr)
 # library(dplyr)
 
-inrix <- read_csv("data/delay_hour_2022_US_urban_area.csv") 
-commuter_data <- read_csv("data/ACSST1Y2022.S0802-Data_metro area.csv")
+inrix <- read_csv("AHR 28th/data/delay_hour_2022_US_urban_area.csv") 
+commuter_data <- read_csv("AHR 28th/data/ACSST1Y2022.S0802-Data_metro area.csv")
 # vehicle_miles_data <- import("data/hm74.xls")
 
 
@@ -47,7 +47,7 @@ commuter_data_clean <- commuter_data %>%
 #Import and process HM74 data (vehicle miles data)
 ## Function to process each sheet in the HM74 data
 process_hm74 <- function(sheet_name) {
-  read_excel("data/hm74.xls", sheet = sheet_name) %>%
+  read_excel("AHR 28th/data/hm74.xls", sheet = sheet_name) %>%
     slice(-(1:8)) %>% 
     select(1:27) %>% 
     rename(area = 1,

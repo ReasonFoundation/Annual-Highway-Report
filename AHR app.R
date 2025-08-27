@@ -10,7 +10,7 @@ library(sf)
 library(tigris)
 library(plotly)
 library(janitor)
-
+library(DT)
 # Load disbursement illustration data (2023)
 HM_81 <- read_excel("hm81_2023.xlsx", sheet = "A") %>%
   remove_empty() %>%
@@ -55,6 +55,8 @@ disbursement_data <- AHR_states %>%
   ungroup()
 
 # Load main data
+AHR_full <- read_xlsx("AHR_full.xlsx")
+
 data_list <- import_list("AHR_combined_data.xlsx")
 individual <- as_tibble(data_list[[1]])
 mileage <- as_tibble(data_list[[2]])
@@ -216,7 +218,19 @@ ui <- fluidPage(
                         reactableOutput("map_table"),
                         downloadButton("download_table", "Download Table")
                  )
+               ),
+               # 🔽 New table
+               fluidRow(
+                 column(12,
+                        hr(),
+                        h4("AHR Full Table by Year"),
+                        selectInput("year_filter_ahr", "Select Year for AHR Table:",
+                                    choices = sort(unique(AHR_full$year), decreasing = TRUE),
+                                    selected = max(AHR_full$year)),
+                        DTOutput("ahr_table")
+                 )
                )
+      
       ),
       tabPanel("Disbursement Illustration",
                sidebarLayout(
@@ -298,6 +312,9 @@ ui <- fluidPage(
     )
   )
 )
+
+
+
 
 # Server
 server <- function(input, output, session) {
@@ -800,6 +817,15 @@ server <- function(input, output, session) {
                 )
               ))
   })
+  
+  output$ahr_table <- renderDT({
+    req(input$year_filter_ahr)
+    AHR_full %>%
+      filter(year == input$year_filter_ahr) %>% 
+    
+      datatable(options = list(pageLength = 10, scrollX = TRUE))
+  })
+  
 }
 
 # Run app

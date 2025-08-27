@@ -15,7 +15,7 @@ library(plotly)
 state_name_df = data.frame(state.name, state.abb)
 
 #HM-10: Public road length, miles by ownership
-HM_10 <- read_excel("data/hm10.xls", sheet = "A") %>% 
+HM_10 <- read_excel("AHR 28th/data/hm10.xls", sheet = "A") %>% 
   remove_empty() %>% 
   select(1, 2, 5, 8, 11) %>% 
   slice(-(1:6)) %>% 
@@ -35,7 +35,7 @@ HM_10 <- read_excel("data/hm10.xls", sheet = "A") %>%
 #Note: In California Policy Center report, the table shows "total lane miles" BUT it probably refers to dvmt infact. 
 #https://californiapolicycenter.org/californias-transportation-future-part-four-the-common-road/
 
-HM_81 <- read_excel("data/hm81.xls", sheet  = "A") %>% 
+HM_81 <- read_excel("AHR 28th/data/hm81.xls", sheet  = "A") %>% 
   remove_empty() %>% 
   rename(state = 1,
          state_urban_lane_miles = 10,
@@ -61,7 +61,7 @@ HM_81 <- read_excel("data/hm81.xls", sheet  = "A") %>%
 
 #SF-4: Disbursements for state-administered highways (thousands of dollars)
 #Note: the 2020 numbers for some reason exactly match the 2019 numbers? 
-SF_4 <- read_excel("data/sf4.xlsx", sheet = "A") %>% 
+SF_4 <- read_excel("AHR 28th/data/sf4.xlsx", sheet = "A") %>% 
   remove_empty() %>% 
   select(1:7) %>% 
   rename(state = 1,
@@ -93,7 +93,7 @@ SF_4 <- read_excel("data/sf4.xlsx", sheet = "A") %>%
   
 
 #HM-64: Miles by measured pavement roughness
-HM64_rural_interstate <- read_excel("data/hm64.xls", sheet = "A") %>% 
+HM64_rural_interstate <- read_excel("AHR 28th/data/hm64.xls", sheet = "A") %>% 
   remove_empty() %>% 
   select(1, 8:11) %>% 
   rename(state = 1,
@@ -107,7 +107,7 @@ HM64_rural_interstate <- read_excel("data/hm64.xls", sheet = "A") %>%
          rural_interstate_above_170 = rural_interstate_171_194 + rural_interstate_195_220 + rural_interstate_above_220)
   
 
-HM64_rural_OPA <- read_excel("data/hm64.xls", sheet = "B") %>% 
+HM64_rural_OPA <- read_excel("AHR 28th/data/hm64.xls", sheet = "B") %>% 
   remove_empty() %>% 
   select(1, 20:21) %>% 
   rename(state = 1,
@@ -118,7 +118,7 @@ HM64_rural_OPA <- read_excel("data/hm64.xls", sheet = "B") %>%
   mutate(across(rural_OPA_above_220:rural_OPA_total, as.numeric))
   
   
-HM64_urban_interstate <- read_excel("data/hm64.xls", sheet = "C") %>% 
+HM64_urban_interstate <- read_excel("AHR 28th/data/hm64.xls", sheet = "C") %>% 
   remove_empty() %>% 
   select(1, 8:11) %>% 
   rename(state = 1,
@@ -132,7 +132,7 @@ HM64_urban_interstate <- read_excel("data/hm64.xls", sheet = "C") %>%
          urban_interstate_above_170 = urban_interstate_171_194 + urban_interstate_195_220 + urban_interstate_above_220)
 
 
-HM64_urban_OPA <- read_excel("data/hm64.xls", sheet = "D") %>% 
+HM64_urban_OPA <- read_excel("AHR 28th/data/hm64.xls", sheet = "D") %>% 
   remove_empty() %>% 
   select(1, 20:21) %>% 
   rename(state = 1,
@@ -159,7 +159,7 @@ HM64 <- HM64_rural_interstate %>%
 
 
 #FI-20: Persons fatally injured in motor vehicle crashes
-FI_20 <- read_excel("data/fi20.xls", sheet = "A", skip = 13) %>% 
+FI_20 <- read_excel("AHR 28th/data/fi20.xls", sheet = "A", skip = 13) %>% 
   rename(state = 1) %>% 
   
   # 3 groups of fatality
@@ -170,7 +170,7 @@ FI_20 <- read_excel("data/fi20.xls", sheet = "A", skip = 13) %>%
   filter(state %in% state.name)
 
 #VM-2: Annual vehicle miles
-VM_2 <- read_excel("data/vm2.xls", sheet = "A", skip = 13) %>% 
+VM_2 <- read_excel("AHR 28th/data/vm2.xls", sheet = "A", skip = 13) %>% 
   rename(state = 1) %>% 
   mutate(rural_VMT_interstate_OFE_OPA = (`...2` + EXPRESSWAYS...3 + ARTERIAL...4),
          urban_VMT_interstate_OFE_OPA = (...10 + EXPRESSWAYS...11 + ARTERIAL...12),
@@ -180,7 +180,7 @@ VM_2 <- read_excel("data/vm2.xls", sheet = "A", skip = 13) %>%
   filter(state %in% state.name)
 
 #Bridge data
-bridge_raw <- read_excel("data/fccount22.xlsx", sheet = "Sheet1", skip = 10)  
+bridge_raw <- read_excel("AHR 28th/data/fccount22.xlsx", sheet = "Sheet1", skip = 10)  
 
 bridge_total <- bridge_raw[1:58,] %>% 
   rename(state = 1) %>% 
@@ -203,7 +203,7 @@ bridge_data <- bridge_total %>%
 
 
 #Congestion data 
-source("Congestion data process.R")
+source("AHR 28th/Congestion data process.R")
 
 
 #Bring everything together 
@@ -383,17 +383,25 @@ all_rankings <- scores %>%
 
 
 #List of data frames to be exported
+AHR_data_full_2022 <- AHR_data %>% 
+  mutate(year = 2022)
+
+#adding full data to show extra columns denominator + numerator as Baruch requested
+write_xlsx(AHR_data_full_2022, "AHR 28th/AHR_data_full_2022.xlsx")
+
+
 data_list <- list("AHR Data" = AHR_data,
                   "Scores & Rankings" = scores,
                   "Disbursement Data" = disbursement_data)
 
 data_list_new <- list("Individual Scores & Rankings" = scores2,
                       "State Mileage" = state_controlled_mileage_table,
-                      "All Rankings" = all_rankings)
+                      "All Rankings" = all_rankings, 
+                      "AHR Data Full" = AHR_data)
 
-rio::export(data_list, "AHR_data 28th.xlsx")
+rio::export(data_list, "AHR 28th/AHR_data 28th.xlsx")
 
-rio::export(data_list_new, "AHR_data 28th dashboard.xlsx")
+rio::export(data_list_new, "AHR 28th/AHR_data 28th dashboard.xlsx")
 
 ####compare to the result using reported total in HM74####
 #Compare AHR data
