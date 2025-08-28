@@ -403,6 +403,7 @@ data_list <- list("AHR Data" = AHR_data,
                   "Disbursement Data" = disbursement_data)
 
 data_list_new <- list("Individual Scores & Rankings" = scores2,
+                      
                       "State Mileage" = state_controlled_mileage_table,
                       "All Rankings" = all_rankings) 
 

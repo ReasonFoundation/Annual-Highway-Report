@@ -55,7 +55,7 @@ disbursement_data <- AHR_states %>%
   ungroup()
 
 # Load main data
-AHR_full <- read_xlsx("AHR_full.xlsx")
+AHR_full <- read_xlsx("AHR_full.xlsx") # table showing numerator / denominator 
 
 data_list <- import_list("AHR_combined_data.xlsx")
 individual <- as_tibble(data_list[[1]])
@@ -163,6 +163,24 @@ disp_category_choices <- c(
   "Other Disbursements" = "other_disbursement_perlm"
 )
 
+#named list mapping for new table showing denominator & numerator
+
+metric_components <- list(
+  "SHA_ratio" = c("SHA_ratio", "state_tot_lane_miles", "SHA_miles"),
+  "capital_disbursement_perlm" = c("capital_disbursement_perlm", "capital_disbursement", "state_tot_lane_miles"),
+  "maintenance_disbursement_perlm" = c("maintenance_disbursement_perlm", "maintenance_disbursement", "state_tot_lane_miles"),
+  "admin_disbursement_perlm" = c("admin_disbursement_perlm", "admin_disbursement", "state_tot_lane_miles"),
+  "other_disbursement_perlm" = c("other_disbursement_perlm", "other_disbursement", "state_tot_lane_miles"),
+  "rural_interstate_poor_percent" = c("rural_interstate_poor_percent", "rural_interstate_above_170", "rural_interstate_total"),
+  "urban_interstate_poor_percent" = c("urban_interstate_poor_percent", "urban_interstate_above_170", "urban_interstate_total"),
+  "rural_OPA_poor_percent" = c("rural_OPA_poor_percent", "rural_OPA_above_220", "rural_OPA_total"),
+  "urban_OPA_poor_percent" = c("urban_OPA_poor_percent", "urban_OPA_above_220", "urban_OPA_total"),
+  "state_avg_congestion_hours" = c("state_avg_congestion_hours", "state_tot_congestion_hours", "state_tot_commuters"),
+  "poor_bridges_percent" = c("poor_bridges_percent", "total_poor_bridges", "total_bridges"),
+  "rural_fatalities_per_100m_VMT" = c("rural_fatalities_per_100m_VMT", "rural_fatality_interstate_OFE_OPA", "rural_VMT_interstate_OFE_OPA"),
+  "urban_fatalities_per_100m_VMT" = c("urban_fatalities_per_100m_VMT", "urban_fatality_interstate_OFE_OPA", "urban_VMT_interstate_OFE_OPA"),
+  "other_fatalities_per_100m_VMT" = c("other_fatalities_per_100m_VMT", "other_fatality", "other_VMT")
+)
 # UI
 ui <- fluidPage(
   tags$head(
@@ -223,11 +241,16 @@ ui <- fluidPage(
                fluidRow(
                  column(12,
                         hr(),
-                        h4("AHR Full Table by Year"),
-                        selectInput("year_filter_ahr", "Select Year for AHR Table:",
+                        h4("AHR Metric Value: Numerator/ Denominator"),
+                        selectInput("year_filter_ahr", "Select Year:",
                                     choices = sort(unique(AHR_full$year), decreasing = TRUE),
                                     selected = max(AHR_full$year)),
-                        DTOutput("ahr_table")
+                        
+                        selectInput("metric_filter_ahr", "Select a Metric:",
+                                    choices = names(metric_components),
+                                    selected = "SHA_ratio"),
+                        DTOutput("ahr_table"),
+                        downloadButton("download_ahr_table", "Download Table", class = "btn-primary")
                  )
                )
       
@@ -819,12 +842,38 @@ server <- function(input, output, session) {
   })
   
   output$ahr_table <- renderDT({
-    req(input$year_filter_ahr)
-    AHR_full %>%
-      filter(year == input$year_filter_ahr) %>% 
+    req(input$year_filter_ahr, input$metric_filter_ahr)
     
-      datatable(options = list(pageLength = 10, scrollX = TRUE))
+    selected_year <- input$year_filter_ahr
+    selected_metric <- input$metric_filter_ahr
+    columns_to_show <- c("state", metric_components[[selected_metric]])
+    
+    # Filter and show only selected columns
+    df <- AHR_full %>%
+      filter(year == selected_year) %>%
+      select(all_of(columns_to_show)) %>%
+      mutate(across(where(is.numeric), ~ round(.x, 2)))
+    
+    datatable(df, options = list(pageLength = 10, scrollX = TRUE), rownames = FALSE)
   })
+  
+  output$download_ahr_table <- downloadHandler(
+    filename = function() {
+      paste0("ahr_table_", input$metric_filter_ahr, "_", input$year_filter_ahr, ".csv")
+    },
+    content = function(file) {
+      selected_year <- input$year_filter_ahr
+      selected_metric <- input$metric_filter_ahr
+      columns_to_show <- c("state", metric_components[[selected_metric]])
+      
+      df <- AHR_full %>%
+        filter(year == selected_year) %>%
+        select(all_of(columns_to_show)) %>%
+        mutate(across(where(is.numeric), ~ round(.x, 2)))
+      
+      readr::write_csv(df, file)
+    }
+  )
   
 }
 
