@@ -344,7 +344,7 @@ scores <- AHR_data %>%
 
 
 # Calculate scores and rankings for new dashboard
-scores2 <- AHR_data %>% 
+scores_process <- AHR_data %>% 
   pivot_longer(cols = rural_interstate_poor_percent:other_fatalities_per_100m_VMT, 
                names_to = "key_metrics", 
                values_to = "value") %>% 
@@ -361,6 +361,53 @@ scores2 <- AHR_data %>%
   mutate(rank = min_rank(relative_score)) %>% 
   ungroup() %>% 
   mutate(year = 2023, .before = everything())
+
+## Spec lookup
+spec <- tribble(
+  ~score,                                  ~num,                                     ~denom,
+  "capital_disbursement_perlm_score",       "capital_disbursement",                   "state_tot_lane_miles",
+  "maintenance_disbursement_perlm_score",   "maintenance_disbursement",               "state_tot_lane_miles",
+  "admin_disbursement_perlm_score",         "admin_disbursement",                     "state_tot_lane_miles",
+  "other_disbursement_perlm_score",         "other_disbursement",                     "state_tot_lane_miles",
+  "rural_interstate_poor_percent_score",    "rural_interstate_above_170",             "rural_interstate_total",
+  "urban_interstate_poor_percent_score",    "urban_interstate_above_170",             "urban_interstate_total",
+  "rural_OPA_poor_percent_score",           "rural_OPA_above_220",                    "rural_OPA_total",
+  "urban_OPA_poor_percent_score",           "urban_OPA_above_220",                    "urban_OPA_total",
+  "state_avg_congestion_hours_score",       "state_tot_congestion_hours",             "state_tot_commuters",
+  "poor_bridges_percent_score",             "total_poor_bridges",                     "total_bridges",
+  "rural_fatalities_per_100m_VMT_score",    "rural_fatality_interstate_OFE_OPA",      "rural_VMT_interstate_OFE_OPA",
+  "urban_fatalities_per_100m_VMT_score",    "urban_fatality_interstate_OFE_OPA",      "urban_VMT_interstate_OFE_OPA",
+  "other_fatalities_per_100m_VMT_score",    "other_fatality",                         "other_VMT"
+)
+
+## Build a long view of just the needed AHR columns
+needed_cols <- unique(c(spec$num, spec$denom))
+
+AHR_long <- AHR_data %>%
+  select(state, all_of(needed_cols)) %>%
+  pivot_longer(-state, names_to = "col", values_to = "val")
+
+AHR_num   <- AHR_long %>% rename(num   = col, numerator   = val)
+AHR_denom <- AHR_long %>% rename(denom = col, denominator = val)
+
+## Assemble: map metric -> (num, denom), bring both values in
+scores2 <- scores_process %>%
+  left_join(spec, by = c("key_metrics" = "score")) %>%
+  left_join(AHR_num,   by = c("state", "num")) %>%
+  left_join(AHR_denom, by = c("state", "denom")) %>%
+  select(year, state, numerator, denominator, everything()) %>%
+  select(-num, -denom)
+
+## Arrange key_metrics to match spec order
+order_map <- tibble(
+  key_metrics = spec$score,
+  key_order   = seq_along(spec$score)
+)
+
+scores2 <- scores2 %>%
+  left_join(order_map, by = "key_metrics") %>%
+  arrange(key_order, state) %>%
+  select(-key_order)
 
 
 # Get State Controlled Highway Miles table

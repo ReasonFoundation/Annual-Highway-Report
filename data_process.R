@@ -32,4 +32,4 @@ State_Mileage               <- combined[["State Mileage"]]
 All_Rankings                <- combined[["All Rankings"]]
 
 # export to back to Excel for Shiny app
-export(combined, "AHR_combined_data.xlsx")
+rio::export(combined, "AHR_combined_data.xlsx")
