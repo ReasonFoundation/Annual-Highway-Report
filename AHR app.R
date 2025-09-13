@@ -445,11 +445,32 @@ server <- function(input, output, session) {
       value_col_name <- value_col_names[[cat_val]]
       num_name <- num_denom_map %>% filter(score == cat_val) %>% pull(num)
       denom_name <- num_denom_map %>% filter(score == cat_val) %>% pull(denom)
+      
       df <- individual %>%
         filter(year == year_val, key_metrics == cat_val) %>%
         select(State = state, Year = year, Num = numerator, Denom = denominator, Value = value, `Average/Expected Value` = exp_value,
                `Relative Score` = relative_score, Rank = rank) %>%
         rename(!!num_name := Num, !!denom_name := Denom, !!value_col_name := Value)
+      
+      # Add total and average rows if "All States" is selected
+      if (state_val == "All States") {
+        total_row <- tibble(State = "Total", Year = as.numeric(year_val),
+                            !!num_name := sum(df[[num_name]], na.rm = TRUE),
+                            !!denom_name := sum(df[[denom_name]], na.rm = TRUE),
+                            !!value_col_name := NA_real_,
+                            `Average/Expected Value` = NA_real_,
+                            `Relative Score` = NA_real_,
+                            Rank = NA_real_)
+        average_row <- tibble(State = "Average", Year = as.numeric(year_val),
+                              !!num_name := mean(df[[num_name]], na.rm = TRUE),
+                              !!denom_name := mean(df[[denom_name]], na.rm = TRUE),
+                              !!value_col_name := NA_real_,
+                              `Average/Expected Value` = NA_real_,
+                              `Relative Score` = NA_real_,
+                              Rank = NA_real_)
+        df <- bind_rows(total_row, average_row, df)
+      }
+      
     } else if (cat_val == "all_rankings") {
       # All Rankings
       df <- rankings %>%
@@ -510,6 +531,15 @@ server <- function(input, output, session) {
       denom_name <- num_denom_map %>% filter(score == cat_val) %>% pull(denom)
       
       columns_list <- list()
+      columns_list[["State"]] <- colDef(
+        cell = function(value) {
+          if (value %in% c("Total", "Average")) {
+            htmltools::tags$span(style = "font-weight: 900; font-size: 1.1em;", value)
+          } else {
+            value
+          }
+        }
+      )
       columns_list[[num_name]] <- colDef(
         cell = function(value) {
           label <- label_currency(accuracy = 1, scale = 1/1e6, suffix = "M", big.mark = ",")(value)
@@ -551,6 +581,15 @@ server <- function(input, output, session) {
       denom_name <- num_denom_map %>% filter(score == cat_val) %>% pull(denom)
       
       columns_list <- list()
+      columns_list[["State"]] <- colDef(
+        cell = function(value) {
+          if (value %in% c("Total", "Average")) {
+            htmltools::tags$span(style = "font-weight: 900; font-size: 1.1em;", value)
+          } else {
+            value
+          }
+        }
+      )
       columns_list[[num_name]] <- colDef(
         cell = function(value) {
           label <- label_number(accuracy = 1, big.mark = ",")(value)
@@ -593,6 +632,15 @@ server <- function(input, output, session) {
       denom_name <- num_denom_map %>% filter(score == cat_val) %>% pull(denom)
       
       columns_list <- list()
+      columns_list[["State"]] <- colDef(
+        cell = function(value) {
+          if (value %in% c("Total", "Average")) {
+            htmltools::tags$span(style = "font-weight: 900; font-size: 1.1em;", value)
+          } else {
+            value
+          }
+        }
+      )
       columns_list[[num_name]] <- colDef(
         cell = function(value) {
           label <- label_number(accuracy = 1, big.mark = ",")(value)
@@ -635,6 +683,15 @@ server <- function(input, output, session) {
       denom_name <- num_denom_map %>% filter(score == cat_val) %>% pull(denom)
       
       columns_list <- list()
+      columns_list[["State"]] <- colDef(
+        cell = function(value) {
+          if (value %in% c("Total", "Average")) {
+            htmltools::tags$span(style = "font-weight: 900; font-size: 1.1em;", value)
+          } else {
+            value
+          }
+        }
+      )
       columns_list[[num_name]] <- colDef(
         cell = function(value) {
           label <- label_number(accuracy = 1, big.mark = ",")(value)
@@ -678,6 +735,15 @@ server <- function(input, output, session) {
       denom_name <- num_denom_map %>% filter(score == cat_val) %>% pull(denom)
       
       columns_list <- list()
+      columns_list[["State"]] <- colDef(
+        cell = function(value) {
+          if (value %in% c("Total", "Average")) {
+            htmltools::tags$span(style = "font-weight: 900; font-size: 1.1em;", value)
+          } else {
+            value
+          }
+        }
+      )
       columns_list[[num_name]] <- colDef(
         cell = function(value) {
           label <- label_number(accuracy = 1, big.mark = ",")(value)

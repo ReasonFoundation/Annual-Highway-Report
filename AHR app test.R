@@ -10,7 +10,6 @@ library(sf)
 library(tigris)
 library(plotly)
 library(janitor)
-library(bslib)
 
 # Load disbursement illustration data (2023)
 HM_81 <- read_excel("hm81_2023.xlsx", sheet = "A") %>%
@@ -103,6 +102,23 @@ value_col_names <- list(
   "other_fatalities_per_100m_VMT_score" = "Other Fatality Rate Per 100 Million Vehicles-Miles"
 )
 
+num_denom_map <- tribble(
+  ~score, ~num, ~denom,
+  "capital_disbursement_perlm_score", "Capital Disbursement", "Total Lane Miles",
+  "maintenance_disbursement_perlm_score", "Maintenance Disbursement", "Total Lane Miles",
+  "admin_disbursement_perlm_score", "Admin Disbursement", "Total Lane Miles",
+  "other_disbursement_perlm_score", "Other Disbursement", "Total Lane Miles",
+  "rural_interstate_poor_percent_score", "Rural Interstate Mileage in Poor Condition", "Rural Interstate Mileage",
+  "urban_interstate_poor_percent_score", "Urban Interstate Mileage in Poor Condition", "Urban Interstate Mileage",
+  "rural_OPA_poor_percent_score", "Rural Other Principal Arterial Mileage in Poor Condition", "Rural Other Principal Arterial Mileage",
+  "urban_OPA_poor_percent_score", "Urban Other Principal Arterial Mileage in Poor Condition", "Urban Other Principal Arterial Mileage",
+  "state_avg_congestion_hours_score", "Peak Hours Spent in Congestion", "Auto Commuter Count",
+  "poor_bridges_percent_score", "Number of Poor Bridges", "Total Number of Bridges",
+  "rural_fatalities_per_100m_VMT_score", "Rural Fatalities", "Rural Vehicles-Miles Traveled (Millions)",
+  "urban_fatalities_per_100m_VMT_score", "Urban Fatalities", "Urban Vehicles-Miles Traveled (Millions)",
+  "other_fatalities_per_100m_VMT_score", "Other Fatalities", "Other Vehicles-Miles Traveled (Millions)"
+)
+
 # Color palette (green for best (low rank/score), red for worst (high rank/score))
 rank_color_palette <- c("#1A9850", "#FEE08B", "#D73027")  # green-yellow-red
 
@@ -163,25 +179,14 @@ disp_category_choices <- c(
 )
 
 # UI
-ui <- page_fluid(
-  theme = bs_theme(
-    version = 5,  # Upgrade to Bootstrap 5
-    bootswatch = "flatly",  # Modern theme; alternatives: "cosmo", "litera", "minty"
-    base_font = font_google("Open Sans"),  # Keeps your existing font; bslib handles Google Fonts import
-    heading_font = font_google("Open Sans"),
-    font_scale = 0.85
-  ),
-  tags$style(HTML("
-    body { font-family: 'Open Sans', sans-serif; }
-    h2 { 
-      font-size: 1.5rem; /* Reduced from ~2rem (Bootstrap default) */
-      font-weight: 700; 
-    }
-    h3 { 
-      font-size: 1.2rem; /* Reduced from ~1.75rem (Bootstrap default) */
-    }
-    .leaflet-container { background: #FFFFFF; }
-    .small-legend { 
+ui <- fluidPage(
+  tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"),
+    tags$style(HTML("
+      body { font-family: 'Open Sans', sans-serif; }
+      h2 { font-weight: 700; }
+      .leaflet-container { background: #FFFFFF; }
+      .small-legend { 
       font-size: 10px;              /* text smaller   */
       line-height: 12px;
       padding: 2px 4px;
@@ -194,10 +199,8 @@ ui <- page_fluid(
       width: 10px !important;
       height: 10px !important;
     }
-    .reactable { font-size: 12px; } /* Adjust reactable table font size */
-    .plotly .main-svg { font-size: 12px !important; } /* Adjust plotly text */
-    .leaflet-tooltip { font-size: 10px !important; } /* Adjust map tooltip text */
-  ")),  # Your custom CSS can stay; no need for separate Google Fonts link
+    "))
+  ),
   fluidRow(
     column(10, h2("Annual Highway Report Dashboard")),
     column(2)
@@ -318,23 +321,30 @@ server <- function(input, output, session) {
   
   # Global min/max for scores per category/year
   global_stats <- reactive({
-    year_val <- input$year_select_map
     cat_val <- input$category_select_map
     
     if (cat_val %in% category_choices[3:length(category_choices)]) {
       df_all <- individual %>%
-        filter(year == year_val, key_metrics == cat_val)
+        filter(key_metrics == cat_val)
       overall_min <- min(c(df_all$value, df_all$exp_value), na.rm = TRUE)
       overall_max <- max(c(df_all$value, df_all$exp_value), na.rm = TRUE)
+      num_min <- min(df_all$numerator, na.rm = TRUE)
+      num_max <- max(df_all$numerator, na.rm = TRUE)
+      denom_min <- min(df_all$denominator, na.rm = TRUE)
+      denom_max <- max(df_all$denominator, na.rm = TRUE)
       list(
         score_min = min(df_all$relative_score, na.rm = TRUE),
         score_max = max(df_all$relative_score, na.rm = TRUE),
         overall_min = overall_min,
-        overall_max = overall_max
+        overall_max = overall_max,
+        num_min = num_min,
+        num_max = num_max,
+        denom_min = denom_min,
+        denom_max = denom_max
       )
     } else if (cat_val == "state_mileage") {
       df_all <- mileage %>%
-        filter(year == year_val, state != "United States")
+        filter(state != "United States")
       overall_min <- min(c(df_all$SHA_miles, df_all$state_tot_lane_miles), na.rm = TRUE)
       overall_max <- max(c(df_all$SHA_miles, df_all$state_tot_lane_miles), na.rm = TRUE)
       list(
@@ -433,11 +443,33 @@ server <- function(input, output, session) {
     if (cat_val %in% category_choices[3:length(category_choices)]) {
       # Individual metrics
       value_col_name <- value_col_names[[cat_val]]
+      num_name <- num_denom_map %>% filter(score == cat_val) %>% pull(num)
+      denom_name <- num_denom_map %>% filter(score == cat_val) %>% pull(denom)
+      
       df <- individual %>%
         filter(year == year_val, key_metrics == cat_val) %>%
-        select(State = state, Year = year, Value = value, `Average/Expected Value` = exp_value,
+        select(State = state, Year = year, Num = numerator, Denom = denominator, Value = value, `Average/Expected Value` = exp_value,
                `Relative Score` = relative_score, Rank = rank) %>%
-        rename(!!value_col_name := Value)
+        rename(!!num_name := Num, !!denom_name := Denom, !!value_col_name := Value)
+      
+      if (state_val == "All States") {
+        total_row <- tibble(State = "Total", Year = as.numeric(year_val),
+                            !!num_name := sum(df[[num_name]], na.rm = TRUE),
+                            !!denom_name := sum(df[[denom_name]], na.rm = TRUE),
+                            !!value_col_name := NA_real_,
+                            `Average/Expected Value` = NA_real_,
+                            `Relative Score` = NA_real_,
+                            Rank = NA_real_)
+        average_row <- tibble(State = "Average", Year = as.numeric(year_val),
+                              !!num_name := mean(df[[num_name]], na.rm = TRUE),
+                              !!denom_name := mean(df[[denom_name]], na.rm = TRUE),
+                              !!value_col_name := NA_real_,
+                              `Average/Expected Value` = NA_real_,
+                              `Relative Score` = NA_real_,
+                              Rank = NA_real_)
+        df <- bind_rows(total_row, average_row, df)
+      }
+      
     } else if (cat_val == "all_rankings") {
       # All Rankings
       df <- rankings %>%
@@ -494,19 +526,31 @@ server <- function(input, output, session) {
     if (cat_val %in% c("capital_disbursement_perlm_score", "maintenance_disbursement_perlm_score",
                        "admin_disbursement_perlm_score", "other_disbursement_perlm_score")) {
       value_col_name <- value_col_names[[cat_val]]
+      num_name <- num_denom_map %>% filter(score == cat_val) %>% pull(num)
+      denom_name <- num_denom_map %>% filter(score == cat_val) %>% pull(denom)
       
       columns_list <- list()
-      columns_list[[value_col_name]] <- colDef(
-        format = colFormat(prefix = "$", separators = TRUE, digits = 0),
+      columns_list[[num_name]] <- colDef(
         cell = function(value) {
-          label <- scales::dollar(value, accuracy = 1, big.mark = ",")
+          label <- label_currency(accuracy = 1, scale = 1/1e6, suffix = "M", big.mark = ",")(value)
+          bar_cell(label, value, stats$num_min, stats$num_max)
+        }
+      )
+      columns_list[[denom_name]] <- colDef(
+        cell = function(value) {
+          label <- label_number(accuracy = 1, big.mark = ",")(value)
+          bar_cell(label, value, stats$denom_min, stats$denom_max)
+        }
+      )
+      columns_list[[value_col_name]] <- colDef(
+        cell = function(value) {
+          label <- label_currency(accuracy = 1, big.mark = ",")(value)
           bar_cell(label, value, stats$overall_min, stats$overall_max)
         }
       )
       columns_list[["Average/Expected Value"]] <- colDef(
-        format = colFormat(prefix = "$", separators = TRUE, digits = 0),
         cell = function(value) {
-          label <- scales::dollar(value, accuracy = 1, big.mark = ",")
+          label <- label_currency(accuracy = 1, big.mark = ",")(value)
           bar_cell(label, value, stats$overall_min, stats$overall_max)
         }
       )
@@ -523,8 +567,22 @@ server <- function(input, output, session) {
     } else if (cat_val %in% c("rural_interstate_poor_percent_score", "urban_interstate_poor_percent_score",
                               "rural_OPA_poor_percent_score", "urban_OPA_poor_percent_score")) {
       value_col_name <- value_col_names[[cat_val]]
+      num_name <- num_denom_map %>% filter(score == cat_val) %>% pull(num)
+      denom_name <- num_denom_map %>% filter(score == cat_val) %>% pull(denom)
       
       columns_list <- list()
+      columns_list[[num_name]] <- colDef(
+        cell = function(value) {
+          label <- label_number(accuracy = 1, big.mark = ",")(value)
+          bar_cell(label, value, stats$num_min, stats$num_max)
+        }
+      )
+      columns_list[[denom_name]] <- colDef(
+        cell = function(value) {
+          label <- label_number(accuracy = 1, big.mark = ",")(value)
+          bar_cell(label, value, stats$denom_min, stats$denom_max)
+        }
+      )
       columns_list[[value_col_name]] <- colDef(
         format = colFormat(suffix = "%", digits = 2),
         cell = function(value) {
@@ -551,8 +609,22 @@ server <- function(input, output, session) {
                 columns = columns_list)
     } else if (cat_val == "state_avg_congestion_hours_score") {
       value_col_name <- value_col_names[[cat_val]]
+      num_name <- num_denom_map %>% filter(score == cat_val) %>% pull(num)
+      denom_name <- num_denom_map %>% filter(score == cat_val) %>% pull(denom)
       
       columns_list <- list()
+      columns_list[[num_name]] <- colDef(
+        cell = function(value) {
+          label <- label_number(accuracy = 1, big.mark = ",")(value)
+          bar_cell(label, value, stats$num_min, stats$num_max)
+        }
+      )
+      columns_list[[denom_name]] <- colDef(
+        cell = function(value) {
+          label <- label_number(accuracy = 1, big.mark = ",")(value)
+          bar_cell(label, value, stats$denom_min, stats$denom_max)
+        }
+      )
       columns_list[[value_col_name]] <- colDef(
         format = colFormat(digits = 1),
         cell = function(value) {
@@ -579,8 +651,22 @@ server <- function(input, output, session) {
                 columns = columns_list)
     } else if (cat_val == "poor_bridges_percent_score") {
       value_col_name <- value_col_names[[cat_val]]
+      num_name <- num_denom_map %>% filter(score == cat_val) %>% pull(num)
+      denom_name <- num_denom_map %>% filter(score == cat_val) %>% pull(denom)
       
       columns_list <- list()
+      columns_list[[num_name]] <- colDef(
+        cell = function(value) {
+          label <- label_number(accuracy = 1, big.mark = ",")(value)
+          bar_cell(label, value, stats$num_min, stats$num_max)
+        }
+      )
+      columns_list[[denom_name]] <- colDef(
+        cell = function(value) {
+          label <- label_number(accuracy = 1, big.mark = ",")(value)
+          bar_cell(label, value, stats$denom_min, stats$denom_max)
+        }
+      )
       columns_list[[value_col_name]] <- colDef(
         format = colFormat(suffix = "%", digits = 2),
         cell = function(value) {
@@ -608,8 +694,22 @@ server <- function(input, output, session) {
     } else if (cat_val %in% c("rural_fatalities_per_100m_VMT_score", "urban_fatalities_per_100m_VMT_score",
                               "other_fatalities_per_100m_VMT_score")) {
       value_col_name <- value_col_names[[cat_val]]
+      num_name <- num_denom_map %>% filter(score == cat_val) %>% pull(num)
+      denom_name <- num_denom_map %>% filter(score == cat_val) %>% pull(denom)
       
       columns_list <- list()
+      columns_list[[num_name]] <- colDef(
+        cell = function(value) {
+          label <- label_number(accuracy = 1, big.mark = ",")(value)
+          bar_cell(label, value, stats$num_min, stats$num_max)
+        }
+      )
+      columns_list[[denom_name]] <- colDef(
+        cell = function(value) {
+          label <- label_number(accuracy = 1, suffix = "M", big.mark = ",")(value)
+          bar_cell(label, value, stats$denom_min, stats$denom_max)
+        }
+      )
       columns_list[[value_col_name]] <- colDef(
         format = colFormat(digits = 2),
         cell = function(value) {
