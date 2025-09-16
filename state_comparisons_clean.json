@@ -1,0 +1,575 @@
+{
+  "Alabama": {
+    "neighboring_states": [
+      "Florida",
+      "Georgia",
+      "Mississippi",
+      "Arkansas",
+      "South Carolina"
+    ],
+    "similarly_populated_states": [
+      "Kentucky",
+      "Louisiana"
+    ]
+  },
+  "Alaska": {
+    "neighboring_states": [
+      "Washington",
+      "Wyoming",
+      "Oregon",
+      "Idaho",
+      "Hawaii",
+      "Montana"
+    ],
+    "similarly_populated_states": [
+      "North Dakota",
+      "Vermont"
+    ]
+  },
+  "Arizona": {
+    "neighboring_states": [
+      "New Mexico",
+      "Colorado",
+      "Utah"
+    ],
+    "similarly_populated_states": [
+      "Tennessee",
+      "Washington"
+    ]
+  },
+  "Arkansas": {
+    "neighboring_states": [],
+    "similarly_populated_states": [
+      "Kansas",
+      "Iowa"
+    ]
+  },
+  "California": {
+    "neighboring_states": [
+      "Washington",
+      "Arizona",
+      "Nevada",
+      "Oregon"
+    ],
+    "similarly_populated_states": [
+      "Florida",
+      "Texas"
+    ]
+  },
+  "Colorado": {
+    "neighboring_states": [],
+    "similarly_populated_states": [
+      "Minnesota",
+      "Wisconsin"
+    ]
+  },
+  "Connecticut": {
+    "neighboring_states": [],
+    "similarly_populated_states": [
+      "Utah",
+      "Iowa",
+      "Oregon",
+      "Oklahoma"
+    ]
+  },
+  "Delaware": {
+    "neighboring_states": [
+      "Pennsylvania",
+      "Virginia",
+      "Maryland",
+      "New Jersey"
+    ],
+    "similarly_populated_states": [
+      "Rhode Island",
+      "South Dakota"
+    ]
+  },
+  "Florida": {
+    "neighboring_states": [
+      "Georgia",
+      "Mississippi",
+      "South Carolina",
+      "Alabama"
+    ],
+    "similarly_populated_states": [
+      "Texas",
+      "New York"
+    ]
+  },
+  "Georgia": {
+    "neighboring_states": [
+      "Tennessee",
+      "Mississippi",
+      "South Carolina",
+      "Alabama"
+    ],
+    "similarly_populated_states": [
+      "Ohio",
+      "North Carolina"
+    ]
+  },
+  "Hawaii": {
+    "neighboring_states": [
+      "Washington",
+      "California",
+      "Alaska",
+      "Oregon"
+    ],
+    "similarly_populated_states": [
+      "New Hampshire",
+      "West Virginia"
+    ]
+  },
+  "Idaho": {
+    "neighboring_states": [
+      "Washington",
+      "Oregon",
+      "Nevada",
+      "Montana",
+      "Utah"
+    ],
+    "similarly_populated_states": [
+      "Nebraska",
+      "West Virginia"
+    ]
+  },
+  "Illinois": {
+    "neighboring_states": [],
+    "similarly_populated_states": [
+      "Ohio",
+      "Pennsylvania"
+    ]
+  },
+  "Indiana": {
+    "neighboring_states": [
+      "Illinois",
+      "Michigan",
+      "Ohio",
+      "Kentucky"
+    ],
+    "similarly_populated_states": [
+      "Missouri",
+      "Massachusetts"
+    ]
+  },
+  "Iowa": {
+    "neighboring_states": [
+      "Dakota",
+      "Illinois",
+      "Missouri",
+      "Minnesota",
+      "Nebraska",
+      "Wisconsin"
+    ],
+    "similarly_populated_states": [
+      "Utah",
+      "Connecticut"
+    ]
+  },
+  "Kansas": {
+    "neighboring_states": [],
+    "similarly_populated_states": [
+      "Mississippi",
+      "Arkansas"
+    ]
+  },
+  "Kentucky": {
+    "neighboring_states": [
+      "Illinois",
+      "Indiana",
+      "Tennessee",
+      "Virginia",
+      "West Virginia"
+    ],
+    "similarly_populated_states": [
+      "Oregon",
+      "Louisiana"
+    ]
+  },
+  "Louisiana": {
+    "neighboring_states": [],
+    "similarly_populated_states": [
+      "South Carolina",
+      "Kentucky"
+    ]
+  },
+  "Maine": {
+    "neighboring_states": [
+      "Massachusetts",
+      "Vermont",
+      "New Hampshire"
+    ],
+    "similarly_populated_states": [
+      "Hawaii",
+      "Montana"
+    ]
+  },
+  "Maryland": {
+    "neighboring_states": [
+      "Delaware",
+      "Pennsylvania",
+      "Virginia",
+      "West Virginia"
+    ],
+    "similarly_populated_states": [
+      "Missouri",
+      "Wisconsin"
+    ]
+  },
+  "Massachusetts": {
+    "neighboring_states": [],
+    "similarly_populated_states": [
+      "Tennessee",
+      "Indiana"
+    ]
+  },
+  "Michigan": {
+    "neighboring_states": [
+      "Ohio",
+      "Wisconsin",
+      "Indiana"
+    ],
+    "similarly_populated_states": [
+      "New Jersey",
+      "North Carolina"
+    ]
+  },
+  "Minnesota": {
+    "neighboring_states": [
+
+      "Iowa",
+      "North Dakota",
+      "South Dakota",
+      "Wisconsin"
+    ],
+    "similarly_populated_states": [
+      "Colorado",
+      "South Carolina"
+    ]
+  },
+  "Mississippi": {
+    "neighboring_states": [
+      "Louisiana",
+      "Tennessee",
+      "Arkansas",
+      "Alabama"
+    ],
+    "similarly_populated_states": [
+      "Kansas",
+      "New Mexico"
+    ]
+  },
+  "Missouri": {
+    "neighboring_states": [
+      "Illinois",
+      "Iowa",
+      "Nebraska",
+      "Kentucky"
+    ],
+    "similarly_populated_states": [
+      "Indiana",
+      "Maryland"
+    ]
+  },
+  "Montana": {
+    "neighboring_states": [
+      "Washington",
+      "Wyoming",
+      "Idaho",
+      "South Dakota",
+      "North Dakota"
+    ],
+    "similarly_populated_states": [
+      "Maine",
+      "West Virginia"
+    ]
+  },
+  "Nebraska": {
+    "neighboring_states": [
+      "Missouri",
+      "Iowa",
+      "Wyoming",
+      "South Dakota",
+      "Colorado"
+    ],
+    "similarly_populated_states": [
+      "New Mexico",
+      "Idaho"
+    ]
+  },
+  "Nevada": {
+    "neighboring_states": [
+      "California",
+      "Idaho",
+      "Arizona",
+      "Oregon",
+      "Utah"
+    ],
+    "similarly_populated_states": [
+      "Iowa",
+      "Kansas"
+    ]
+  },
+  "New Hampshire": {
+    "neighboring_states": [
+      "Connecticut",
+      "Vermont",
+      "Maine"
+    ],
+    "similarly_populated_states": [
+      "West Virginia",
+      "Montana"
+    ]
+  },
+  "New Jersey": {
+    "neighboring_states": [
+      "Delaware",
+      "New York",
+      "Pennsylvania",
+      "Connecticut",
+      "Maryland"
+    ],
+    "similarly_populated_states": [
+      "Virginia",
+      "Michigan"
+    ]
+  },
+  "New Mexico": {
+    "neighboring_states": [
+      "Oklahoma",
+      "Arizona",
+      "Colorado",
+      "Utah"
+    ],
+    "similarly_populated_states": [
+      "Nebraska",
+      "Mississippi"
+    ]
+  },
+  "New York": {
+    "neighboring_states": [
+      "Vermont",
+      "Pennsylvania",
+      "Connecticut",
+      "New Jersey"
+    ],
+    "similarly_populated_states": [
+      "Florida",
+      "Pennsylvania"
+    ]
+  },
+  "North Carolina": {
+    "neighboring_states": [
+      "Georgia",
+      "Tennessee",
+      "Virginia",
+      "South Carolina"
+    ],
+    "similarly_populated_states": [
+      "Georgia",
+      "Michigan"
+    ]
+  },
+  "North Dakota": {
+    "neighboring_states": [
+      "Nebraska",
+      "Montana",
+      "Minnesota"
+    ],
+    "similarly_populated_states": [
+      "South Dakota",
+      "Alaska"
+    ]
+  },
+  "Ohio": {
+    "neighboring_states": [
+      "Pennsylvania",
+      "Indiana",
+      "Michigan",
+      "West Virginia",
+      "Kentucky"
+    ],
+    "similarly_populated_states": [
+      "Georgia",
+      "Illinois"
+    ]
+  },
+  "Oklahoma": {
+    "neighboring_states": [
+      "Missouri",
+      "Colorado",
+      "New Mexico"
+    ],
+    "similarly_populated_states": [
+      "Connecticut",
+      "Oregon"
+    ]
+  },
+  "Oregon": {
+    "neighboring_states": [
+      "Washington",
+      "California",
+      "Idaho",
+      "Nevada"
+    ],
+    "similarly_populated_states": [
+      "Oklahoma",
+      "Kentucky"
+    ]
+  },
+  "Pennsylvania": {
+    "neighboring_states": [
+      "Delaware",
+      "Ohio",
+      "West Virginia",
+      "Maryland",
+      "New Jersey"
+    ],
+    "similarly_populated_states": [
+      "New York",
+      "Illinois"
+    ]
+  },
+  "Rhode Island": {
+    "neighboring_states": [
+      "Massachusetts",
+      "New York",
+      "Connecticut"
+    ],
+    "similarly_populated_states": [
+      "Montana",
+      "Delaware"
+    ]
+  },
+  "South Carolina": {
+    "neighboring_states": [
+      "Georgia",
+      "Tennessee",
+      "North Carolina"
+    ],
+    "similarly_populated_states": [
+      "Alabama",
+      "Minnesota"
+    ]
+  },
+  "South Dakota": {
+    "neighboring_states": [
+      "Iowa",
+      "Minnesota",
+      "Wyoming",
+      "Nebraska",
+      "North Dakota",
+      "Montana"
+    ],
+    "similarly_populated_states": [
+      "Delaware",
+      "North Dakota"
+    ]
+  },
+  "Tennessee": {
+    "neighboring_states": [
+      "Georgia",
+      "Mississippi",
+      "North Carolina",
+      "Alabama",
+      "Kentucky"
+    ],
+    "similarly_populated_states": [
+      "Arizona",
+      "Massachusetts"
+    ]
+  },
+  "Texas": {
+    "neighboring_states": [],
+    "similarly_populated_states": [
+      "California",
+      "Florida"
+    ]
+  },
+  "Utah": {
+    "neighboring_states": [
+      "Wyoming",
+      "Idaho",
+      "Colorado",
+      "Arizona",
+      "Nevada"
+    ],
+    "similarly_populated_states": [
+      "Connecticut",
+      "Iowa"
+    ]
+  },
+  "Vermont": {
+    "neighboring_states": [
+      "New York",
+      "New Hampshire"
+    ],
+    "similarly_populated_states": [
+      "Alaska",
+      "Wyoming"
+    ]
+  },
+  "Virginia": {
+    "neighboring_states": [
+      "Tennessee",
+      "North Carolina",
+      "West Virginia",
+      "Maryland",
+      "Kentucky"
+    ],
+    "similarly_populated_states": [
+      "New Jersey",
+      "Washington"
+    ]
+  },
+  "Washington": {
+    "neighboring_states": [
+      "California",
+      "Oregon",
+      "Idaho",
+      "Montana"
+    ],
+    "similarly_populated_states": [
+      "Virginia",
+      "Arizona"
+    ]
+  },
+  "West Virginia": {
+    "neighboring_states": [
+      "Pennsylvania",
+      "Virginia",
+      "Ohio",
+      "Maryland",
+      "Kentucky"
+    ],
+    "similarly_populated_states": [
+      "Idaho",
+      "New Hampshire"
+    ]
+  },
+  "Wisconsin": {
+    "neighboring_states": [
+      "Illinois",
+      "Iowa",
+      "Minnesota"
+    ],
+    "similarly_populated_states": [
+      "Maryland",
+      "Colorado"
+    ]
+  },
+  "Wyoming": {
+    "neighboring_states": [
+      "Idaho",
+      "Nebraska",
+      "South Dakota",
+      "Colorado",
+      "Montana",
+      "Utah"
+    ],
+    "similarly_populated_states": [
+      "Vermont",
+      "Alaska"
+    ]
+  }
+}
