@@ -38,7 +38,12 @@
     ]
   },
   "Arkansas": {
-    "neighboring_states": [],
+    "neighboring_states": [
+      "Oklahoma",
+      "Louisiana",
+      "Tennessee"
+
+    ],
     "similarly_populated_states": [
       "Kansas",
       "Iowa"
@@ -57,14 +62,27 @@
     ]
   },
   "Colorado": {
-    "neighboring_states": [],
+    "neighboring_states": [
+      "Utah",
+      "Wyoming",
+      "Kansas",
+      "Arizona",
+      "Nebraska",
+      "New Mexico"
+    ],
     "similarly_populated_states": [
       "Minnesota",
       "Wisconsin"
     ]
   },
   "Connecticut": {
-    "neighboring_states": [],
+    "neighboring_states": [
+      "New Hampshire",
+      "Massachusetts",
+      "Rhode Island",
+      "New York"
+
+    ],
     "similarly_populated_states": [
       "Utah",
       "Iowa",
@@ -134,7 +152,16 @@
     ]
   },
   "Illinois": {
-    "neighboring_states": [],
+    "neighboring_states": [
+      "Missouri",
+      "Kentucky",
+      "Mississippi",
+      "Indiana",
+      "Wisconsin",
+      "Arkansas",
+      "Iowa"
+
+    ],
     "similarly_populated_states": [
       "Ohio",
       "Pennsylvania"
@@ -167,7 +194,12 @@
     ]
   },
   "Kansas": {
-    "neighboring_states": [],
+    "neighboring_states": [
+      "Nebraska",
+      "Oklahoma",
+      "Colorado",
+      "Missouri"
+    ],
     "similarly_populated_states": [
       "Mississippi",
       "Arkansas"
@@ -187,7 +219,11 @@
     ]
   },
   "Louisiana": {
-    "neighboring_states": [],
+    "neighboring_states": [
+      "Mississippi",
+      "Texas",
+      "Arkansas"
+    ],
     "similarly_populated_states": [
       "South Carolina",
       "Kentucky"
@@ -217,7 +253,14 @@
     ]
   },
   "Massachusetts": {
-    "neighboring_states": [],
+    "neighboring_states": [
+      "Rhode Island",
+      "Vermont",
+      "New York",
+      "Connecticut",
+      "New Hampshire"
+
+    ],
     "similarly_populated_states": [
       "Tennessee",
       "Indiana"
@@ -480,7 +523,12 @@
     ]
   },
   "Texas": {
-    "neighboring_states": [],
+    "neighboring_states": [
+      "Arkansas",
+      "New Mexico",
+      "Oklahoma",
+      "Louisiana"
+    ],
     "similarly_populated_states": [
       "California",
       "Florida"
