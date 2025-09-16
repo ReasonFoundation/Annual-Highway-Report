@@ -1,0 +1,296 @@
+,urban_area,delay_2022
+1,Chicago IL,155
+3,Boston MA,134
+4,New York City NY,117
+7,Philadelphia PA,114
+8,Miami FL,105
+13,Los Angeles CA,95
+14,San Francisco CA,97
+19,Washington DC,83
+26,Houston TX,74
+27,Atlanta GA,74
+33,New Orleans LA,77
+36,Portland OR,72
+41,Stamford CT,73
+53,Dallas TX,56
+62,Baltimore MD,55
+66,San Diego CA,54
+68,Denver CO,54
+79,Austin TX,53
+92,Seattle WA,46
+109,Concord CA,54
+123,Providence RI,42
+126,Las Vegas NV,41
+130,Nashville TN,41
+162,Sacramento CA,36
+174,San Juan PR,41
+191,Pittsburgh PA,34
+203,San Antonio TX,32
+210,Milwaukee WI,32
+225,Tampa FL,30
+252,Hartford CT,30
+271,Phoenix AZ,26
+282,Minneapolis MN,26
+289,Sarasota/Bradenton FL,36
+307,Baton Rouge LA,28
+317,Charlotte NC,25
+329,Framingham MA,32
+338,Eugene OR,28
+342,Hilo HI,29
+347,Indianapolis IN,24
+348,Detroit MI,23
+351,Oceanside CA,29
+358,Jacksonville FL,24
+360,Lawrence MA,30
+365,Birmingham AL,24
+372,Santa Cruz CA,26
+378,Bridgeport CT,28
+379,McAllen TX,24
+383,Fort Myers FL,29
+386,Savannah GA,25
+394,Richmond VA,23
+405,Tucson AZ,23
+407,Worcester MA,23
+410,Greenville SC,23
+411,Allentown PA,23
+416,Clearwater/St. Petersburg FL,26
+431,San Rafael CA,28
+434,Escondido CA,25
+438,Honolulu HI,22
+441,Cleveland OH,20
+447,Tallahassee FL,23
+452,Naples FL,23
+456,Boulder CO,23
+468,Lancaster PA,22
+471,Lexington KY,22
+475,Albuquerque NM,20
+484,Bend OR,23
+485,Vacaville CA,24
+487,Gainesville FL,22
+496,Spokane WA,20
+504,Port St. Lucie FL,22
+507,Columbus OH,18
+509,Watsonville CA,24
+514,Wilmington NC,20
+520,Missoula MT,22
+522,Pensacola FL,19
+524,Lowell MA,22
+526,Bozeman MT,22
+528,Grand Rapids MI,18
+530,St. Louis MO,17
+533,Salem OR,19
+537,Fredericksburg VA,24
+540,Kansas City MO,17
+545,Colombia SC,20
+556,Reno NV,18
+560,New Bedford MA,20
+568,Charleston SC,17
+571,Davis CA,20
+575,Schenectady NY,20
+580,Gresham OR,19
+581,North Charleston SC,19
+592,Wilmington DE,19
+594,Napa CA,18
+595,Oxnard CA,16
+601,Lakeland FL,16
+603,Monterey CA,20
+604,Madison WI,16
+605,Durham NC,16
+611,Gainesville GA,17
+612,Santa Rosa CA,16
+613,Danbury CT,18
+615,Oklahoma City OK,14
+616,Panama City FL,17
+618,Raleigh NC,14
+621,Frederick MD,18
+627,Ocala FL,16
+628,Fresno CA,14
+632,Omaha NE,14
+633,Meriden CT,18
+635,Strathearn CA,17
+636,New Haven CT,14
+644,Ogden UT,14
+645,Provo UT,14
+646,Tacoma WA,16
+649,New Braunfels TX,17
+652,Salinas CA,14
+663,Bakersfield CA,13
+678,Dublin CA,16
+679,Myrtle Beach SC,13
+680,Santa Fe NM,14
+681,Mobile AL,13
+682,Ocean Township NJ,17
+683,Manchester NH,13
+688,Salt Lake City UT,12
+690,Roanoke VA,13
+691,Waterbury CT,14
+692,Spartanburg SC,13
+694,Winter Haven FL,16
+699,Hagerstown MD,13
+701,Melbourne FL,14
+702,Stuart FL,17
+704,Hammond IN,14
+705,Augusta GA,13
+708,Orlando FL,11
+712,Cincinnati OH,11
+719,Fairfield CA,13
+722,Everett WA,13
+725,Manassas VA,14
+729,Louisville KY,11
+730,Greeley CO,12
+731,New Port Richey FL,16
+733,Toms River NJ,13
+734,Olympia WA,12
+737,Kaneohe HI,14
+739,Norfolk VA,12
+740,Brick NJ,13
+744,North Chicago IL,14
+745,Albany NY,11
+746,Charlottesville VA,12
+748,Athens AL,14
+751,Stockton CA,11
+753,Springfield MA,11
+756,West Chester PA,14
+757,Wheeling WV,12
+760,Fort Pierce FL,13
+765,Freehold Township NJ,13
+767,Dana Point CA,13
+768,Conroe TX,12
+770,Tuscaloosa AL,11
+774,Las Cruces NM,11
+776,Saginaw MI,11
+777,Billings MT,11
+778,Greenville NC,11
+781,Egg Harbor Township NJ,12
+782,Surprise AZ,11
+785,Chattanooga TN,10
+786,Lansing MI,10
+787,Cleveland TN,11
+789,Colombia MD,11
+794,Erie PA,10
+795,Lodi CA,11
+796,Winston-Salem NC,10
+797,Memphis TN,8
+799,Cocoa FL,12
+800,Elyria OH,11
+801,Buffalo NY,8
+804,Fitchburg MA,11
+805,Auburn CA,12
+807,Colorado Springs CO,8
+808,Syracuse NY,8
+809,Toledo OH,8
+810,Elgin IL,10
+811,Woodbridge VA,13
+812,Fayetteville NC,8
+813,Huntsville AL,8
+814,Nashua NH,10
+816,Vallejo CA,8
+817,Corpus Christi TX,8
+818,Fort Wayne IN,8
+820,Montgomery AL,8
+821,King of Prussia PA,11
+822,Daytona Beach FL,10
+824,South Bend IN,8
+826,Bountiful UT,10
+828,St. George UT,8
+829,Lancaster CA,8
+830,Bangor ME,8
+834,Hampton VA,8
+835,Sherman TX,8
+837,Farmington NM,8
+838,Knoxville TN,7
+839,El Paso TX,7
+841,Boise ID,7
+842,Akron OH,7
+844,Des Moines IA,7
+846,Portsmouth NH,10
+850,Beaumont TX,7
+851,Ann Arbor MI,7
+852,Lincoln NE,7
+853,Delano CA,8
+856,Derby CT,10
+857,Atco NJ,10
+858,College Station TX,7
+861,Lafayette IN,7
+863,Dover DE,7
+864,Odessa TX,7
+865,New London CT,8
+866,Peekskill NY,8
+867,Antioch CA,7
+870,Fall River MA,7
+872,Buford GA,8
+873,Williamsburg VA,8
+874,Rohnert Park CA,7
+875,Portland ME,6
+876,Brownsville TX,6
+877,Columbus GA,6
+881,Kennewick-Pasco-Richland WA,6
+882,Athens GA,6
+885,High Point NC,6
+888,Patchogue NY,7
+892,Tulsa OK,5
+893,Dayton OH,5
+894,Greensboro NC,5
+897,Annapolis MD,6
+899,Rochester NH,6
+902,Joliet IL,6
+903,Lynchburg VA,5
+904,Binghamton NY,5
+905,Macon GA,5
+908,Baytown TX,5
+911,Butte MT,5
+913,Easton PA,5
+914,Bristol TN,5
+915,Little Rock AR,4
+916,Pottstown PA,5
+918,Jackson MS,4
+919,Harrisburg PA,4
+920,Reading PA,4
+921,Canton OH,4
+922,Shreveport LA,4
+923,Waco TX,4
+924,Fort Smith AR,4
+925,Delmar DE,6
+926,Denton TX,4
+928,Kenosha WI,4
+929,Parkersburg WV,4
+930,Oxford MS,4
+931,Niagara Falls NY,4
+932,Wilkes-Barre PA,4
+935,Scranton PA,2
+936,Flint MI,2
+937,Peoria IL,2
+938,Evansville IN,2
+939,Kalamazoo MI,2
+940,Appleton WI,2
+941,Pueblo CO,2
+942,Cumberland MD,2
+947,Beloit WI,2
+949,Youngstown OH,1
+950,Green Bay WI,1
+952,Atlantic City NJ,1
+953,Springfield IL,1
+954,Racine WI,1
+956,Carson City NV,1
+957,Texas City TX,1
+958,Troy AL,1
+960,Petersburg VA,1
+965,Topeka KS,0
+966,Wichita KS,0
+967,Rockford IL,0
+968,Fargo ND,0
+969,Lufkin TX,0
+970,Gary IN,0
+971,Harlingen TX,0
+976,Texarkana TX,-1
+977,Wichita Falls TX,-1
+978,Amarillo TX,-1
+979,Pine Bluff AR,-2
+980,San Angelo TX,-2
+981,Rocky Mount NC,-2
+982,Cedar Rapids IA,-2
+983,Lubbock TX,-2
+984,Rochester NY,-2
+986,Abilene TX,-5
+987,Utica NY,-5
+988,Williamsport PA,-13

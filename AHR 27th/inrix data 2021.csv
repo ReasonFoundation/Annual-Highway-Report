@@ -1,0 +1,294 @@
+city,state,hours_lost_in_congestion
+New York,NY,102
+Chicago,IL,104
+Philadelphia,PA,90
+Boston,MA,78
+Miami,FL,66
+Los Angeles,CA,62
+San Francisco,CA,64
+Houston,TX,58
+New Orleans,LA,63
+Atlanta,GA,53
+Portland,OR,48
+Dallas,TX,44
+Washington,DC,44
+Stamford,CT,46
+Denver,CO,40
+Baltimore,MD,37
+Providence,RI,38
+Port St. Lucie,FL,31
+San Diego,CA,32
+Concord,CA,40
+Austin,TX,32
+Seattle,WA,30
+Las Vegas,NV,28
+Sacramento,CA,25
+San Antonio,TX,23
+Phoenix,AZ,21
+Baton Rouge,LA,23
+Milwaukee,WI,22
+Tampa,FL,21
+Sarasota/Bradenton,FL,28
+Eugene,OR,24
+Hartford,CT,21
+Framingham,MA,26
+Lancaster,PA,22
+Bridgeport,CT,24
+Oceanside,CA,23
+Minneapolis,MN,18
+Tucson,AZ,19
+Santa Cruz,CA,21
+Spokane,WA,20
+Allentown,PA,19
+Pittsburgh,PA,18
+Pensacola,FL,20
+Birmingham,AL,18
+Jacksonville,FL,18
+Gainesville,FL,20
+Tallahassee,FL,19
+Davis,CA,22
+Fort Myers,FL,22
+Charlotte,NC,17
+Naples,FL,19
+San Rafael,CA,22
+Salem,OR,18
+Nashville,TN,16
+Greenville,SC,17
+Wilmington,NC,18
+Bozeman,MT,20
+Lawrence,MA,20
+Lexington,KY,17
+Boulder,CO,18
+Fredericksburg,VA,22
+Cleveland,OH,15
+Vacaville,CA,19
+Bend,OR,18
+Gresham,OR,18
+Savannah,GA,17
+Reno,NV,16
+Columbia,SC,18
+Missoula,MT,18
+Escondido,CA,17
+Indianapolis,IN,14
+Worcester,MA,14
+Lakeland,FL,15
+Detroit,MI,13
+North Charleston,SC,17
+Schenectady,NY,18
+McAllen,TX,14
+Panama,FL,16
+Wilmington,DE,17
+Lowell,MA,16
+Columbus,OH,13
+Kansas,MO,13
+Dublin,CA,17
+Strathearn,CA,16
+Cincinnati,OH,13
+Durham,NC,14
+Watsonville,CA,17
+Fairfield,CA,15
+Ocala,FL,14
+Provo,UT,13
+Omaha,NE,13
+Danbury,CT,15
+Mobile,AL,13
+Meriden,CT,16
+Charleston,SC,12
+Napa,CA,14
+Frederick,MD,15
+Honolulu,HI,12
+Madison,WI,12
+Greeley,CO,13
+Roanoke,VA,12
+Waterbury,CT,14
+Gainesville,GA,13
+St. Louis,MO,10
+Tacoma,WA,13
+Fort Pierce,FL,14
+Ogden,UT,11
+Salinas,CA,12
+New Bedford,MA,13
+Oklahoma,OK,10
+Brick,NJ,13
+Santa Fe,NM,12
+Myrtle Beach,SC,11
+Conroe,TX,13
+Winter Haven,FL,13
+Salt Lake,UT,10
+New Haven,CT,10
+New Braunfels,TX,12
+Everett,WA,12
+Manchester,NH,11
+Richmond,VA,10
+Hammond,IN,12
+Hagerstown,MD,11
+Stuart,FL,14
+Saginaw,MI,11
+Stockton,CA,10
+Fresno,CA,9
+Greenville,NC,11
+New Port Richey,FL,13
+Orlando,FL,9
+West Chester,PA,13
+Olympia,WA,10
+Antioch,CA,11
+Santa Rosa,CA,9
+Auburn,CA,13
+Toms River,NJ,10
+Corpus Christi,TX,9
+Cleveland,TN,10
+Billings,MT,10
+Albany,NY,9
+Freehold Township,NJ,11
+Clearwater/St. Petersburg,FL,10
+Athens,AL,11
+Memphis,TN,8
+Huntsville,AL,9
+Fayetteville,NC,9
+Oxnard,CA,8
+Kaneohe,HI,11
+Elyria,OH,10
+Norfolk,VA,9
+Colorado Springs,CO,8
+Syracuse,NY,8
+Egg Harbor Township,NJ,10
+Springfield,MA,8
+Surprise,AZ,9
+Lodi,CA,9
+Albuquerque,NM,8
+North Chicago,IL,10
+Melbourne,FL,9
+St. George,UT,9
+South Bend,IN,8
+Monterey,CA,10
+Wheeling,WV,9
+Las Cruces,NM,8
+Des Moines,IA,7
+Chattanooga,TN,8
+Bountiful,UT,9
+Bakersfield,CA,7
+Grand Rapids,MI,7
+Dana Point,CA,9
+College Station,TX,8
+Tuscaloosa,AL,7
+Bangor,ME,8
+Fitchburg,MA,9
+Louisville,KY,7
+Portsmouth,NH,9
+Farmington,NM,8
+Lincoln,NE,7
+Ocean Township,NJ,9
+Boise,ID,7
+Augusta,GA,7
+Cocoa,FL,9
+Odessa,TX,7
+Buffalo,NY,6
+Woodbridge,VA,10
+Columbia,MD,7
+Fort Wayne,IN,6
+Lafayette,IN,7
+Vallejo,CA,6
+King of Prussia,PA,8
+Nashua,NH,7
+Williamsburg,VA,8
+Winston-Salem,NC,6
+Raleigh,NC,6
+Spartanburg,SC,6
+Elgin,IL,6
+Hilo,HI,6
+Knoxville,TN,5
+Fall River,MA,6
+Daytona Beach,FL,6
+Dover,DE,6
+Toledo,OH,5
+Charlottesville,VA,6
+Buford,GA,7
+Hampton,VA,6
+Akron,OH,5
+El Paso,TX,5
+High Point,NC,6
+Derby,CT,7
+Lancaster,CA,5
+New London,CT,6
+Lansing,MI,5
+Sherman,TX,5
+Fort Smith,AR,5
+Patchogue,NY,6
+Erie,PA,5
+Brownsville,TX,4
+Binghamton,NY,5
+Manassas,VA,5
+Rohnert Park,CA,5
+Dayton,OH,4
+Atco,NJ,5
+Columbus,GA,4
+Macon,GA,4
+Tulsa,OK,4
+Bristol,TN,5
+Joliet,IL,5
+Jackson,MS,4
+Little Rock,AR,3
+Rochester,NH,4
+Peekskill,NY,5
+Portland,ME,3
+Greensboro,NC,3
+Baytown,TX,4
+Delmar,DE,6
+Beaumont,TX,3
+Lynchburg,VA,4
+Pottstown,PA,4
+Annapolis,MD,4
+Canton,OH,3
+Reading,PA,3
+Parkersburg,WV,3
+Delano,CA,4
+Easton,PA,4
+Ann Arbor,MI,3
+Harrisburg,PA,3
+Waco,TX,3
+Peoria,IL,3
+Kennewick-Pasco-Richland,WA,3
+Montgomery,AL,3
+Butte,MT,3
+Carson,NV,3
+Evansville,IN,2
+Lufkin,TX,3
+Kalamazoo,MI,2
+Oxford,MS,2
+Racine,WI,2
+Shreveport,LA,2
+Atlantic,NJ,2
+Appleton,WI,2
+Denton,TX,2
+Youngstown,OH,2
+Pueblo,CO,2
+Flint,MI,2
+Kenosha,WI,2
+Petersburg,VA,2
+Wilkes-Barre,PA,2
+Beloit,WI,2
+Athens,GA,1
+Scranton,PA,1
+Springfield,IL,1
+Pine Bluff,AR,1
+Green Bay,WI,1
+Cumberland,MD,1
+Troy,AL,0
+Texas,TX,0
+Harlingen,TX,0
+Fargo,ND,0
+Wichita Falls,TX,0
+Texarkana,TX,0
+Gary,IN,0
+Niagara Falls,NY,0
+Rochester,NY,0
+Amarillo,TX,0
+Rockford,IL,0
+Wichita,KS,0
+Topeka,KS,0
+Utica,NY,0
+Abilene,TX,0
+Lubbock,TX,0
+San Angelo,TX,0
+Rocky Mount,NC,0
+Cedar Rapids,IA,0

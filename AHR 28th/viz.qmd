@@ -1,0 +1,309 @@
+---
+title: "The 28th AHR"
+format: 
+  html:
+    toc: true
+    toc-floating: true
+    toc-title: "Contents"
+    toc-depth: 2
+    self-contained: true
+execute:
+  echo: false
+  warning: false
+  message: false
+editor: visual
+---
+
+```{r}
+#| echo: false
+library(readxl)
+library(httr)
+library(tidyr)
+library(ggplot2)
+library(stringr)
+library(dplyr)
+library(ggbump)
+library(plotly)
+library(viridisLite)
+library(maps)
+library(sf)
+library(wesanderson)
+library(DT)
+library(reactable)
+```
+
+```{r}
+sheet1 <- readxl::read_excel("AHR_data 28th_summing_components_columns.xlsx", sheet = 1)
+sheet2 <- readxl::read_excel("AHR_data 28th_summing_components_columns.xlsx", sheet = 2)
+sheet3 <- readxl::read_excel("AHR_data 28th_summing_components_columns.xlsx", sheet = 3)
+
+
+sheet1 %>% colnames() %>% sort()
+
+ranking_df <- sheet2 %>% 
+  select(state, contains("rank")) %>% 
+  pivot_longer(cols = -state, names_to = "category", values_to = "ranking") %>% 
+  mutate(category = str_replace_all(category, "_", " "),
+         category = str_to_title(category),
+         category = str_remove_all(category, "(Rank)|(Poor)"),
+         category = str_remove_all(category, "(Per 100m Vmt)|(Percent)|(Perlm)"),
+         category = str_replace_all(category, "State Avg Congestion Hours", "Congestion Hours"),
+         category = str_squish(category))   
+
+```
+
+```{r}
+sheet2 %>% colnames() %>% sort()
+```
+
+
+# Ranking and Score Table
+
+```{r}
+score_table <- sheet2 %>%
+  select(state, overall_score, rural_interstate_poor_percent_score, urban_interstate_poor_percent_score, 
+         rural_fatalities_per_100m_VMT_score, urban_fatalities_per_100m_VMT_score, poor_bridges_percent_score, 
+         state_avg_congestion_hours_score, overall_score_rank, rural_interstate_poor_percent_score_rank, 
+         urban_interstate_poor_percent_score_rank, rural_fatalities_per_100m_VMT_score_rank, 
+         urban_fatalities_per_100m_VMT_score_rank, poor_bridges_percent_score_rank, state_avg_congestion_hours_score_rank) %>%
+  arrange(desc(overall_score))
+
+# Ensure proper normalization: calculate min and max for scaling
+min_score <- min(score_table$overall_score, na.rm = TRUE)
+max_score <- max(score_table$overall_score, na.rm = TRUE)
+
+# Create a function to assign colors based on normalized scores
+color_scale_revised <- function(value) {
+  if (is.na(value)) return("transparent")
+  normalized <- (value - min_score) / (max_score - min_score)
+  rgb <- colorRamp(c("#66bb6a", "#ffeb3b", "#ef5350"))(normalized)
+  rgb <- paste("rgb(", paste(rgb, collapse = ","), ")", sep = "")
+  return(rgb)
+}
+
+# Create the Reactable Table
+reactable(
+  data = score_table,
+  filterable = TRUE,
+  defaultSorted = list(overall_score = "desc"),
+  columns = list(
+    state = colDef(name = "State"),
+    
+    overall_score = colDef(
+      name = "Overall Score",
+      format = colFormat(digits = 2),
+      style = function(value) {
+        list(background = color_scale_revised(value))
+      }
+    ),
+    
+    rural_interstate_poor_percent_score = colDef(
+      name = "Rural Interstate Poor Score",
+      format = colFormat(digits = 2),
+      style = function(value) {
+        list(background = color_scale_revised(value))
+      }
+    ),
+    
+    urban_interstate_poor_percent_score = colDef(
+      name = "Urban Interstate Poor Score",
+      format = colFormat(digits = 2),
+      style = function(value) {
+        list(background = color_scale_revised(value))
+      }
+    ),
+    
+    rural_fatalities_per_100m_VMT_score = colDef(
+      name = "Rural Fatalities Score",
+      format = colFormat(digits = 2),
+      style = function(value) {
+        list(background = color_scale_revised(value))
+      }
+    ),
+    
+    urban_fatalities_per_100m_VMT_score = colDef(
+      name = "Urban Fatalities Score",
+      format = colFormat(digits = 2),
+      style = function(value) {
+        list(background = color_scale_revised(value))
+      }
+    ),
+    
+    poor_bridges_percent_score = colDef(
+      name = "Poor Bridges Score",
+      format = colFormat(digits = 2),
+      style = function(value) {
+        list(background = color_scale_revised(value))
+      }
+    ),
+    
+    state_avg_congestion_hours_score = colDef(
+      name = "Congestion Hours Score",
+      format = colFormat(digits = 2),
+      style = function(value) {
+        list(background = color_scale_revised(value))
+      }
+    ),
+    
+    overall_score_rank = colDef(
+      name = "Overall Rank",
+      format = colFormat(digits = 0)
+    ),
+    
+    rural_interstate_poor_percent_score_rank = colDef(
+      name = "Rural Interstate Poor Rank",
+      format = colFormat(digits = 0)
+    ),
+    
+    urban_interstate_poor_percent_score_rank = colDef(
+      name = "Urban Interstate Poor Rank",
+      format = colFormat(digits = 0)
+    ),
+    
+    rural_fatalities_per_100m_VMT_score_rank = colDef(
+      name = "Rural Fatalities Rank",
+      format = colFormat(digits = 0)
+    ),
+    
+    urban_fatalities_per_100m_VMT_score_rank = colDef(
+      name = "Urban Fatalities Rank",
+      format = colFormat(digits = 0)
+    ),
+    
+    poor_bridges_percent_score_rank = colDef(
+      name = "Poor Bridges Rank",
+      format = colFormat(digits = 0)
+    ),
+    
+    state_avg_congestion_hours_score_rank = colDef(
+      name = "Congestion Hours Rank",
+      format = colFormat(digits = 0)
+    )
+  )
+)
+```
+
+
+
+```{r}
+# # Ranking Table
+# sheet2 %>% 
+#   select(state, contains("rank")) %>% 
+#   datatable()
+# 
+# # Score Rank Table
+# 
+# sheet2 %>% 
+#   select(state, contains("_score_rank")) %>% 
+#   datatable()
+```
+
+# Ranking by score map
+
+```{r}
+states_map <- st_as_sf(map("state", plot = FALSE, fill = TRUE))
+df_for_map <- ranking_df %>% 
+  pivot_wider(names_from = category, values_from = ranking) %>% 
+  filter(state != "United States") %>% 
+  mutate(state = str_to_lower(state)) %>% 
+  left_join(states_map, by = c("state" = "ID")) %>% 
+  st_as_sf() %>% 
+  #using a projected coordinate system (not longitude/latitude)
+  #(Coordinate Reference System WGS84 (crs = 4326).
+ st_transform(crs = 4326) 
+
+wes_palette <- wes_palette("Darjeeling1", n = 5, type = "continuous")
+
+
+p_map <- ggplot(data = df_for_map) +
+      geom_sf(aes(geometry = geom, fill = `Overall Score`, color = "white")) +
+      geom_sf_text(aes(geometry = geom, label = `Overall Score`), 
+                   check_overlap = TRUE, size = 3, color = "white") +
+      #scale_fill_viridis_c(option = "D", direction = -1) +  
+      scale_fill_gradientn(colors = wes_palette) +  
+      labs(title = paste("Rankings by Overall Score")) +
+      theme_minimal() +
+      theme(
+        axis.title.x = element_blank(),   
+        axis.title.y = element_blank(),  
+        axis.text.x = element_blank(),  
+        axis.text.y = element_blank(),
+        legend.position = "none")
+      
+  p_map
+
+```
+
+# Ranking Bump chart
+
+```{r}
+  d <- ranking_df %>%
+    filter(str_detect(category, "Disbursement")) %>% 
+    mutate(top_state = ifelse(ranking <= 10, "Top 10", "Others")) %>% 
+    mutate(category_wrapped = str_wrap(category, width = 10))
+
+  
+  # Get the rightmost category
+  rightmost_category <- max(d$category_wrapped)
+  
+  # Create a ggbump chart highlighting top 10 states
+  p <- d %>%
+    ggplot(aes(x = category_wrapped, y = ranking, group = state, 
+               color = top_state, size = top_state,
+               text = paste("State: ", state, "<br>Category: ", category, "<br>Ranking: ", ranking))) +
+    geom_bump() +
+    geom_point(aes(color = top_state, size = top_state)) +
+    geom_text(data = d %>% filter(#category == submetric & 
+                                    top_state == "Top 10"), 
+              aes(x = rightmost_category,label = state), 
+              hjust = 0, vjust = 0.5, size = 1.5, nudge_x = 0.3) +
+    #scale_color_manual(values = c("Top 10" = line_color, "Others" = "gray")) +
+    scale_size_manual(values = c("Top 10" = 0.5, "Others" = 0.1)) +
+    theme_minimal() +
+    labs(title = paste("Rankings by Disbursement"),
+         x = "",
+         y = "") +
+    theme(
+      legend.position = "none",
+      axis.text.x = element_text(vjust = 0.5, hjust = 1)
+    )
+  
+  # Convert the ggplot2 plot to an interactive plot using plotly
+  interactive_plot <- ggplotly(p, tooltip = "text") %>% 
+    layout(hoverlabel = list(
+      bgcolor = "white",
+      font = list(size = 10)
+    ))
+  interactive_plot
+```
+
+# Bar chart on score and ranking
+
+## State Average Congestion Hours Ranking
+
+```{r}
+library(forcats)
+sheet2 %>% 
+  select(state, state_avg_congestion_hours_score, state_avg_congestion_hours_score_rank) %>% 
+  ggplot(aes(fct_reorder(state, state_avg_congestion_hours_score_rank),       state_avg_congestion_hours_score_rank))  +
+  geom_col(fill = "steelblue") +
+  coord_flip()+
+  theme_minimal()+
+  labs(x = "", y = "", 
+       title = "Ranking on Average Congestion Hours")
+```
+
+## State Average Congestion Hours Score
+
+```{r}
+sheet2 %>% 
+  select(state, state_avg_congestion_hours_score, state_avg_congestion_hours_score_rank) %>% 
+  ggplot(aes(fct_reorder(state, state_avg_congestion_hours_score),       state_avg_congestion_hours_score))  +
+  geom_col(fill = "steelblue") +
+  coord_flip()+
+  theme_minimal()+
+  labs(x = "", y = "", 
+       title = "State Average Congestion Hours")
+```
+
+
