@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b036b7a6-30a7-42d1-9ec6-30314e0e74e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/AHR_50states.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AHR_data 28th.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extract_comparisons.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AHR_data 28th.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/AHR_data 28th.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AHR_data 29th.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/AHR_data 29th.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/main.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/alaska_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/alaska_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/florida_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/florida_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/ohio_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/ohio_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/texas_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/texas_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/virginia_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/virginia_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/~$aska_highway_report.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/state_comparisons_clean.json" beforeDir="false" afterPath="$PROJECT_DIR$/state_comparisons_clean.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +47,7 @@
     "Python.extract_comparisons.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "generate-state-vignettes",
     "last_opened_file_path": "/Users/tn/Desktop/REASON/AHR_50states",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -80,7 +80,7 @@
       <updated>1753902308521</updated>
       <workItem from="1753902310213" duration="6617000" />
       <workItem from="1753988678301" duration="7450000" />
-      <workItem from="1757943128249" duration="24785000" />
+      <workItem from="1757943128249" duration="35006000" />
     </task>
     <servers />
   </component>
