@@ -1,0 +1,701 @@
+state,metric,rank_29th,rank_30th,rank_change,movement
+Illinois,admin_disbursement_perlm_score,27,19,-8,moved up
+Alabama,admin_disbursement_perlm_score,41,34,-7,moved up
+Ohio,admin_disbursement_perlm_score,30,23,-7,moved up
+California,admin_disbursement_perlm_score,35,29,-6,moved up
+Utah,admin_disbursement_perlm_score,20,14,-6,moved up
+Hawaii,admin_disbursement_perlm_score,29,24,-5,moved up
+New York,admin_disbursement_perlm_score,43,38,-5,moved up
+Rhode Island,admin_disbursement_perlm_score,18,13,-5,moved up
+Texas,admin_disbursement_perlm_score,37,32,-5,moved up
+Connecticut,admin_disbursement_perlm_score,16,12,-4,moved up
+Michigan,admin_disbursement_perlm_score,12,8,-4,moved up
+Colorado,admin_disbursement_perlm_score,33,30,-3,moved up
+Maryland,admin_disbursement_perlm_score,36,33,-3,moved up
+Mississippi,admin_disbursement_perlm_score,8,5,-3,moved up
+South Dakota,admin_disbursement_perlm_score,44,41,-3,moved up
+Arizona,admin_disbursement_perlm_score,48,46,-2,moved up
+Georgia,admin_disbursement_perlm_score,24,22,-2,moved up
+New Mexico,admin_disbursement_perlm_score,47,45,-2,moved up
+North Dakota,admin_disbursement_perlm_score,9,7,-2,moved up
+Indiana,admin_disbursement_perlm_score,17,16,-1,moved up
+Missouri,admin_disbursement_perlm_score,5,4,-1,moved up
+Nevada,admin_disbursement_perlm_score,49,48,-1,moved up
+New Hampshire,admin_disbursement_perlm_score,45,44,-1,moved up
+South Carolina,admin_disbursement_perlm_score,4,3,-1,moved up
+Vermont,admin_disbursement_perlm_score,50,49,-1,moved up
+Kentucky,admin_disbursement_perlm_score,1,1,0,no change
+Louisiana,admin_disbursement_perlm_score,2,2,0,no change
+Nebraska,admin_disbursement_perlm_score,25,25,0,no change
+New Jersey,admin_disbursement_perlm_score,31,31,0,no change
+Oregon,admin_disbursement_perlm_score,40,40,0,no change
+Delaware,admin_disbursement_perlm_score,46,47,1,moved down
+Florida,admin_disbursement_perlm_score,19,20,1,moved down
+Iowa,admin_disbursement_perlm_score,26,27,1,moved down
+Oklahoma,admin_disbursement_perlm_score,42,43,1,moved down
+Virginia,admin_disbursement_perlm_score,10,11,1,moved down
+Kansas,admin_disbursement_perlm_score,34,36,2,moved down
+Arkansas,admin_disbursement_perlm_score,6,9,3,moved down
+North Carolina,admin_disbursement_perlm_score,3,6,3,moved down
+West Virginia,admin_disbursement_perlm_score,7,10,3,moved down
+Idaho,admin_disbursement_perlm_score,14,18,4,moved down
+Maine,admin_disbursement_perlm_score,11,15,4,moved down
+Massachusetts,admin_disbursement_perlm_score,38,42,4,moved down
+Wyoming,admin_disbursement_perlm_score,13,17,4,moved down
+Alaska,admin_disbursement_perlm_score,21,26,5,moved down
+Pennsylvania,admin_disbursement_perlm_score,15,21,6,moved down
+Wisconsin,admin_disbursement_perlm_score,22,28,6,moved down
+Minnesota,admin_disbursement_perlm_score,32,39,7,moved down
+Montana,admin_disbursement_perlm_score,28,35,7,moved down
+Washington,admin_disbursement_perlm_score,39,50,11,moved down
+Tennessee,admin_disbursement_perlm_score,23,37,14,moved down
+New York,capital_disbursement_perlm_score,45,31,-14,moved up
+Oregon,capital_disbursement_perlm_score,40,28,-12,moved up
+Michigan,capital_disbursement_perlm_score,39,30,-9,moved up
+Vermont,capital_disbursement_perlm_score,37,29,-8,moved up
+Minnesota,capital_disbursement_perlm_score,32,25,-7,moved up
+Wisconsin,capital_disbursement_perlm_score,28,22,-6,moved up
+Alabama,capital_disbursement_perlm_score,13,8,-5,moved up
+Florida,capital_disbursement_perlm_score,43,38,-5,moved up
+Mississippi,capital_disbursement_perlm_score,21,16,-5,moved up
+North Carolina,capital_disbursement_perlm_score,8,3,-5,moved up
+Tennessee,capital_disbursement_perlm_score,17,12,-5,moved up
+Rhode Island,capital_disbursement_perlm_score,31,27,-4,moved up
+Iowa,capital_disbursement_perlm_score,42,39,-3,moved up
+Kansas,capital_disbursement_perlm_score,47,44,-3,moved up
+New Hampshire,capital_disbursement_perlm_score,18,15,-3,moved up
+Wyoming,capital_disbursement_perlm_score,24,21,-3,moved up
+Hawaii,capital_disbursement_perlm_score,9,7,-2,moved up
+Alaska,capital_disbursement_perlm_score,49,48,-1,moved up
+Kentucky,capital_disbursement_perlm_score,15,14,-1,moved up
+Connecticut,capital_disbursement_perlm_score,19,19,0,no change
+Delaware,capital_disbursement_perlm_score,5,5,0,no change
+Massachusetts,capital_disbursement_perlm_score,6,6,0,no change
+Nebraska,capital_disbursement_perlm_score,26,26,0,no change
+South Carolina,capital_disbursement_perlm_score,1,1,0,no change
+Virginia,capital_disbursement_perlm_score,2,2,0,no change
+Washington,capital_disbursement_perlm_score,50,50,0,no change
+Arkansas,capital_disbursement_perlm_score,23,24,1,moved down
+California,capital_disbursement_perlm_score,41,42,1,moved down
+Idaho,capital_disbursement_perlm_score,48,49,1,moved down
+Illinois,capital_disbursement_perlm_score,35,36,1,moved down
+Indiana,capital_disbursement_perlm_score,46,47,1,moved down
+Maine,capital_disbursement_perlm_score,22,23,1,moved down
+Missouri,capital_disbursement_perlm_score,3,4,1,moved down
+New Jersey,capital_disbursement_perlm_score,44,45,1,moved down
+New Mexico,capital_disbursement_perlm_score,12,13,1,moved down
+Ohio,capital_disbursement_perlm_score,10,11,1,moved down
+Montana,capital_disbursement_perlm_score,16,18,2,moved down
+Oklahoma,capital_disbursement_perlm_score,38,40,2,moved down
+Arizona,capital_disbursement_perlm_score,29,32,3,moved down
+Louisiana,capital_disbursement_perlm_score,14,17,3,moved down
+North Dakota,capital_disbursement_perlm_score,30,33,3,moved down
+Pennsylvania,capital_disbursement_perlm_score,7,10,3,moved down
+West Virginia,capital_disbursement_perlm_score,4,9,5,moved down
+Texas,capital_disbursement_perlm_score,34,41,7,moved down
+Colorado,capital_disbursement_perlm_score,27,35,8,moved down
+Georgia,capital_disbursement_perlm_score,11,20,9,moved down
+South Dakota,capital_disbursement_perlm_score,25,34,9,moved down
+Nevada,capital_disbursement_perlm_score,36,46,10,moved down
+Utah,capital_disbursement_perlm_score,33,43,10,moved down
+Maryland,capital_disbursement_perlm_score,20,37,17,moved down
+Delaware,maintenance_disbursement_perlm_score,39,22,-17,moved up
+South Dakota,maintenance_disbursement_perlm_score,40,23,-17,moved up
+Alaska,maintenance_disbursement_perlm_score,45,32,-13,moved up
+Rhode Island,maintenance_disbursement_perlm_score,29,16,-13,moved up
+Kentucky,maintenance_disbursement_perlm_score,23,14,-9,moved up
+New Jersey,maintenance_disbursement_perlm_score,42,33,-9,moved up
+Utah,maintenance_disbursement_perlm_score,38,30,-8,moved up
+Wyoming,maintenance_disbursement_perlm_score,28,21,-7,moved up
+Michigan,maintenance_disbursement_perlm_score,19,13,-6,moved up
+North Dakota,maintenance_disbursement_perlm_score,8,2,-6,moved up
+Iowa,maintenance_disbursement_perlm_score,24,19,-5,moved up
+Washington,maintenance_disbursement_perlm_score,50,45,-5,moved up
+Kansas,maintenance_disbursement_perlm_score,21,18,-3,moved up
+Nebraska,maintenance_disbursement_perlm_score,30,27,-3,moved up
+Arizona,maintenance_disbursement_perlm_score,12,10,-2,moved up
+Connecticut,maintenance_disbursement_perlm_score,11,9,-2,moved up
+Hawaii,maintenance_disbursement_perlm_score,9,7,-2,moved up
+Oregon,maintenance_disbursement_perlm_score,41,39,-2,moved up
+Wisconsin,maintenance_disbursement_perlm_score,14,12,-2,moved up
+Oklahoma,maintenance_disbursement_perlm_score,48,47,-1,moved up
+West Virginia,maintenance_disbursement_perlm_score,16,15,-1,moved up
+Alabama,maintenance_disbursement_perlm_score,1,1,0,no change
+Florida,maintenance_disbursement_perlm_score,34,34,0,no change
+Indiana,maintenance_disbursement_perlm_score,49,49,0,no change
+Minnesota,maintenance_disbursement_perlm_score,43,43,0,no change
+New Mexico,maintenance_disbursement_perlm_score,4,4,0,no change
+Arkansas,maintenance_disbursement_perlm_score,5,6,1,moved down
+Mississippi,maintenance_disbursement_perlm_score,2,3,1,moved down
+Missouri,maintenance_disbursement_perlm_score,10,11,1,moved down
+California,maintenance_disbursement_perlm_score,44,46,2,moved down
+Illinois,maintenance_disbursement_perlm_score,18,20,2,moved down
+Montana,maintenance_disbursement_perlm_score,36,38,2,moved down
+New York,maintenance_disbursement_perlm_score,46,48,2,moved down
+Ohio,maintenance_disbursement_perlm_score,6,8,2,moved down
+South Carolina,maintenance_disbursement_perlm_score,3,5,2,moved down
+Maine,maintenance_disbursement_perlm_score,37,40,3,moved down
+Maryland,maintenance_disbursement_perlm_score,32,35,3,moved down
+Vermont,maintenance_disbursement_perlm_score,47,50,3,moved down
+Virginia,maintenance_disbursement_perlm_score,26,29,3,moved down
+Colorado,maintenance_disbursement_perlm_score,33,37,4,moved down
+Pennsylvania,maintenance_disbursement_perlm_score,20,24,4,moved down
+Texas,maintenance_disbursement_perlm_score,22,26,4,moved down
+Idaho,maintenance_disbursement_perlm_score,35,41,6,moved down
+Louisiana,maintenance_disbursement_perlm_score,25,31,6,moved down
+Tennessee,maintenance_disbursement_perlm_score,17,25,8,moved down
+New Hampshire,maintenance_disbursement_perlm_score,27,36,9,moved down
+North Carolina,maintenance_disbursement_perlm_score,7,17,10,moved down
+Nevada,maintenance_disbursement_perlm_score,31,42,11,moved down
+Georgia,maintenance_disbursement_perlm_score,13,28,15,moved down
+Massachusetts,maintenance_disbursement_perlm_score,15,44,29,moved down
+Louisiana,other_disbursement_perlm_score,33,9,-24,moved up
+Arkansas,other_disbursement_perlm_score,26,7,-19,moved up
+Idaho,other_disbursement_perlm_score,43,35,-8,moved up
+California,other_disbursement_perlm_score,48,41,-7,moved up
+Utah,other_disbursement_perlm_score,41,34,-7,moved up
+Alaska,other_disbursement_perlm_score,28,23,-5,moved up
+New Mexico,other_disbursement_perlm_score,31,26,-5,moved up
+Rhode Island,other_disbursement_perlm_score,11,6,-5,moved up
+Michigan,other_disbursement_perlm_score,21,17,-4,moved up
+Oklahoma,other_disbursement_perlm_score,44,40,-4,moved up
+Mississippi,other_disbursement_perlm_score,12,10,-2,moved up
+Montana,other_disbursement_perlm_score,30,28,-2,moved up
+North Dakota,other_disbursement_perlm_score,29,27,-2,moved up
+Ohio,other_disbursement_perlm_score,17,15,-2,moved up
+Pennsylvania,other_disbursement_perlm_score,39,37,-2,moved up
+Alabama,other_disbursement_perlm_score,5,4,-1,moved up
+Hawaii,other_disbursement_perlm_score,6,5,-1,moved up
+Iowa,other_disbursement_perlm_score,19,18,-1,moved up
+New Hampshire,other_disbursement_perlm_score,20,19,-1,moved up
+New York,other_disbursement_perlm_score,49,48,-1,moved up
+Florida,other_disbursement_perlm_score,13,13,0,no change
+Illinois,other_disbursement_perlm_score,32,32,0,no change
+Indiana,other_disbursement_perlm_score,3,3,0,no change
+Kentucky,other_disbursement_perlm_score,24,24,0,no change
+Maryland,other_disbursement_perlm_score,42,42,0,no change
+South Carolina,other_disbursement_perlm_score,1,1,0,no change
+Tennessee,other_disbursement_perlm_score,2,2,0,no change
+Vermont,other_disbursement_perlm_score,46,46,0,no change
+Washington,other_disbursement_perlm_score,50,50,0,no change
+Wisconsin,other_disbursement_perlm_score,47,47,0,no change
+Georgia,other_disbursement_perlm_score,7,8,1,moved down
+Nevada,other_disbursement_perlm_score,35,36,1,moved down
+Oregon,other_disbursement_perlm_score,37,38,1,moved down
+Wyoming,other_disbursement_perlm_score,14,16,2,moved down
+Connecticut,other_disbursement_perlm_score,22,25,3,moved down
+North Carolina,other_disbursement_perlm_score,9,12,3,moved down
+West Virginia,other_disbursement_perlm_score,8,11,3,moved down
+Kansas,other_disbursement_perlm_score,45,49,4,moved down
+Missouri,other_disbursement_perlm_score,27,31,4,moved down
+Nebraska,other_disbursement_perlm_score,16,20,4,moved down
+New Jersey,other_disbursement_perlm_score,40,44,4,moved down
+South Dakota,other_disbursement_perlm_score,25,29,4,moved down
+Texas,other_disbursement_perlm_score,34,39,5,moved down
+Arizona,other_disbursement_perlm_score,36,43,7,moved down
+Delaware,other_disbursement_perlm_score,23,30,7,moved down
+Maine,other_disbursement_perlm_score,15,22,7,moved down
+Minnesota,other_disbursement_perlm_score,38,45,7,moved down
+Virginia,other_disbursement_perlm_score,4,14,10,moved down
+Massachusetts,other_disbursement_perlm_score,10,21,11,moved down
+Colorado,other_disbursement_perlm_score,18,33,15,moved down
+Alabama,other_fatalities_per_100m_vmt_score,25,NA,NA,missing
+Alaska,other_fatalities_per_100m_vmt_score,5,NA,NA,missing
+Arizona,other_fatalities_per_100m_vmt_score,48,NA,NA,missing
+Arkansas,other_fatalities_per_100m_vmt_score,37,NA,NA,missing
+California,other_fatalities_per_100m_vmt_score,39,NA,NA,missing
+Colorado,other_fatalities_per_100m_vmt_score,28,NA,NA,missing
+Connecticut,other_fatalities_per_100m_vmt_score,23,NA,NA,missing
+Delaware,other_fatalities_per_100m_vmt_score,35,NA,NA,missing
+Florida,other_fatalities_per_100m_vmt_score,20,NA,NA,missing
+Georgia,other_fatalities_per_100m_vmt_score,24,NA,NA,missing
+Hawaii,other_fatalities_per_100m_vmt_score,1,NA,NA,missing
+Idaho,other_fatalities_per_100m_vmt_score,34,NA,NA,missing
+Illinois,other_fatalities_per_100m_vmt_score,30,NA,NA,missing
+Indiana,other_fatalities_per_100m_vmt_score,11,NA,NA,missing
+Iowa,other_fatalities_per_100m_vmt_score,19,NA,NA,missing
+Kansas,other_fatalities_per_100m_vmt_score,31,NA,NA,missing
+Kentucky,other_fatalities_per_100m_vmt_score,50,NA,NA,missing
+Louisiana,other_fatalities_per_100m_vmt_score,40,NA,NA,missing
+Maine,other_fatalities_per_100m_vmt_score,13,NA,NA,missing
+Maryland,other_fatalities_per_100m_vmt_score,14,NA,NA,missing
+Massachusetts,other_fatalities_per_100m_vmt_score,2,NA,NA,missing
+Michigan,other_fatalities_per_100m_vmt_score,21,NA,NA,missing
+Minnesota,other_fatalities_per_100m_vmt_score,6,NA,NA,missing
+Mississippi,other_fatalities_per_100m_vmt_score,47,NA,NA,missing
+Missouri,other_fatalities_per_100m_vmt_score,16,NA,NA,missing
+Montana,other_fatalities_per_100m_vmt_score,32,NA,NA,missing
+Nebraska,other_fatalities_per_100m_vmt_score,18,NA,NA,missing
+Nevada,other_fatalities_per_100m_vmt_score,29,NA,NA,missing
+New Hampshire,other_fatalities_per_100m_vmt_score,17,NA,NA,missing
+New Jersey,other_fatalities_per_100m_vmt_score,4,NA,NA,missing
+New Mexico,other_fatalities_per_100m_vmt_score,22,NA,NA,missing
+New York,other_fatalities_per_100m_vmt_score,9,NA,NA,missing
+North Carolina,other_fatalities_per_100m_vmt_score,33,NA,NA,missing
+North Dakota,other_fatalities_per_100m_vmt_score,12,NA,NA,missing
+Ohio,other_fatalities_per_100m_vmt_score,27,NA,NA,missing
+Oklahoma,other_fatalities_per_100m_vmt_score,45,NA,NA,missing
+Oregon,other_fatalities_per_100m_vmt_score,41,NA,NA,missing
+Pennsylvania,other_fatalities_per_100m_vmt_score,36,NA,NA,missing
+Rhode Island,other_fatalities_per_100m_vmt_score,15,NA,NA,missing
+South Carolina,other_fatalities_per_100m_vmt_score,46,NA,NA,missing
+South Dakota,other_fatalities_per_100m_vmt_score,44,NA,NA,missing
+Tennessee,other_fatalities_per_100m_vmt_score,42,NA,NA,missing
+Texas,other_fatalities_per_100m_vmt_score,43,NA,NA,missing
+Utah,other_fatalities_per_100m_vmt_score,3,NA,NA,missing
+Vermont,other_fatalities_per_100m_vmt_score,10,NA,NA,missing
+Virginia,other_fatalities_per_100m_vmt_score,26,NA,NA,missing
+Washington,other_fatalities_per_100m_vmt_score,38,NA,NA,missing
+West Virginia,other_fatalities_per_100m_vmt_score,49,NA,NA,missing
+Wisconsin,other_fatalities_per_100m_vmt_score,7,NA,NA,missing
+Wyoming,other_fatalities_per_100m_vmt_score,8,NA,NA,missing
+Oregon,overall_score,33,20,-13,moved up
+Florida,overall_score,14,4,-10,moved up
+Kentucky,overall_score,15,6,-9,moved up
+Arkansas,overall_score,21,13,-8,moved up
+Mississippi,overall_score,24,17,-7,moved up
+Alabama,overall_score,8,2,-6,moved up
+Idaho,overall_score,26,22,-4,moved up
+Montana,overall_score,22,18,-4,moved up
+Nebraska,overall_score,29,25,-4,moved up
+Nevada,overall_score,25,21,-4,moved up
+Wyoming,overall_score,20,16,-4,moved up
+New Mexico,overall_score,39,36,-3,moved up
+Oklahoma,overall_score,45,42,-3,moved up
+Rhode Island,overall_score,43,40,-3,moved up
+Arizona,overall_score,41,39,-2,moved up
+Delaware,overall_score,32,30,-2,moved up
+Iowa,overall_score,35,33,-2,moved up
+Louisiana,overall_score,46,44,-2,moved up
+South Carolina,overall_score,3,1,-2,moved up
+Utah,overall_score,10,8,-2,moved up
+California,overall_score,49,48,-1,moved up
+Pennsylvania,overall_score,36,35,-1,moved up
+South Dakota,overall_score,28,27,-1,moved up
+Tennessee,overall_score,12,11,-1,moved up
+Texas,overall_score,27,26,-1,moved up
+West Virginia,overall_score,30,29,-1,moved up
+Alaska,overall_score,50,50,0,no change
+Illinois,overall_score,37,37,0,no change
+Michigan,overall_score,23,23,0,no change
+New York,overall_score,47,47,0,no change
+Georgia,overall_score,2,3,1,moved down
+New Jersey,overall_score,40,41,1,moved down
+North Carolina,overall_score,4,5,1,moved down
+North Dakota,overall_score,6,7,1,moved down
+Washington,overall_score,48,49,1,moved down
+Hawaii,overall_score,44,46,2,moved down
+New Hampshire,overall_score,13,15,2,moved down
+Colorado,overall_score,42,45,3,moved down
+Wisconsin,overall_score,31,34,3,moved down
+Maryland,overall_score,34,38,4,moved down
+Ohio,overall_score,5,9,4,moved down
+Connecticut,overall_score,7,12,5,moved down
+Missouri,overall_score,9,14,5,moved down
+Vermont,overall_score,38,43,5,moved down
+Maine,overall_score,16,24,8,moved down
+Minnesota,overall_score,11,19,8,moved down
+Virginia,overall_score,1,10,9,moved down
+Indiana,overall_score,18,28,10,moved down
+Kansas,overall_score,19,31,12,moved down
+Massachusetts,overall_score,17,32,15,moved down
+New Mexico,poor_bridges_percent_score,17,13,-4,moved up
+Florida,poor_bridges_percent_score,9,6,-3,moved up
+Connecticut,poor_bridges_percent_score,18,16,-2,moved up
+New Jersey,poor_bridges_percent_score,27,25,-2,moved up
+North Carolina,poor_bridges_percent_score,33,31,-2,moved up
+Alaska,poor_bridges_percent_score,37,36,-1,moved up
+California,poor_bridges_percent_score,25,24,-1,moved up
+Illinois,poor_bridges_percent_score,41,40,-1,moved up
+Indiana,poor_bridges_percent_score,21,20,-1,moved up
+Missouri,poor_bridges_percent_score,40,39,-1,moved up
+Nevada,poor_bridges_percent_score,2,1,-1,moved up
+Oklahoma,poor_bridges_percent_score,36,35,-1,moved up
+Rhode Island,poor_bridges_percent_score,47,46,-1,moved up
+Tennessee,poor_bridges_percent_score,12,11,-1,moved up
+West Virginia,poor_bridges_percent_score,50,49,-1,moved up
+Arkansas,poor_bridges_percent_score,22,22,0,no change
+Delaware,poor_bridges_percent_score,4,4,0,no change
+Georgia,poor_bridges_percent_score,5,5,0,no change
+Hawaii,poor_bridges_percent_score,30,30,0,no change
+Idaho,poor_bridges_percent_score,19,19,0,no change
+Louisiana,poor_bridges_percent_score,44,44,0,no change
+Massachusetts,poor_bridges_percent_score,38,38,0,no change
+Michigan,poor_bridges_percent_score,43,43,0,no change
+Mississippi,poor_bridges_percent_score,26,26,0,no change
+New Hampshire,poor_bridges_percent_score,34,34,0,no change
+North Dakota,poor_bridges_percent_score,42,42,0,no change
+Oregon,poor_bridges_percent_score,15,15,0,no change
+Pennsylvania,poor_bridges_percent_score,45,45,0,no change
+South Dakota,poor_bridges_percent_score,48,48,0,no change
+Texas,poor_bridges_percent_score,3,3,0,no change
+Vermont,poor_bridges_percent_score,7,7,0,no change
+Virginia,poor_bridges_percent_score,10,10,0,no change
+Washington,poor_bridges_percent_score,23,23,0,no change
+Wisconsin,poor_bridges_percent_score,29,29,0,no change
+Wyoming,poor_bridges_percent_score,28,28,0,no change
+Alabama,poor_bridges_percent_score,8,9,1,moved down
+Arizona,poor_bridges_percent_score,1,2,1,moved down
+Iowa,poor_bridges_percent_score,49,50,1,moved down
+Kansas,poor_bridges_percent_score,20,21,1,moved down
+Kentucky,poor_bridges_percent_score,32,33,1,moved down
+Maine,poor_bridges_percent_score,46,47,1,moved down
+Maryland,poor_bridges_percent_score,13,14,1,moved down
+Minnesota,poor_bridges_percent_score,11,12,1,moved down
+Montana,poor_bridges_percent_score,31,32,1,moved down
+Colorado,poor_bridges_percent_score,16,18,2,moved down
+Nebraska,poor_bridges_percent_score,35,37,2,moved down
+New York,poor_bridges_percent_score,39,41,2,moved down
+Utah,poor_bridges_percent_score,6,8,2,moved down
+Ohio,poor_bridges_percent_score,14,17,3,moved down
+South Carolina,poor_bridges_percent_score,24,27,3,moved down
+Alabama,rural_fatalities_per_100m_vmt_score,44,NA,NA,missing
+Alaska,rural_fatalities_per_100m_vmt_score,50,NA,NA,missing
+Arizona,rural_fatalities_per_100m_vmt_score,39,NA,NA,missing
+Arkansas,rural_fatalities_per_100m_vmt_score,45,NA,NA,missing
+California,rural_fatalities_per_100m_vmt_score,36,NA,NA,missing
+Colorado,rural_fatalities_per_100m_vmt_score,33,NA,NA,missing
+Connecticut,rural_fatalities_per_100m_vmt_score,18,NA,NA,missing
+Delaware,rural_fatalities_per_100m_vmt_score,41,NA,NA,missing
+Florida,rural_fatalities_per_100m_vmt_score,32,NA,NA,missing
+Georgia,rural_fatalities_per_100m_vmt_score,23,NA,NA,missing
+Hawaii,rural_fatalities_per_100m_vmt_score,48,NA,NA,missing
+Idaho,rural_fatalities_per_100m_vmt_score,35,NA,NA,missing
+Illinois,rural_fatalities_per_100m_vmt_score,25,NA,NA,missing
+Indiana,rural_fatalities_per_100m_vmt_score,27,NA,NA,missing
+Iowa,rural_fatalities_per_100m_vmt_score,17,NA,NA,missing
+Kansas,rural_fatalities_per_100m_vmt_score,28,NA,NA,missing
+Kentucky,rural_fatalities_per_100m_vmt_score,11,NA,NA,missing
+Louisiana,rural_fatalities_per_100m_vmt_score,21,NA,NA,missing
+Maine,rural_fatalities_per_100m_vmt_score,3,NA,NA,missing
+Maryland,rural_fatalities_per_100m_vmt_score,1,NA,NA,missing
+Massachusetts,rural_fatalities_per_100m_vmt_score,2,NA,NA,missing
+Michigan,rural_fatalities_per_100m_vmt_score,7,NA,NA,missing
+Minnesota,rural_fatalities_per_100m_vmt_score,5,NA,NA,missing
+Mississippi,rural_fatalities_per_100m_vmt_score,37,NA,NA,missing
+Missouri,rural_fatalities_per_100m_vmt_score,15,NA,NA,missing
+Montana,rural_fatalities_per_100m_vmt_score,43,NA,NA,missing
+Nebraska,rural_fatalities_per_100m_vmt_score,13,NA,NA,missing
+Nevada,rural_fatalities_per_100m_vmt_score,40,NA,NA,missing
+New Hampshire,rural_fatalities_per_100m_vmt_score,9,NA,NA,missing
+New Jersey,rural_fatalities_per_100m_vmt_score,16,NA,NA,missing
+New Mexico,rural_fatalities_per_100m_vmt_score,38,NA,NA,missing
+New York,rural_fatalities_per_100m_vmt_score,12,NA,NA,missing
+North Carolina,rural_fatalities_per_100m_vmt_score,31,NA,NA,missing
+North Dakota,rural_fatalities_per_100m_vmt_score,26,NA,NA,missing
+Ohio,rural_fatalities_per_100m_vmt_score,6,NA,NA,missing
+Oklahoma,rural_fatalities_per_100m_vmt_score,24,NA,NA,missing
+Oregon,rural_fatalities_per_100m_vmt_score,47,NA,NA,missing
+Pennsylvania,rural_fatalities_per_100m_vmt_score,8,NA,NA,missing
+Rhode Island,rural_fatalities_per_100m_vmt_score,4,NA,NA,missing
+South Carolina,rural_fatalities_per_100m_vmt_score,49,NA,NA,missing
+South Dakota,rural_fatalities_per_100m_vmt_score,19,NA,NA,missing
+Tennessee,rural_fatalities_per_100m_vmt_score,20,NA,NA,missing
+Texas,rural_fatalities_per_100m_vmt_score,42,NA,NA,missing
+Utah,rural_fatalities_per_100m_vmt_score,22,NA,NA,missing
+Vermont,rural_fatalities_per_100m_vmt_score,10,NA,NA,missing
+Virginia,rural_fatalities_per_100m_vmt_score,29,NA,NA,missing
+Washington,rural_fatalities_per_100m_vmt_score,34,NA,NA,missing
+West Virginia,rural_fatalities_per_100m_vmt_score,30,NA,NA,missing
+Wisconsin,rural_fatalities_per_100m_vmt_score,14,NA,NA,missing
+Wyoming,rural_fatalities_per_100m_vmt_score,46,NA,NA,missing
+Montana,rural_interstate_poor_percent_score,29,17,-12,moved up
+Kentucky,rural_interstate_poor_percent_score,24,14,-10,moved up
+Massachusetts,rural_interstate_poor_percent_score,36,31,-5,moved up
+Rhode Island,rural_interstate_poor_percent_score,6,1,-5,moved up
+Arkansas,rural_interstate_poor_percent_score,40,36,-4,moved up
+Idaho,rural_interstate_poor_percent_score,22,18,-4,moved up
+Nevada,rural_interstate_poor_percent_score,10,6,-4,moved up
+New York,rural_interstate_poor_percent_score,37,33,-4,moved up
+South Carolina,rural_interstate_poor_percent_score,28,24,-4,moved up
+Arizona,rural_interstate_poor_percent_score,45,42,-3,moved up
+Oregon,rural_interstate_poor_percent_score,15,12,-3,moved up
+Alabama,rural_interstate_poor_percent_score,32,30,-2,moved up
+California,rural_interstate_poor_percent_score,47,45,-2,moved up
+Kansas,rural_interstate_poor_percent_score,13,11,-2,moved up
+Maryland,rural_interstate_poor_percent_score,30,28,-2,moved up
+New Hampshire,rural_interstate_poor_percent_score,5,3,-2,moved up
+Pennsylvania,rural_interstate_poor_percent_score,41,39,-2,moved up
+Texas,rural_interstate_poor_percent_score,21,19,-2,moved up
+Vermont,rural_interstate_poor_percent_score,18,16,-2,moved up
+Wyoming,rural_interstate_poor_percent_score,27,25,-2,moved up
+Georgia,rural_interstate_poor_percent_score,16,15,-1,moved up
+Louisiana,rural_interstate_poor_percent_score,44,43,-1,moved up
+Minnesota,rural_interstate_poor_percent_score,9,8,-1,moved up
+Tennessee,rural_interstate_poor_percent_score,14,13,-1,moved up
+Alaska,rural_interstate_poor_percent_score,48,49,1,moved down
+Connecticut,rural_interstate_poor_percent_score,1,2,1,moved down
+Maine,rural_interstate_poor_percent_score,3,4,1,moved down
+Michigan,rural_interstate_poor_percent_score,39,40,1,moved down
+Ohio,rural_interstate_poor_percent_score,19,20,1,moved down
+Utah,rural_interstate_poor_percent_score,8,9,1,moved down
+Colorado,rural_interstate_poor_percent_score,46,48,2,moved down
+Illinois,rural_interstate_poor_percent_score,25,27,2,moved down
+Iowa,rural_interstate_poor_percent_score,33,35,2,moved down
+New Mexico,rural_interstate_poor_percent_score,42,44,2,moved down
+North Carolina,rural_interstate_poor_percent_score,20,22,2,moved down
+West Virginia,rural_interstate_poor_percent_score,35,37,2,moved down
+Florida,rural_interstate_poor_percent_score,2,5,3,moved down
+Indiana,rural_interstate_poor_percent_score,38,41,3,moved down
+North Dakota,rural_interstate_poor_percent_score,7,10,3,moved down
+Oklahoma,rural_interstate_poor_percent_score,31,34,3,moved down
+South Dakota,rural_interstate_poor_percent_score,4,7,3,moved down
+Washington,rural_interstate_poor_percent_score,43,46,3,moved down
+Wisconsin,rural_interstate_poor_percent_score,26,29,3,moved down
+Mississippi,rural_interstate_poor_percent_score,34,38,4,moved down
+Missouri,rural_interstate_poor_percent_score,23,32,9,moved down
+New Jersey,rural_interstate_poor_percent_score,17,26,9,moved down
+Virginia,rural_interstate_poor_percent_score,11,21,10,moved down
+Nebraska,rural_interstate_poor_percent_score,12,23,11,moved down
+Delaware,rural_interstate_poor_percent_score,NA,NA,NA,missing
+Hawaii,rural_interstate_poor_percent_score,NA,47,NA,missing
+Nebraska,rural_opa_poor_percent_score,44,25,-19,moved up
+Massachusetts,rural_opa_poor_percent_score,17,4,-13,moved up
+Oregon,rural_opa_poor_percent_score,24,13,-11,moved up
+Kentucky,rural_opa_poor_percent_score,15,5,-10,moved up
+New Hampshire,rural_opa_poor_percent_score,14,9,-5,moved up
+Pennsylvania,rural_opa_poor_percent_score,37,33,-4,moved up
+Vermont,rural_opa_poor_percent_score,43,39,-4,moved up
+Arkansas,rural_opa_poor_percent_score,25,22,-3,moved up
+Mississippi,rural_opa_poor_percent_score,34,31,-3,moved up
+Utah,rural_opa_poor_percent_score,10,7,-3,moved up
+Iowa,rural_opa_poor_percent_score,38,36,-2,moved up
+Maryland,rural_opa_poor_percent_score,30,28,-2,moved up
+North Carolina,rural_opa_poor_percent_score,20,18,-2,moved up
+North Dakota,rural_opa_poor_percent_score,23,21,-2,moved up
+Wisconsin,rural_opa_poor_percent_score,40,38,-2,moved up
+Florida,rural_opa_poor_percent_score,7,6,-1,moved up
+Illinois,rural_opa_poor_percent_score,46,45,-1,moved up
+New York,rural_opa_poor_percent_score,28,27,-1,moved up
+Oklahoma,rural_opa_poor_percent_score,45,44,-1,moved up
+South Carolina,rural_opa_poor_percent_score,21,20,-1,moved up
+Alaska,rural_opa_poor_percent_score,50,50,0,no change
+Georgia,rural_opa_poor_percent_score,3,3,0,no change
+Hawaii,rural_opa_poor_percent_score,48,48,0,no change
+Louisiana,rural_opa_poor_percent_score,47,47,0,no change
+Nevada,rural_opa_poor_percent_score,2,2,0,no change
+New Mexico,rural_opa_poor_percent_score,35,35,0,no change
+Rhode Island,rural_opa_poor_percent_score,49,49,0,no change
+Wyoming,rural_opa_poor_percent_score,1,1,0,no change
+Maine,rural_opa_poor_percent_score,41,42,1,moved down
+Minnesota,rural_opa_poor_percent_score,22,23,1,moved down
+Missouri,rural_opa_poor_percent_score,13,14,1,moved down
+Washington,rural_opa_poor_percent_score,29,30,1,moved down
+California,rural_opa_poor_percent_score,39,41,2,moved down
+Delaware,rural_opa_poor_percent_score,6,8,2,moved down
+Michigan,rural_opa_poor_percent_score,16,19,3,moved down
+Montana,rural_opa_poor_percent_score,26,29,3,moved down
+New Jersey,rural_opa_poor_percent_score,31,34,3,moved down
+Arizona,rural_opa_poor_percent_score,42,46,4,moved down
+Colorado,rural_opa_poor_percent_score,33,37,4,moved down
+Kansas,rural_opa_poor_percent_score,8,12,4,moved down
+Texas,rural_opa_poor_percent_score,12,16,4,moved down
+Tennessee,rural_opa_poor_percent_score,27,32,5,moved down
+Alabama,rural_opa_poor_percent_score,5,11,6,moved down
+Indiana,rural_opa_poor_percent_score,4,10,6,moved down
+Ohio,rural_opa_poor_percent_score,9,15,6,moved down
+South Dakota,rural_opa_poor_percent_score,18,24,6,moved down
+Virginia,rural_opa_poor_percent_score,11,17,6,moved down
+Idaho,rural_opa_poor_percent_score,19,26,7,moved down
+West Virginia,rural_opa_poor_percent_score,36,43,7,moved down
+Connecticut,rural_opa_poor_percent_score,32,40,8,moved down
+Idaho,state_avg_congestion_hours_score,22,14,-8,moved up
+Nevada,state_avg_congestion_hours_score,33,27,-6,moved up
+Connecticut,state_avg_congestion_hours_score,28,24,-4,moved up
+Missouri,state_avg_congestion_hours_score,26,23,-3,moved up
+Montana,state_avg_congestion_hours_score,7,4,-3,moved up
+Rhode Island,state_avg_congestion_hours_score,37,34,-3,moved up
+Alabama,state_avg_congestion_hours_score,14,12,-2,moved up
+Hawaii,state_avg_congestion_hours_score,20,18,-2,moved up
+Massachusetts,state_avg_congestion_hours_score,49,47,-2,moved up
+Indiana,state_avg_congestion_hours_score,31,30,-1,moved up
+Mississippi,state_avg_congestion_hours_score,12,11,-1,moved up
+Nebraska,state_avg_congestion_hours_score,23,22,-1,moved up
+New Hampshire,state_avg_congestion_hours_score,32,31,-1,moved up
+Oklahoma,state_avg_congestion_hours_score,16,15,-1,moved up
+Oregon,state_avg_congestion_hours_score,34,33,-1,moved up
+Washington,state_avg_congestion_hours_score,39,38,-1,moved up
+Alaska,state_avg_congestion_hours_score,10,10,0,no change
+Arkansas,state_avg_congestion_hours_score,17,17,0,no change
+California,state_avg_congestion_hours_score,46,46,0,no change
+Florida,state_avg_congestion_hours_score,40,40,0,no change
+Georgia,state_avg_congestion_hours_score,45,45,0,no change
+Illinois,state_avg_congestion_hours_score,44,44,0,no change
+Iowa,state_avg_congestion_hours_score,1,1,0,no change
+Kansas,state_avg_congestion_hours_score,3,3,0,no change
+Louisiana,state_avg_congestion_hours_score,29,29,0,no change
+Maine,state_avg_congestion_hours_score,8,8,0,no change
+Maryland,state_avg_congestion_hours_score,43,43,0,no change
+New Jersey,state_avg_congestion_hours_score,50,50,0,no change
+New Mexico,state_avg_congestion_hours_score,13,13,0,no change
+New York,state_avg_congestion_hours_score,48,48,0,no change
+North Dakota,state_avg_congestion_hours_score,2,2,0,no change
+Pennsylvania,state_avg_congestion_hours_score,42,42,0,no change
+South Carolina,state_avg_congestion_hours_score,25,25,0,no change
+South Dakota,state_avg_congestion_hours_score,9,9,0,no change
+Tennessee,state_avg_congestion_hours_score,36,36,0,no change
+Texas,state_avg_congestion_hours_score,41,41,0,no change
+Utah,state_avg_congestion_hours_score,19,19,0,no change
+Wisconsin,state_avg_congestion_hours_score,21,21,0,no change
+Kentucky,state_avg_congestion_hours_score,27,28,1,moved down
+Michigan,state_avg_congestion_hours_score,15,16,1,moved down
+Vermont,state_avg_congestion_hours_score,6,7,1,moved down
+Virginia,state_avg_congestion_hours_score,38,39,1,moved down
+West Virginia,state_avg_congestion_hours_score,5,6,1,moved down
+Wyoming,state_avg_congestion_hours_score,4,5,1,moved down
+Colorado,state_avg_congestion_hours_score,35,37,2,moved down
+Delaware,state_avg_congestion_hours_score,47,49,2,moved down
+Minnesota,state_avg_congestion_hours_score,24,26,2,moved down
+North Carolina,state_avg_congestion_hours_score,30,32,2,moved down
+Ohio,state_avg_congestion_hours_score,18,20,2,moved down
+Arizona,state_avg_congestion_hours_score,11,35,24,moved down
+Alabama,urban_fatalities_per_100m_vmt_score,28,NA,NA,missing
+Alaska,urban_fatalities_per_100m_vmt_score,11,NA,NA,missing
+Arizona,urban_fatalities_per_100m_vmt_score,43,NA,NA,missing
+Arkansas,urban_fatalities_per_100m_vmt_score,35,NA,NA,missing
+California,urban_fatalities_per_100m_vmt_score,27,NA,NA,missing
+Colorado,urban_fatalities_per_100m_vmt_score,39,NA,NA,missing
+Connecticut,urban_fatalities_per_100m_vmt_score,15,NA,NA,missing
+Delaware,urban_fatalities_per_100m_vmt_score,29,NA,NA,missing
+Florida,urban_fatalities_per_100m_vmt_score,46,NA,NA,missing
+Georgia,urban_fatalities_per_100m_vmt_score,37,NA,NA,missing
+Hawaii,urban_fatalities_per_100m_vmt_score,40,NA,NA,missing
+Idaho,urban_fatalities_per_100m_vmt_score,25,NA,NA,missing
+Illinois,urban_fatalities_per_100m_vmt_score,23,NA,NA,missing
+Indiana,urban_fatalities_per_100m_vmt_score,19,NA,NA,missing
+Iowa,urban_fatalities_per_100m_vmt_score,24,NA,NA,missing
+Kansas,urban_fatalities_per_100m_vmt_score,8,NA,NA,missing
+Kentucky,urban_fatalities_per_100m_vmt_score,42,NA,NA,missing
+Louisiana,urban_fatalities_per_100m_vmt_score,33,NA,NA,missing
+Maine,urban_fatalities_per_100m_vmt_score,9,NA,NA,missing
+Maryland,urban_fatalities_per_100m_vmt_score,32,NA,NA,missing
+Massachusetts,urban_fatalities_per_100m_vmt_score,3,NA,NA,missing
+Michigan,urban_fatalities_per_100m_vmt_score,22,NA,NA,missing
+Minnesota,urban_fatalities_per_100m_vmt_score,1,NA,NA,missing
+Mississippi,urban_fatalities_per_100m_vmt_score,48,NA,NA,missing
+Missouri,urban_fatalities_per_100m_vmt_score,30,NA,NA,missing
+Montana,urban_fatalities_per_100m_vmt_score,45,NA,NA,missing
+Nebraska,urban_fatalities_per_100m_vmt_score,13,NA,NA,missing
+Nevada,urban_fatalities_per_100m_vmt_score,38,NA,NA,missing
+New Hampshire,urban_fatalities_per_100m_vmt_score,4,NA,NA,missing
+New Jersey,urban_fatalities_per_100m_vmt_score,14,NA,NA,missing
+New Mexico,urban_fatalities_per_100m_vmt_score,50,NA,NA,missing
+New York,urban_fatalities_per_100m_vmt_score,17,NA,NA,missing
+North Carolina,urban_fatalities_per_100m_vmt_score,16,NA,NA,missing
+North Dakota,urban_fatalities_per_100m_vmt_score,2,NA,NA,missing
+Ohio,urban_fatalities_per_100m_vmt_score,18,NA,NA,missing
+Oklahoma,urban_fatalities_per_100m_vmt_score,44,NA,NA,missing
+Oregon,urban_fatalities_per_100m_vmt_score,36,NA,NA,missing
+Pennsylvania,urban_fatalities_per_100m_vmt_score,21,NA,NA,missing
+Rhode Island,urban_fatalities_per_100m_vmt_score,20,NA,NA,missing
+South Carolina,urban_fatalities_per_100m_vmt_score,41,NA,NA,missing
+South Dakota,urban_fatalities_per_100m_vmt_score,10,NA,NA,missing
+Tennessee,urban_fatalities_per_100m_vmt_score,47,NA,NA,missing
+Texas,urban_fatalities_per_100m_vmt_score,26,NA,NA,missing
+Utah,urban_fatalities_per_100m_vmt_score,12,NA,NA,missing
+Vermont,urban_fatalities_per_100m_vmt_score,7,NA,NA,missing
+Virginia,urban_fatalities_per_100m_vmt_score,6,NA,NA,missing
+Washington,urban_fatalities_per_100m_vmt_score,31,NA,NA,missing
+West Virginia,urban_fatalities_per_100m_vmt_score,34,NA,NA,missing
+Wisconsin,urban_fatalities_per_100m_vmt_score,5,NA,NA,missing
+Wyoming,urban_fatalities_per_100m_vmt_score,49,NA,NA,missing
+Nevada,urban_interstate_poor_percent_score,22,9,-13,moved up
+Wisconsin,urban_interstate_poor_percent_score,35,26,-9,moved up
+Alabama,urban_interstate_poor_percent_score,30,23,-7,moved up
+Delaware,urban_interstate_poor_percent_score,46,40,-6,moved up
+Georgia,urban_interstate_poor_percent_score,14,8,-6,moved up
+Rhode Island,urban_interstate_poor_percent_score,10,4,-6,moved up
+Arkansas,urban_interstate_poor_percent_score,38,33,-5,moved up
+Iowa,urban_interstate_poor_percent_score,32,27,-5,moved up
+North Carolina,urban_interstate_poor_percent_score,23,19,-4,moved up
+Minnesota,urban_interstate_poor_percent_score,16,13,-3,moved up
+New Jersey,urban_interstate_poor_percent_score,42,39,-3,moved up
+South Dakota,urban_interstate_poor_percent_score,13,10,-3,moved up
+Arizona,urban_interstate_poor_percent_score,24,22,-2,moved up
+Kentucky,urban_interstate_poor_percent_score,36,34,-2,moved up
+Oklahoma,urban_interstate_poor_percent_score,39,37,-2,moved up
+California,urban_interstate_poor_percent_score,48,47,-1,moved up
+Montana,urban_interstate_poor_percent_score,15,14,-1,moved up
+North Dakota,urban_interstate_poor_percent_score,3,2,-1,moved up
+Oregon,urban_interstate_poor_percent_score,19,18,-1,moved up
+Texas,urban_interstate_poor_percent_score,33,32,-1,moved up
+Colorado,urban_interstate_poor_percent_score,45,45,0,no change
+Florida,urban_interstate_poor_percent_score,6,6,0,no change
+Hawaii,urban_interstate_poor_percent_score,50,50,0,no change
+Louisiana,urban_interstate_poor_percent_score,49,49,0,no change
+Nebraska,urban_interstate_poor_percent_score,7,7,0,no change
+New Hampshire,urban_interstate_poor_percent_score,1,1,0,no change
+Ohio,urban_interstate_poor_percent_score,25,25,0,no change
+Utah,urban_interstate_poor_percent_score,17,17,0,no change
+West Virginia,urban_interstate_poor_percent_score,29,29,0,no change
+Connecticut,urban_interstate_poor_percent_score,11,12,1,moved down
+Maine,urban_interstate_poor_percent_score,2,3,1,moved down
+Maryland,urban_interstate_poor_percent_score,43,44,1,moved down
+Michigan,urban_interstate_poor_percent_score,41,42,1,moved down
+Mississippi,urban_interstate_poor_percent_score,37,38,1,moved down
+Missouri,urban_interstate_poor_percent_score,27,28,1,moved down
+New York,urban_interstate_poor_percent_score,47,48,1,moved down
+Vermont,urban_interstate_poor_percent_score,4,5,1,moved down
+Illinois,urban_interstate_poor_percent_score,34,36,2,moved down
+Kansas,urban_interstate_poor_percent_score,18,20,2,moved down
+Wyoming,urban_interstate_poor_percent_score,44,46,2,moved down
+Alaska,urban_interstate_poor_percent_score,8,11,3,moved down
+Pennsylvania,urban_interstate_poor_percent_score,40,43,3,moved down
+Washington,urban_interstate_poor_percent_score,28,31,3,moved down
+Massachusetts,urban_interstate_poor_percent_score,20,24,4,moved down
+Tennessee,urban_interstate_poor_percent_score,12,16,4,moved down
+Idaho,urban_interstate_poor_percent_score,9,15,6,moved down
+Indiana,urban_interstate_poor_percent_score,26,35,9,moved down
+Virginia,urban_interstate_poor_percent_score,21,30,9,moved down
+New Mexico,urban_interstate_poor_percent_score,31,41,10,moved down
+South Carolina,urban_interstate_poor_percent_score,5,21,16,moved down
+North Dakota,urban_opa_poor_percent_score,24,19,-5,moved up
+Arkansas,urban_opa_poor_percent_score,28,24,-4,moved up
+Tennessee,urban_opa_poor_percent_score,13,9,-4,moved up
+Maine,urban_opa_poor_percent_score,31,28,-3,moved up
+Utah,urban_opa_poor_percent_score,9,6,-3,moved up
+Hawaii,urban_opa_poor_percent_score,40,38,-2,moved up
+Kansas,urban_opa_poor_percent_score,19,17,-2,moved up
+Kentucky,urban_opa_poor_percent_score,10,8,-2,moved up
+Michigan,urban_opa_poor_percent_score,34,32,-2,moved up
+Minnesota,urban_opa_poor_percent_score,3,1,-2,moved up
+North Carolina,urban_opa_poor_percent_score,14,12,-2,moved up
+Texas,urban_opa_poor_percent_score,39,37,-2,moved up
+Alaska,urban_opa_poor_percent_score,16,15,-1,moved up
+Colorado,urban_opa_poor_percent_score,36,35,-1,moved up
+Florida,urban_opa_poor_percent_score,5,4,-1,moved up
+Iowa,urban_opa_poor_percent_score,26,25,-1,moved up
+Oklahoma,urban_opa_poor_percent_score,30,29,-1,moved up
+South Carolina,urban_opa_poor_percent_score,6,5,-1,moved up
+Wisconsin,urban_opa_poor_percent_score,45,44,-1,moved up
+California,urban_opa_poor_percent_score,50,50,0,no change
+Georgia,urban_opa_poor_percent_score,2,2,0,no change
+Illinois,urban_opa_poor_percent_score,33,33,0,no change
+Louisiana,urban_opa_poor_percent_score,42,42,0,no change
+Maryland,urban_opa_poor_percent_score,43,43,0,no change
+Massachusetts,urban_opa_poor_percent_score,46,46,0,no change
+Missouri,urban_opa_poor_percent_score,22,22,0,no change
+Nebraska,urban_opa_poor_percent_score,49,49,0,no change
+Nevada,urban_opa_poor_percent_score,11,11,0,no change
+New Jersey,urban_opa_poor_percent_score,41,41,0,no change
+New York,urban_opa_poor_percent_score,47,47,0,no change
+Rhode Island,urban_opa_poor_percent_score,48,48,0,no change
+South Dakota,urban_opa_poor_percent_score,18,18,0,no change
+Arizona,urban_opa_poor_percent_score,20,21,1,moved down
+Delaware,urban_opa_poor_percent_score,12,13,1,moved down
+Mississippi,urban_opa_poor_percent_score,29,30,1,moved down
+Ohio,urban_opa_poor_percent_score,35,36,1,moved down
+Vermont,urban_opa_poor_percent_score,25,26,1,moved down
+Virginia,urban_opa_poor_percent_score,15,16,1,moved down
+Washington,urban_opa_poor_percent_score,44,45,1,moved down
+Alabama,urban_opa_poor_percent_score,1,3,2,moved down
+Connecticut,urban_opa_poor_percent_score,21,23,2,moved down
+Idaho,urban_opa_poor_percent_score,32,34,2,moved down
+New Hampshire,urban_opa_poor_percent_score,8,10,2,moved down
+New Mexico,urban_opa_poor_percent_score,38,40,2,moved down
+Pennsylvania,urban_opa_poor_percent_score,37,39,2,moved down
+Indiana,urban_opa_poor_percent_score,4,7,3,moved down
+Wyoming,urban_opa_poor_percent_score,17,20,3,moved down
+Montana,urban_opa_poor_percent_score,27,31,4,moved down
+Oregon,urban_opa_poor_percent_score,23,27,4,moved down
+West Virginia,urban_opa_poor_percent_score,7,14,7,moved down

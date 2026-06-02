@@ -1,0 +1,291 @@
+state_abbr,city,urban_area,2024_delay
+IL,Chicago,Chicago IL,102
+NY,New York City,New York City NY,102
+PA,Philadelphia,Philadelphia PA,77
+CA,Los Angeles,Los Angeles CA,88
+MA,Boston,Boston MA,79
+FL,Miami,Miami FL,74
+GA,Atlanta,Atlanta GA,65
+TX,Houston,Houston TX,66
+DC,Washington,Washington DC,62
+WA,Seattle,Seattle WA,63
+,San Juan,San Juan,58
+TN,Nashville,Nashville TN,63
+MD,Baltimore,Baltimore MD,48
+CO,Denver,Denver CO,44
+CA,San Francisco,San Francisco CA,46
+PA,Pittsburgh,Pittsburgh PA,43
+CT,Stamford,Stamford CT,47
+NC,Charlotte,Charlotte NC,41
+TX,Dallas,Dallas TX,41
+HI,Honolulu,Honolulu HI,45
+TX,Austin,Austin TX,39
+AZ,Phoenix,Phoenix AZ,39
+TX,San Antonio,San Antonio TX,39
+FL,Tampa,Tampa FL,34
+OR,Portland,Portland OR,38
+SC,Charleston,Charleston SC,36
+CO,Boulder,Boulder CO,34
+LA,Baton Rouge,Baton Rouge LA,36
+LA,New Orleans,New Orleans LA,39
+WI,Milwaukee,Milwaukee WI,33
+PA,King of Prussia,King of Prussia PA,46
+KY,Lexington,Lexington KY,31
+OH,Cincinnati,Cincinnati OH,32
+MN,Minneapolis,Minneapolis MN,26
+CA,San Diego,San Diego CA,32
+NY,Buffalo,Buffalo NY,18
+FL,Orlando,Orlando FL,27
+PA,Allentown,Allentown PA,26
+NC,Greenville,Greenville NC,13
+NE,Omaha,Omaha NE,24
+CA,Santa Cruz,Santa Cruz CA,34
+NC,Raleigh,Raleigh NC,31
+TN,Chattanooga,Chattanooga TN,26
+MA,Framingham,Framingham MA,35
+MI,Ann Arbor,Ann Arbor MI,25
+UT,Salt Lake City,Salt Lake City UT,25
+RI,Providence,Providence RI,30
+SC,Greenville,Greenville SC,25
+CT,New Haven,New Haven CT,25
+NV,Las Vegas,Las Vegas NV,25
+PA,Lancaster,Lancaster PA,25
+SC,North Charleston,North Charleston SC,37
+NY,Rochester,Rochester NY,12
+MA,Worcester,Worcester MA,24
+NH,Nashua,Nashua NH,18
+HI,Kaneohe,Kaneohe HI,30
+CA,Escondido,Escondido CA,30
+MO,St Louis,St Louis MO,20
+NY,Syracuse,Syracuse NY,14
+CT,Danbury,Danbury CT,26
+TX,Baytown,Baytown TX,17
+MI,Detroit,Detroit MI,20
+WA,Tacoma,Tacoma WA,25
+GA,Athens,Athens GA,21
+OH,Columbus,Columbus OH,23
+CT,Hartford,Hartford CT,21
+GA,Savannah,Savannah GA,24
+CA,San Rafael,San Rafael CA,34
+FL,Naples,Naples FL,27
+MA,Lowell,Lowell MA,26
+MD,Columbia,Columbia MD,29
+CA,Sacramento,Sacramento CA,23
+FL,Tallahassee,Tallahassee FL,14
+DE,Wilmington,Wilmington DE,25
+CA,Napa,Napa CA,23
+CA,Santa Rosa,Santa Rosa CA,24
+KY,Louisville,Louisville KY,23
+MD,Annapolis,Annapolis MD,29
+FL,Gainesville,Gainesville FL,15
+CA,Concord,Concord CA,27
+FL,Port St Lucie,Port St Lucie FL,24
+TX,El Paso,El Paso TX,16
+FL,Pensacola,Pensacola FL,16
+FL,Sarasota Bradenton,Sarasota Bradenton FL,28
+FL,Melbourne,Melbourne FL,22
+OK,Oklahoma City,Oklahoma City OK,18
+OR,Gresham,Gresham OR,19
+AR,Fort Smith,Fort Smith AR,17
+NC,Durham,Durham NC,22
+FL,Fort Myers,Fort Myers FL,29
+CA,Monterey,Monterey CA,30
+CA,Oceanside,Oceanside CA,24
+ID,Boise,Boise ID,19
+CA,Davis,Davis CA,27
+FL,Lakeland,Lakeland FL,20
+IN,Lafayette,Lafayette IN,15
+AL,Birmingham,Birmingham AL,20
+CA,Fresno,Fresno CA,19
+HI,Hilo,Hilo HI,25
+NC,Wilmington,Wilmington NC,23
+CA,Stockton,Stockton CA,15
+CT,Bridgeport,Bridgeport CT,22
+PA,Wilkes-Barre,Wilkes-Barre PA,11
+FL,Ocala,Ocala FL,17
+OK,Tulsa,Tulsa OK,15
+NM,Albuquerque,Albuquerque NM,18
+WA,Olympia,Olympia WA,17
+UT,St  George,St  George UT,9
+OR,Salem,Salem OR,18
+MA,Springfield,Springfield MA,17
+TX,Conroe,Conroe TX,23
+VA,Hampton,Hampton VA,18
+SC,Columbia,Columbia SC,18
+VA,Charlottesville,Charlottesville VA,20
+VA,Woodbridge,Woodbridge VA,27
+MO,Kansas City,Kansas City MO,14
+OH,Cleveland,Cleveland OH,15
+FL,Panama City,Panama City FL,19
+AZ,Tucson,Tucson AZ,15
+CA,Dublin,Dublin CA,27
+PA,Reading,Reading PA,13
+CO,Colorado Springs,Colorado Springs CO,18
+PA,Pottstown,Pottstown PA,13
+IN,Evansville,Evansville IN,11
+PA,Harrisburg,Harrisburg PA,18
+NC,Fayetteville,Fayetteville NC,13
+CA,Bakersfield,Bakersfield CA,15
+NY,Albany,Albany NY,16
+TX,McAllen,McAllen TX,19
+NJ,Brick,Brick NJ,19
+PA,West Chester,West Chester PA,22
+MI,Grand Rapids,Grand Rapids MI,18
+MD,Hagerstown,Hagerstown MD,14
+WI,Appleton,Appleton WI,12
+MA,Lawrence,Lawrence MA,20
+TX,Corpus Christi,Corpus Christi TX,9
+AR,Little Rock,Little Rock AR,20
+MT,Bozeman,Bozeman MT,12
+MT,Billings,Billings MT,9
+GA,Columbus,Columbus GA,8
+VA,Richmond,Richmond VA,17
+CO,Greeley,Greeley CO,13
+WA,Spokane,Spokane WA,17
+ME,Portland,Portland ME,15
+VA,Norfolk,Norfolk VA,17
+CA,Strathearn,Strathearn CA,19
+CA,Oxnard,Oxnard CA,15
+FL,Daytona Beach,Daytona Beach FL,13
+FL,Clearwater St  Petersburg,Clearwater St  Petersburg FL,19
+VA,Manassas,Manassas VA,20
+NJ,Ocean Township,Ocean Township NJ,17
+MA,Fitchburg,Fitchburg MA,17
+GA,Gainesville,Gainesville GA,20
+GA,Buford,Buford GA,21
+NJ,Freehold Township,Freehold Township NJ,21
+MD,Frederick,Frederick MD,18
+MT,Missoula,Missoula MT,14
+NH,Manchester,Manchester NH,10
+TN,Knoxville,Knoxville TN,15
+OH,Akron,Akron OH,12
+VA,Roanoke,Roanoke VA,11
+VA,Fredericksburg,Fredericksburg VA,20
+TX,Denton,Denton TX,18
+PA,Scranton,Scranton PA,13
+AZ,Surprise,Surprise AZ,12
+SC,Myrtle Beach,Myrtle Beach SC,16
+NV,Reno,Reno NV,19
+IL,Elgin,Elgin IL,13
+CA,Watsonville,Watsonville CA,19
+NJ,Toms River,Toms River NJ,14
+NJ,Atco,Atco NJ,17
+IN,Gary,Gary IN,15
+CA,Rohnert Park,Rohnert Park CA,18
+NY,Patchogue,Patchogue NY,18
+IN,Fort Wayne,Fort Wayne IN,13
+OR,Eugene,Eugene OR,16
+PA,Easton,Easton PA,15
+FL,Winter Haven,Winter Haven FL,18
+NM,Santa Fe,Santa Fe NM,16
+SC,Spartanburg,Spartanburg SC,16
+UT,Ogden,Ogden UT,12
+VA,Lynchburg,Lynchburg VA,13
+MI,Lansing,Lansing MI,9
+WA,Everett,Everett WA,18
+TN,Memphis,Memphis TN,12
+GA,Macon,Macon GA,8
+CA,Vacaville,Vacaville CA,15
+OR,Bend,Bend OR,14
+FL,Stuart,Stuart FL,18
+DE,Dover,Dover DE,12
+TX,New Braunfels,New Braunfels TX,16
+OH,Dayton,Dayton OH,11
+NH,Portsmouth,Portsmouth NH,14
+CT,Derby,Derby CT,16
+WI,Madison,Madison WI,14
+KS,Wichita,Wichita KS,10
+CT,Meriden,Meriden CT,15
+UT,Provo,Provo UT,12
+CA,Antioch,Antioch CA,13
+AL,Athens,Athens AL,18
+MA,Fall River,Fall River MA,14
+CA,Vallejo,Vallejo CA,12
+NJ,Egg Harbor Township,Egg Harbor Township NJ,11
+LA,Shreveport,Shreveport LA,12
+TX,Waco,Waco TX,7
+FL,New Port Richey,New Port Richey FL,14
+AL,Tuscaloosa,Tuscaloosa AL,13
+NM,Las Cruces,Las Cruces NM,9
+MA,New Bedford,New Bedford MA,11
+GA,Augusta,Augusta GA,12
+CA,Salinas,Salinas CA,10
+AL,Mobile,Mobile AL,12
+IN,Hammond,Hammond IN,12
+IL,Rockford,Rockford IL,9
+IL,North Chicago,North Chicago IL,14
+CA,Fairfield,Fairfield CA,14
+CT,New London,New London CT,13
+NC,Greensboro,Greensboro NC,9
+CT,Waterbury,Waterbury CT,13
+MI,Kalamazoo,Kalamazoo MI,10
+NC,Winston-Salem,Winston-Salem NC,12
+WA,Kennewick-Pasco-Richland,Kennewick-Pasco-Richland WA,10
+WI,Racine,Racine WI,8
+CA,Dana Point,Dana Point CA,17
+CA,Lancaster,Lancaster CA,11
+NH,Rochester,Rochester NH,11
+OH,Canton,Canton OH,10
+AL,Montgomery,Montgomery AL,11
+TX,College Station,College Station TX,11
+OH,Toledo,Toledo OH,10
+VA,Petersburg,Petersburg VA,10
+NY,Schenectady,Schenectady NY,11
+NY,Peekskill,Peekskill NY,13
+NE,Lincoln,Lincoln NE,10
+UT,Bountiful,Bountiful UT,11
+PA,Erie,Erie PA,11
+ND,Fargo,Fargo ND,10
+OH,Elyria,Elyria OH,9
+NM,Farmington,Farmington NM,10
+IL,Peoria,Peoria IL,7
+TN,Cleveland,Cleveland TN,11
+PA,Williamsport,Williamsport PA,7
+WI,Kenosha,Kenosha WI,7
+MI,Saginaw,Saginaw MI,9
+IA,Des Moines,Des Moines IA,10
+NV,Carson City,Carson City NV,8
+ME,Bangor,Bangor ME,8
+FL,Fort Pierce,Fort Pierce FL,9
+TX,San Angelo,San Angelo TX,6
+MI,Flint,Flint MI,5
+TX,Beaumont,Beaumont TX,9
+VA,Williamsburg,Williamsburg VA,10
+CA,Auburn,Auburn CA,12
+IN,South Bend,South Bend IN,8
+WI,Green Bay,Green Bay WI,6
+TN,Bristol,Bristol TN,6
+CA,Lodi,Lodi CA,9
+IL,Springfield,Springfield IL,7
+FL,Cocoa,Cocoa FL,9
+TX,Texas City,Texas City TX,8
+NC,High Point,High Point NC,5
+TX,Lubbock,Lubbock TX,5
+TX,Amarillo,Amarillo TX,6
+NY,Binghamton,Binghamton NY,7
+NY,Niagara Falls,Niagara Falls NY,9
+DE,Delmar,Delmar DE,16
+TX,Odessa,Odessa TX,8
+WV,Wheeling,Wheeling WV,12
+WV,Parkersburg,Parkersburg WV,8
+TX,Brownsville,Brownsville TX,4
+MS,Oxford,Oxford MS,7
+CA,Delano,Delano CA,5
+CO,Pueblo,Pueblo CO,5
+TX,Sherman,Sherman TX,6
+KS,Topeka,Topeka KS,7
+NY,Utica,Utica NY,5
+NJ,Atlantic City,Atlantic City NJ,6
+AL,Troy,Troy AL,6
+TX,Texarkana,Texarkana TX,6
+NC,Rocky Mount,Rocky Mount NC,6
+AR,Pine Bluff,Pine Bluff AR,5
+WI,Beloit,Beloit WI,6
+IA,Cedar Rapids,Cedar Rapids IA,6
+TX,Abilene,Abilene TX,5
+TX,Wichita Falls,Wichita Falls TX,5
+TX,Lufkin,Lufkin TX,4
+OH,Youngstown,Youngstown OH,4
+TX,Harlingen,Harlingen TX,3
+MT,Butte,Butte MT,6
+MD,Cumberland,Cumberland MD,1
