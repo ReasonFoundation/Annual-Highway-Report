@@ -208,6 +208,9 @@ FI_20 <- read_excel("AHR 30th/data/fi20.xlsx", sheet = "A", skip = 13) %>%
 #VM-2: Annual vehicle miles
 VM_2 <- read_excel("AHR 30th/data/vm2.xlsx", sheet = "A", skip = 13) %>% 
   rename(state = 1) %>% 
+
+  # Tennessee was spelled with extra letter in original file
+  mutate(state = str_replace(state, "Tennessee \\(2\\)", "Tennessee")) |> 
   mutate(rural_VMT_interstate_OFE_OPA = (`...2` + EXPRESSWAYS...3 + ARTERIAL...4),
          urban_VMT_interstate_OFE_OPA = (...10 + EXPRESSWAYS...11 + ARTERIAL...12),
          other_VMT = (ARTERIAL...5 + COLLECTOR...6 + COLLECTOR...7 + ...8 + ARTERIAL...13 + COLLECTOR...14 + COLLECTOR...15 + ...16),
@@ -215,7 +218,7 @@ VM_2 <- read_excel("AHR 30th/data/vm2.xlsx", sheet = "A", skip = 13) %>%
   select(1, 19:21) %>% 
   mutate(across(2:4, as.numeric)) %>%   
   filter(state %in% state.name)
-
+VM_2 |> View()
 ####Bridge data#### 
 bridge_raw <- read_excel("AHR 30th/data/fccount.xlsx", sheet = "2024")  
 
@@ -289,7 +292,7 @@ AHR_data <- bind_rows(AHR_states, AHR_national) %>%
     other_fatalities_per_100m_VMT = other_fatality / other_VMT * 100
   )
 
-
+AHR_data |> View()
 #Calculate disbursement scores adjusted by urban miles percentage using linear regression
 disbursement_data <- AHR_data %>% 
   select(state, pct_urban_lane_miles, capital_disbursement_perlm, maintenance_disbursement_perlm,
