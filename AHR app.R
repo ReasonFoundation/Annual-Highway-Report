@@ -11,8 +11,8 @@ library(tigris)
 library(plotly)
 library(janitor)
 
-# Load disbursement illustration data (2023)
-HM_81 <- read_excel("hm81_2023.xlsx", sheet = "A") %>%
+# Load disbursement illustration data
+HM_81 <- read_excel("AHR 30th/data/hm81.xlsx", sheet = "A") %>%
   remove_empty() %>%
   rename(state = 1,
          state_urban_lane_miles = 10,
@@ -23,7 +23,7 @@ HM_81 <- read_excel("hm81_2023.xlsx", sheet = "A") %>%
          pct_urban_lane_miles = state_urban_lane_miles / state_tot_lane_miles) %>%
   select(state, pct_urban_lane_miles, state_tot_lane_miles)
 
-SF_4 <- read_excel("sf4_2023.xlsx", sheet = "A") %>%
+SF_4 <- read_excel("AHR 30th/data/sf4.xlsx", sheet = "A") %>%
   remove_empty() %>%
   select(1:7) %>%
   rename(state = 1,
@@ -963,4 +963,5 @@ server <- function(input, output, session) {
 }
 
 # Run app
+
 shinyApp(ui = ui, server = server)

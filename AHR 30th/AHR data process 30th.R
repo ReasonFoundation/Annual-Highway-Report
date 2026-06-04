@@ -137,7 +137,8 @@ HM64_rural_interstate <- read_excel("AHR 30th/data/hm64.xlsx", sheet = "A") %>%
   mutate(across(rural_interstate_171_194:rural_interstate_total, as.numeric),
          rural_interstate_above_170 = rural_interstate_171_194 + rural_interstate_195_220 + rural_interstate_above_220) 
 
-#TODO: HM64 sheet A 2024 & 2023 Delaware reports 0 in all caterogies, CT reports 0 in several
+#TODO: Check HM64 sheet A 2024 & 2023 Delaware reports 0 in all caterogies in several years, 
+# #CT reports 0 in several
 
 HM64_rural_OPA <- read_excel("AHR 30th/data/hm64.xlsx", sheet = "B") %>% 
   remove_empty() %>% 
@@ -162,7 +163,7 @@ HM64_urban_interstate <- read_excel("AHR 30th/data/hm64.xlsx", sheet = "C") %>%
   filter(state %in% state.name) %>% 
   mutate(across(urban_interstate_171_194:urban_interstate_total, as.numeric),
          urban_interstate_above_170 = urban_interstate_171_194 + urban_interstate_195_220 + urban_interstate_above_220) 
-HM64_urban_interstate |> View()
+
 
 HM64_urban_OPA <- read_excel("AHR 30th/data/hm64.xlsx", sheet = "D") %>% 
   remove_empty() %>% 
@@ -174,7 +175,7 @@ HM64_urban_OPA <- read_excel("AHR 30th/data/hm64.xlsx", sheet = "D") %>%
   filter(state %in% state.name) %>% 
   mutate(across(urban_OPA_above_220:urban_OPA_total, as.numeric)) 
 
-#TODO: NH reports 0 in several cat
+#TODO: check ND, IW, AK reports 0 in several cat
 
 
 # Combined HM-64: Miles by measured pavement roughness
@@ -212,7 +213,7 @@ VM_2 <- read_excel("AHR 30th/data/vm2.xlsx", sheet = "A", skip = 13) %>%
          other_VMT = (ARTERIAL...5 + COLLECTOR...6 + COLLECTOR...7 + ...8 + ARTERIAL...13 + COLLECTOR...14 + COLLECTOR...15 + ...16),
          .after = ...18) %>% 
   select(1, 19:21) %>% 
-  mutate(across(2:4)) %>%   
+  mutate(across(2:4, as.numeric)) %>%   
   filter(state %in% state.name)
 
 ####Bridge data#### 
@@ -252,7 +253,7 @@ AHR_states <- list(HM_10,
 
 #Calculate national metrics
 AHR_national <- AHR_states %>%
-  summarise(across(2:ncol(AHR_states), sum)) %>% 
+  summarise(across(2:ncol(AHR_states), ~ sum(.x, na.rm = TRUE))) %>% 
   mutate(state = "United States")
 
 AHR_data <- bind_rows(AHR_states, AHR_national) %>% 
@@ -360,7 +361,7 @@ scores_process <- AHR_data %>%
   group_by(key_metrics) %>% 
   mutate(rank = min_rank(relative_score)) %>% 
   ungroup() %>% 
-  mutate(year = 2023, .before = everything())
+  mutate(year = 2024, .before = everything())
 
 ## Spec lookup
 spec <- tribble(
@@ -413,7 +414,7 @@ scores2 <- scores2 %>%
 # Get State Controlled Highway Miles table
 state_controlled_mileage_table <- AHR_data %>% 
   select(state, SHA_miles, state_tot_lane_miles, SHA_ratio) %>% 
-  mutate(year = 2023, .before = everything())
+  mutate(year = 2024, .before = everything())
 
 
 # Get only rankings in all categories
@@ -434,7 +435,7 @@ all_rankings <- scores %>%
          urban_fatalities_per_100m_VMT_score_rank,
          other_fatalities_per_100m_VMT_score_rank) %>% 
   rename_with(~ str_remove(., "_score")) %>% 
-  mutate(year = 2023, .before = everything())
+  mutate(year = 2024, .before = everything())
 
 #List of data frames to be exported
 data_list <- list("AHR Data" = AHR_data,
@@ -448,5 +449,4 @@ data_list_new <- list("Individual Scores & Rankings" = scores2,
 rio::export(data_list, "AHR 30th/output/AHR_data 30th.xlsx")
 
 rio::export(data_list_new, "AHR 30th/AHR_data 30th dashboard.xlsx")
-
 
