@@ -5,17 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b036b7a6-30a7-42d1-9ec6-30314e0e74e4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AHR_data 28th.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/AHR_data 28th.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AHR_data 29th.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/AHR_data 29th.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/main.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/alabama_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/alabama_highway_report.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/state-vignettes/alaska_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/alaska_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/arizona_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/arizona_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/arkansas_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/arkansas_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/california_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/california_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/colorado_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/colorado_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/connecticut_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/connecticut_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/delaware_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/delaware_highway_report.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/state-vignettes/florida_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/florida_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/georgia_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/georgia_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/hawaii_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/hawaii_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/idaho_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/idaho_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/illinois_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/illinois_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/indiana_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/indiana_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/iowa_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/iowa_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/kansas_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/kansas_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/kentucky_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/kentucky_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/louisiana_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/louisiana_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/maine_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/maine_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/maryland_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/maryland_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/massachusetts_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/massachusetts_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/michigan_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/michigan_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/minnesota_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/minnesota_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/mississippi_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/mississippi_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/missouri_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/missouri_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/montana_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/montana_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/nebraska_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/nebraska_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/nevada_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/nevada_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/new_hampshire_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/new_hampshire_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/new_jersey_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/new_jersey_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/new_mexico_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/new_mexico_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/new_york_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/new_york_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/north_carolina_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/north_carolina_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/north_dakota_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/north_dakota_highway_report.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/state-vignettes/ohio_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/ohio_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/oklahoma_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/oklahoma_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/oregon_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/oregon_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/pennsylvania_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/pennsylvania_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/rhode_island_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/rhode_island_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/south_carolina_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/south_carolina_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/south_dakota_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/south_dakota_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/tennessee_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/tennessee_highway_report.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/state-vignettes/texas_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/texas_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/utah_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/utah_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/vermont_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/vermont_highway_report.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/state-vignettes/virginia_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/virginia_highway_report.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/state-vignettes/~$aska_highway_report.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/state_comparisons_clean.json" beforeDir="false" afterPath="$PROJECT_DIR$/state_comparisons_clean.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/washington_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/washington_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/west_virginia_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/west_virginia_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/wisconsin_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/wisconsin_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state-vignettes/wyoming_highway_report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/state-vignettes/wyoming_highway_report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/~$AHR_data 29th.xlsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,21 +84,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.extract_comparisons.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "generate-state-vignettes",
-    "last_opened_file_path": "/Users/tn/Desktop/REASON/AHR_50states",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.extract_comparisons.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;generate-state-vignettes&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/tn/Desktop/REASON/AHR_50states&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -80,7 +122,8 @@
       <updated>1753902308521</updated>
       <workItem from="1753902310213" duration="6617000" />
       <workItem from="1753988678301" duration="7450000" />
-      <workItem from="1757943128249" duration="35006000" />
+      <workItem from="1757943128249" duration="35768000" />
+      <workItem from="1782840165427" duration="3393000" />
     </task>
     <servers />
   </component>
