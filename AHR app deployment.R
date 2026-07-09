@@ -8,10 +8,11 @@ rsconnect::deployApp(
   appFiles = c(
     "AHR app.R",
     "AHR_combined_data.xlsx",
-    "hm81_2023.xlsx",
-    "sf4_2023.xlsx"
+    "AHR 30th/data/hm81.xlsx",
+    "AHR 30th/data/sf4.xlsx"
   ),
   appPrimaryDoc = "AHR app.R",
+  appMode = "shiny",
   appName = "annual_highway_report_dashboard",
   account = "reason",
   server = "shinyapps.io",
